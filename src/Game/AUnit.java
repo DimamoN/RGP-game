@@ -72,7 +72,7 @@ abstract public class AUnit {
        int dmg = this.str-another.getDef();
        
        //Проверка на уклонение
-       if (another.Evade()){
+       if (another.EvadeDice()){
            System.out.println(this.getName()+" промахивается");
            
            //Добавить промах в статистику
@@ -94,24 +94,15 @@ abstract public class AUnit {
         return hp>0;
     }   
     
-    //Получить шанс уклонения
+    //Получить шанс уклонения                            DONT USE!!
     public boolean Evade(){
         
         Random dice = new Random();
-        
-        //Бросок кубика (1-6)
-        
-        //Число КУБИКА
-        int diceNumber = 1 + dice.nextInt(6);        
-        //Число ЛОВКОСТИ
-        int aglNumber = agl;
-        
-        int evadeNumber = diceNumber + aglNumber;
-        
-        switch(dice.nextInt(17-evadeNumber)){
-            case 0: return true; //100%
-            case 1: return Dice(1); //90%
-            case 2: return Dice(2); //50%
+ 
+        switch(agl){
+            case 0: return false; //0%
+            case 1: return Dice(1); //5%
+            case 2: return Dice(2); //10%
             case 3: return Dice(3);
             case 4: return Dice(4);
             case 5: return Dice(5);
@@ -129,7 +120,36 @@ abstract public class AUnit {
         }
     }  
     
-    //Рандом от 1 до number, Успех если rnd == number
+    //Шанс уклониься, в завимимости от ловкости
+    private boolean EvadeDice(){
+        switch(this.agl){
+            case 0: return false;
+            case 1: return getChance(5);
+            case 2: return getChance(10);
+            case 3: return getChance(15);
+            case 4: return getChance(20);
+            case 5: return getChance(30);
+            case 6: return getChance(40);
+            case 7: return getChance(50);
+            case 8: return getChance(60);
+            case 9: return getChance(70);
+            case 10: return getChance(80);            
+            default: return true;
+        }
+    }
+    
+    //Указываем шанс на true
+    private boolean getChance(int percent){
+         Random rnd = new Random();
+         
+         
+         int hundred = rnd.nextInt(100)+1;
+         
+         if(hundred < percent) return true;
+         else return false;        
+    }
+    
+    //Рандом от 1 до number, Успех если rnd == number    DONT USE!!!
     private boolean Dice(int number){
         Random rnd = new Random();
         
