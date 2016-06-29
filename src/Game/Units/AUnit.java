@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Game;
+package Game.Units;
 
+import Game.Items.Weapons.Weapon;
 import java.io.Console;
 import java.util.Random;
 
@@ -23,10 +24,12 @@ abstract public class AUnit {
     int agl; //ловкость (Максимум 10)
     int init; //инициатива
     
+    //Оружие
+    Weapon weapon;
+    
     //Статистика битвы для юнита
     BattleStat unitStat;
 
-    
     //Имя, ХП, Сила, Ловкость
     public AUnit(String name, int hp, int str, int agl) {
         this.name = name;
@@ -37,6 +40,17 @@ abstract public class AUnit {
         unitStat = new BattleStat();
     }  
 
+    //Имя, ХП, Сила, Ловкость, Оружие
+    public AUnit(String name, int hp, int str, int agl, Weapon weapon) {
+        this.name = name;
+        this.hp = hp;
+        this.sHp = hp;
+        this.str = str;        
+        this.agl = agl;
+        this.weapon = weapon;
+        unitStat = new BattleStat();
+    }  
+    
     public String getName() {
         return name;
     }
@@ -66,10 +80,17 @@ abstract public class AUnit {
     }
     
     //Атака другого юнита, возвращает нанесенный урон
-    int Attack(AUnit another){        
+    public int Attack(AUnit another){        
         
        //Нанесенный урон
-       int dmg = this.str-another.getDef();
+       int dmg;
+       
+       //Если есть оружие
+       if(this.weapon != null)
+           dmg = this.weapon.getDmg() + this.str - another.getDef();
+       //Если нет оружия
+       else
+           dmg = this.str-another.getDef();
        
        //Проверка на уклонение
        if (another.EvadeDice()){
@@ -93,32 +114,6 @@ abstract public class AUnit {
     public boolean isAlive(){
         return hp>0;
     }   
-    
-    //Получить шанс уклонения                            DONT USE!!
-    public boolean Evade(){
-        
-        Random dice = new Random();
- 
-        switch(agl){
-            case 0: return false; //0%
-            case 1: return Dice(1); //5%
-            case 2: return Dice(2); //10%
-            case 3: return Dice(3);
-            case 4: return Dice(4);
-            case 5: return Dice(5);
-            case 6: return Dice(6);
-            case 7: return Dice(7);
-            case 8: return Dice(8);
-            case 9: return Dice(9);
-            case 10: return Dice(10);
-            case 11: return Dice(11);
-            case 12: return Dice(12);
-            case 13: return Dice(13);
-            case 14: return Dice(14);
-            case 15: return Dice(15);
-            default: return true;
-        }
-    }  
     
     //Шанс уклониься, в завимимости от ловкости
     private boolean EvadeDice(){
@@ -172,5 +167,12 @@ abstract public class AUnit {
         System.out.println(this.getName() + " | " + this.unitStat.getHitStat());        
     }
     
-    
+    public void addWeapon(Weapon weapon){
+            this.weapon = weapon;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
+     
 }

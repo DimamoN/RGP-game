@@ -5,12 +5,34 @@
  */
 package Main;
 
+import Game.Units.AUnit;
+import Game.Units.SimpleMan;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import Game.*;
+import Game.Items.Weapons.Weapon;
 
 public class Main {
-
+    
+    //Битва с выводом победителей
+    public static void fightWithLog(AUnit one, AUnit two) throws InterruptedException{
+    
+    //Начало битвы
+    System.out.println("******\nБитва между "+one.getName()+" и "+two.getName()+"\n******\n");
+       
+    Game game = new Game();   
+    
+    if (game.fight(one, two))
+            System.out.println("\n*** Конец Боя ***\n Победитель "+one.getName());
+    else
+        System.out.println("\n*** Конец Боя ***\n Победитель "+two.getName());
+    
+    System.out.println("\n*** Статистика Боя ***");
+    one.BattleFinalInfo();
+    two.BattleFinalInfo();  
+   
+    }
+    
     public static void main(String[] args) throws InterruptedException {
         
 //        EventQueue.invokeLater(new Runnable()
@@ -27,19 +49,28 @@ public class Main {
 //    });
 
 
-    //HP/STR/DEF (1) /AGL/INIT
+    //ОРУЖИЕ  NAME//DMG//WEIGHT
+    Weapon dagger = new Weapon("Кинжал", 2, 1);
+    Weapon sword = new Weapon("Меч", 3, 2);
+    Weapon longSword = new Weapon("Длинный меч", 5, 3);
+    Weapon axe = new Weapon("Секира", 6, 5);
     
-    AUnit One = new SimpleMan("Demon",1000, 5, 1);
     
-    AUnit Two = new SimpleMan("Human",1000, 5, 10);
+    //ПЕРСОНАЖИ    //HP/STR/AGL/
+    AUnit One = new SimpleMan("Rustie", 48, 3, 6);    
+    AUnit Two = new SimpleMan("Ulman", 56, 5, 3);
+    
+//    System.out.println(dagger);
+//    System.out.println(sword);
+//    System.out.println(longSword);
+//    System.out.println(axe);
     
     
-    Game game = new Game();
+    One.addWeapon(longSword);
+    Two.addWeapon(axe);
     
-    game.fight(One, Two);
-        
-
-        
+    fightWithLog(One, Two);
+      
     }
     
 }

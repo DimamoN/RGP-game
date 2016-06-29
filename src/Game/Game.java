@@ -5,8 +5,10 @@
  */
 package Game;
 
+import Game.Units.AUnit;
 import java.io.Console;
 import java.util.Random;
+import Game.Units.*;
 
 /**
  *
@@ -16,9 +18,9 @@ public class Game {
    
    //ход в бою
    int turn = 1;
-
+   
     public boolean fight(AUnit one, AUnit two) throws InterruptedException{
-              
+ 
         while(one.getHp()>0 && two.getHp()>0){ 
             
             round(one,two);
@@ -26,14 +28,12 @@ public class Game {
 //            Thread.sleep(500);
         }          
         
-        one.BattleFinalInfo();
-        two.BattleFinalInfo();        
-       
         //обнуляем ход
         turn = 0;
-
+        
+        
         //Если у первого есть хп - он победил
-        return one.getHp()>0;        
+        return one.isAlive();        
     }
     
     //Первый опонент атакует
@@ -71,8 +71,17 @@ public class Game {
         
         int dmg = one.Attack(two);
         
-        if(dmg > 0)
-            System.out.println(one.getName()+" нанес "+ dmg +" урона");        
+        if(dmg > 0){
+            
+            if(one.getWeapon() != null)
+                System.out.println(one.getName()+" нанес "+ dmg +" урона"+" используя "+one.getWeapon().getName());
+            
+            else{
+            System.out.println(one.getName()+" нанес "+ dmg +" урона"); 
+            }
+            
+        }
+                   
     }
  
     //Порядок атак, после сверения инициативы
@@ -93,3 +102,4 @@ public class Game {
             else System.out.println(two.getName()+" умер");
     }   
 }
+
