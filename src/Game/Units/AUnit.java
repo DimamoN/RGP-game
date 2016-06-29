@@ -6,6 +6,7 @@
 package Game.Units;
 
 import Game.Damage;
+import Game.Items.Armor.Armor;
 import Game.Items.Weapons.Weapon;
 import java.io.Console;
 import java.util.Random;
@@ -19,16 +20,20 @@ abstract public class AUnit {
     String name; //имя 
     
     int sHp; //стартовые хитпоинты
+    
     int hp; //текущие хитпоинты
-    int str; //сила
-    int def; //защита
+    int str; //сила    
     int agl; //ловкость (Максимум 10)
     int init; //инициатива
     
-    int critChance = 3; //Шанс крита
+    
+    int critChance = 3; //Базовый шанс крита
     
     //Оружие
     Weapon weapon;
+    
+    //Защита
+    Armor armor;
     
     //Статистика битвы для юнита
     BattleStat unitStat;
@@ -41,16 +46,18 @@ abstract public class AUnit {
         this.str = str;        
         this.agl = agl;
         this.weapon = new Weapon();
+        this.armor = new Armor("Без защиты", 0, 0);
         unitStat = new BattleStat();
     }  
-    //Имя, ХП, Сила, Ловкость, Оружие
-    public AUnit(String name, int hp, int str, int agl, Weapon weapon) {
+    //Имя, ХП, Сила, Ловкость, Оружие, Доспехи
+    public AUnit(String name, int hp, int str, int agl, Weapon weapon, Armor armor) {
         this.name = name;
         this.hp = hp;
         this.sHp = hp;
         this.str = str;        
         this.agl = agl;
         this.weapon = weapon;
+        this.armor = armor;
         unitStat = new BattleStat();
     }  
     
@@ -63,7 +70,7 @@ abstract public class AUnit {
     }    
     
     public int getDef() {
-        return def;
+        return this.armor.getDef();
     }
 
     public int getAgl() {
@@ -113,9 +120,7 @@ abstract public class AUnit {
  
        //Если противник успешно уклонился
        if (another.EvadeDice()){           
-           
-//           System.out.println(this.getName()+" промахивается"); 
-
+          
            //Добавить промах в статистику
            this.unitStat.addMiss(); 
            
@@ -159,7 +164,6 @@ abstract public class AUnit {
     private boolean getChance(int percent){
          Random rnd = new Random();
          
-         
          int hundred = rnd.nextInt(100)+1;
          
          if(hundred < percent) return true;
@@ -197,4 +201,18 @@ abstract public class AUnit {
         return weapon;
     }
      
+    public void addArmor(Armor armor){
+        this.armor = armor;
+    }
+    
+    public Armor getArmor(){
+        return this.armor;
+    }    
+    
+    //Вся информация о юните
+    public String getAllStat(){        
+        return getName()+" | Урон "+(this.str+this.getWeapon().getDmg())+" | Защита: "
+                +this.getDef() + " | "+(this.getWeapon().getName())+" | "+this.getArmor().getName();
+    }
+    
 }

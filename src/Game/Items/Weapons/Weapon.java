@@ -31,7 +31,7 @@ public class Weapon extends AItem{
     
     @Override
     public String toString() {
-        return this.getName()+" DMG: "+this.dmg + " Weight: " + this.weight;
+        return this.getName()+", Урон: "+this.dmg + ", Вес: " + this.weight;
     }
     
     

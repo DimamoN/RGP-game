@@ -12,7 +12,9 @@ package Game;
 public class Damage {
     
     //Величина урона
-    int weaponDmg;    
+    int weaponDmg; 
+    
+    //Бонус от силы
     int strBonus;
     
     //Защита цели
@@ -70,9 +72,9 @@ public class Damage {
         //Если не промах
         if(!isMiss){
         if(isCritical)
-            return (weaponDmg+strBonus)*2;
+            return (weaponDmg+strBonus)*2 - this.Def;
         else
-            return weaponDmg+strBonus; 
+            return weaponDmg+strBonus - this.Def; 
         }
         //Если промах
         else return 0;

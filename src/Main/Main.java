@@ -10,6 +10,7 @@ import Game.Units.SimpleMan;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import Game.*;
+import Game.Items.Armor.Armor;
 import Game.Items.Weapons.Weapon;
 
 public class Main {
@@ -18,8 +19,12 @@ public class Main {
     public static AUnit fightWithLog(AUnit one, AUnit two) throws InterruptedException{
     
     //Начало битвы
-    System.out.println("\n******\nБитва между "+one.getName()+" и "+two.getName()+"\n******\n");
-       
+    System.out.println("\n******\nБитва между "+one.getName()+" и "+two.getName());     
+    System.out.println(one.getAllStat());
+    System.out.println(two.getAllStat());
+    System.out.println("******\n");
+    
+    
     Game game = new Game();   
     
     if (game.fight(one, two)){
@@ -57,30 +62,35 @@ public class Main {
 //        
 //    });
 
-
-    //ОРУЖИЕ  NAME//DMG//WEIGHT
+    //ОРУЖИЕ  NAME/DMG/WEIGHT
     Weapon dagger = new Weapon("Кинжал", 2, 1);
     Weapon sword = new Weapon("Меч", 3, 2);
     Weapon longSword = new Weapon("Длинный меч", 5, 3);
     Weapon axe = new Weapon("Секира", 6, 5);
-    
-    //ПЕРСОНАЖИ    //HP/STR/AGL/
-    AUnit One = new SimpleMan("Чарли тупой силач", 200, 7, 0);    
-    AUnit Two = new SimpleMan("Джон воин", 50, 4, 5);
-    AUnit SmallMan = new SimpleMan("Карлик Барка", 30, 1, 10);
     
 //    System.out.println(dagger);
 //    System.out.println(sword);
 //    System.out.println(longSword);
 //    System.out.println(axe);
     
-//    One.addWeapon(longSword);
-    Two.addWeapon(longSword);
-    SmallMan.addWeapon(dagger);
+    //Броня  NAME/DEF/WEIGHT
+    Armor lightArmor = new Armor("Легкая броня", 1, 2);
+    Armor heavyArmor = new Armor("Тяжелая броня", 3, 10);
     
-    AUnit winner = fightWithLog(One, Two);
-      
-    fightWithLog(SmallMan, winner);
+    //ПЕРСОНАЖИ   HP/STR/AGL
+    
+    AUnit Light = new SimpleMan("Легкий пехотинец", 40, 2, 6);
+    AUnit Standart = new SimpleMan("Пехотинец", 50, 3, 4);    
+    AUnit Heavy = new SimpleMan("Тяжелый пехотинец", 80, 4, 1);
+    
+    Standart.addArmor(lightArmor);
+    Heavy.addArmor(heavyArmor);
+    
+    Light.addWeapon(dagger);
+    Standart.addWeapon(sword);
+    Heavy.addWeapon(longSword);
+    
+    fightWithLog(Standart, Heavy);
     
     }
     
