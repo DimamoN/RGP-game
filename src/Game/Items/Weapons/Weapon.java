@@ -16,6 +16,10 @@ public class Weapon extends AItem{
     //Урон оружия
     int dmg;
 
+    public Weapon(){
+        
+    }
+    
     public Weapon(String name, int dmg, int weight) {
         super(name, weight);
         this.dmg = dmg;

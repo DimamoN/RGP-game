@@ -5,6 +5,7 @@
  */
 package Game.Units;
 
+import Game.Damage;
 import Game.Items.Weapons.Weapon;
 import java.io.Console;
 import java.util.Random;
@@ -24,6 +25,8 @@ abstract public class AUnit {
     int agl; //ловкость (Максимум 10)
     int init; //инициатива
     
+    int critChance = 3; //Шанс крита
+    
     //Оружие
     Weapon weapon;
     
@@ -36,10 +39,10 @@ abstract public class AUnit {
         this.hp = hp;
         this.sHp = hp;
         this.str = str;        
-        this.agl = agl;        
+        this.agl = agl;
+        this.weapon = new Weapon();
         unitStat = new BattleStat();
     }  
-
     //Имя, ХП, Сила, Ловкость, Оружие
     public AUnit(String name, int hp, int str, int agl, Weapon weapon) {
         this.name = name;
@@ -79,36 +82,55 @@ abstract public class AUnit {
         this.hp = hp;
     }
     
+    //Установка урона, который нанесет данный юнит (Weapon,Crit,Str)
+    public Damage getDmg(){
+        Random rnd = new Random();
+        
+        Damage damage = new Damage();
+        
+        //Установить dmg, равный атаке оружия
+        damage.setWeaponDmg(weapon.getDmg());
+        
+        //Добавить бонус силы
+        damage.setStrBonus(this.str);
+        
+        //Рассчет шанса крита ( 3 процента + ловкость * 2 )
+        if((rnd.nextInt(100)+1) < this.critChance + this.agl*2){
+            damage.setCritical(true);            
+        }
+        
+        return damage;
+    }
+    
     //Атака другого юнита, возвращает нанесенный урон
-    public int Attack(AUnit another){        
+    public Damage Attack(AUnit another){        
         
        //Нанесенный урон
-       int dmg;
+       Damage Dmg = this.getDmg();
        
-       //Если есть оружие
-       if(this.weapon != null)
-           dmg = this.weapon.getDmg() + this.str - another.getDef();
-       //Если нет оружия
-       else
-           dmg = this.str-another.getDef();
-       
-       //Проверка на уклонение
-       if (another.EvadeDice()){
-           System.out.println(this.getName()+" промахивается");
+       //Добавляем броню противника
+       Dmg.setDef(another.getDef());
+ 
+       //Если противник успешно уклонился
+       if (another.EvadeDice()){           
            
+//           System.out.println(this.getName()+" промахивается"); 
+
            //Добавить промах в статистику
-           this.unitStat.addMiss();           
-           return 0;
+           this.unitStat.addMiss(); 
+           
+           //Устанавливаем промах
+           Dmg.setIsMiss(true);
+       }
+       //Если противник не уклонился
+       else{
+           //Отнять хп противнику
+           another.setHp(another.getHp()-Dmg.getAllDmg());
+           //Добавить попадание в статистику
+           this.unitStat.addHit();
        }
        
-       else{           
-       another.setHp(another.getHp()-dmg);
-       
-       //Добавить попадание в статистику
-       this.unitStat.addHit();
-       
-       return dmg;
-       }
+       return Dmg;
     }
 
     public boolean isAlive(){

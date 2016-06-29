@@ -25,7 +25,7 @@ public class Game {
             
             round(one,two);
             
-//            Thread.sleep(500);
+//            Thread.sleep(1500);
         }          
         
         //обнуляем ход
@@ -66,22 +66,43 @@ public class Game {
          System.out.println();
     }
     
-    //Если урон есть - он отображается
+    //Если урон есть - он отображается (Индикация урона)
     private void AttackLog(AUnit one, AUnit two){  
         
-        int dmg = one.Attack(two);
+        //Сама атака и возвращение урона 
+        Damage Dmg = one.Attack(two);
         
-        if(dmg > 0){
+        //Если попал
+        if(!Dmg.isMiss){
             
-            if(one.getWeapon() != null)
-                System.out.println(one.getName()+" нанес "+ dmg +" урона"+" используя "+one.getWeapon().getName());
-            
+            //Если критический
+            if(Dmg.isCritical){
+                
+                //Если есть оружие
+                if(Dmg.weaponDmg > 0)                               
+                    System.out.println(one.getName()+" нанес "+Dmg.getAllDmg()+" урона критическим "
+                            + "ударом используя "+one.getWeapon().getName());
+                //Если нет оружия
+                else
+                    System.out.println(one.getName()+" нанес "+Dmg.getAllDmg()+" урона критическим "
+                            + "ударом");
+            }    
+            //Если не критический
             else{
-            System.out.println(one.getName()+" нанес "+ dmg +" урона"); 
-            }
-            
+                //Если есть оружие
+                if(Dmg.weaponDmg > 0)
+                    System.out.println(one.getName()+" нанес "+Dmg.getAllDmg()+" урона "
+                            + "используя "+one.getWeapon().getName());
+                //Если нет оружия
+                else
+                    System.out.println(one.getName()+" нанес "+Dmg.getAllDmg()+" урона");                    
+                }
         }
-                   
+            
+        //Если промахнулся
+        else
+            System.out.println(one.getName()+" промахнулся");
+        
     }
  
     //Порядок атак, после сверения инициативы

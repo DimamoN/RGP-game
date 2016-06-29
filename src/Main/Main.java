@@ -15,22 +15,31 @@ import Game.Items.Weapons.Weapon;
 public class Main {
     
     //Битва с выводом победителей
-    public static void fightWithLog(AUnit one, AUnit two) throws InterruptedException{
+    public static AUnit fightWithLog(AUnit one, AUnit two) throws InterruptedException{
     
     //Начало битвы
-    System.out.println("******\nБитва между "+one.getName()+" и "+two.getName()+"\n******\n");
+    System.out.println("\n******\nБитва между "+one.getName()+" и "+two.getName()+"\n******\n");
        
     Game game = new Game();   
     
-    if (game.fight(one, two))
+    if (game.fight(one, two)){
             System.out.println("\n*** Конец Боя ***\n Победитель "+one.getName());
-    else
+            System.out.println("\n*** Статистика Боя ***");
+            one.BattleFinalInfo();
+            two.BattleFinalInfo(); 
+            return one;
+            
+            
+    }
+    else{
         System.out.println("\n*** Конец Боя ***\n Победитель "+two.getName());
-    
-    System.out.println("\n*** Статистика Боя ***");
-    one.BattleFinalInfo();
-    two.BattleFinalInfo();  
-   
+        System.out.println("\n*** Статистика Боя ***");
+        one.BattleFinalInfo();
+        two.BattleFinalInfo(); 
+        return two;
+        
+    }
+        
     }
     
     public static void main(String[] args) throws InterruptedException {
@@ -55,22 +64,24 @@ public class Main {
     Weapon longSword = new Weapon("Длинный меч", 5, 3);
     Weapon axe = new Weapon("Секира", 6, 5);
     
-    
     //ПЕРСОНАЖИ    //HP/STR/AGL/
-    AUnit One = new SimpleMan("Rustie", 48, 3, 6);    
-    AUnit Two = new SimpleMan("Ulman", 56, 5, 3);
+    AUnit One = new SimpleMan("Чарли тупой силач", 200, 7, 0);    
+    AUnit Two = new SimpleMan("Джон воин", 50, 4, 5);
+    AUnit SmallMan = new SimpleMan("Карлик Барка", 30, 1, 10);
     
 //    System.out.println(dagger);
 //    System.out.println(sword);
 //    System.out.println(longSword);
 //    System.out.println(axe);
     
+//    One.addWeapon(longSword);
+    Two.addWeapon(longSword);
+    SmallMan.addWeapon(dagger);
     
-    One.addWeapon(longSword);
-    Two.addWeapon(axe);
-    
-    fightWithLog(One, Two);
+    AUnit winner = fightWithLog(One, Two);
       
+    fightWithLog(SmallMan, winner);
+    
     }
     
 }
