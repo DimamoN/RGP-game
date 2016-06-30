@@ -10,6 +10,8 @@ import Game.Units.AUnit;
 import java.io.Console;
 import java.util.Random;
 import Game.Units.*;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -29,20 +31,28 @@ public class Game {
         battleFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         battleFrame.setVisible(true);
         battleFrame.setLocation(300, 300);  
-        battleFrame.setTitle("RPG GAME");        
+        battleFrame.setTitle("RPG GAME");
+        
+        //Установка иконки приложения - прямой путь к иконке (можно 32х32)
+        battleFrame.setIconImage(new ImageIcon("C:\\Users\\DimamoN\\Dropbox\\kpi\\Java\\RPG game\\src\\Game\\icon.jpg").getImage());   
     }
    
     //Битва с выводом победителей
     public AUnit fightWithLog(AUnit one, AUnit two){
     
-    //Начало битвы вывод в фрейм
-    
+    //Начало битвы вывод в фрейм    
     battleFrame.addBattleLog("******\nБитва между "+one.getName()+" и "+two.getName());
     battleFrame.addBattleLog(one.getAllStat());
     battleFrame.addBattleLog(two.getAllStat());
     battleFrame.addBattleLog("******\n");
     
+    //Установка имен в поля фрейма
+    battleFrame.setAttackerName(one.getName());
+    battleFrame.setDeffencerName(two.getName());
     
+    //Установка параметров в поля фрейма
+    battleFrame.setHeroesStats(one, two);
+ 
     if (this.fight(one, two)){
         battleFrame.addBattleLog("*** Конец Боя ***\n Победитель "+one.getName());
         battleFrame.addBattleLog("\n*** Статистика Боя ***");

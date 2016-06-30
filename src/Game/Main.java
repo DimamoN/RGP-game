@@ -41,7 +41,15 @@ public class Main {
             AUnit Light = new SimpleMan("Легкий пехотинец", 40, 2, 6);
             AUnit Standart = new SimpleMan("Пехотинец", 50, 3, 4);    
             AUnit Heavy = new SimpleMan("Тяжелый пехотинец", 80, 4, 1);
-
+                      
+//            AUnit Lukash = new SimpleMan("Лукашенко", 40, 5, 6);
+//            AUnit Putin = new SimpleMan("Путин", 40, 9, 2);
+//            
+//            Lukash.addWeapon(dagger);
+//            Putin.addWeapon(dagger);
+//            
+//            Lukash.addArmor(heavyArmor);
+            
             Standart.addArmor(lightArmor);
             Heavy.addArmor(heavyArmor);
 
@@ -51,8 +59,8 @@ public class Main {
             
             Game game = new Game();
             
-            game.fightWithLog(Light, Standart);
-               
+            game.fightWithLog(Standart, Heavy);
+                 
         }
         
     });
