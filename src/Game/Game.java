@@ -5,10 +5,12 @@
  */
 package Game;
 
+import Frames.BattleFrame;
 import Game.Units.AUnit;
 import java.io.Console;
 import java.util.Random;
 import Game.Units.*;
+import javax.swing.JFrame;
 
 /**
  *
@@ -16,10 +18,49 @@ import Game.Units.*;
  */
 public class Game {
    
+    private BattleFrame battleFrame;
+    
    //ход в бою
    int turn = 1;
+
+   //На этом фрейме будет отображаться битва
+    public Game() {        
+        battleFrame = new BattleFrame();
+        battleFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        battleFrame.setVisible(true);
+        battleFrame.setLocation(300, 300);  
+        battleFrame.setTitle("RPG GAME");        
+    }
    
-    public boolean fight(AUnit one, AUnit two) throws InterruptedException{
+    //Битва с выводом победителей
+    public AUnit fightWithLog(AUnit one, AUnit two){
+    
+    //Начало битвы вывод в фрейм
+    
+    battleFrame.addBattleLog("******\nБитва между "+one.getName()+" и "+two.getName());
+    battleFrame.addBattleLog(one.getAllStat());
+    battleFrame.addBattleLog(two.getAllStat());
+    battleFrame.addBattleLog("******\n");
+    
+    
+    if (this.fight(one, two)){
+        battleFrame.addBattleLog("*** Конец Боя ***\n Победитель "+one.getName());
+        battleFrame.addBattleLog("\n*** Статистика Боя ***");
+        battleFrame.addBattleLog(one.BattleFinalInfo());
+        battleFrame.addBattleLog(two.BattleFinalInfo());
+        return one;  
+    }
+    else{        
+        battleFrame.addBattleLog("\n*** Конец Боя ***\n Победитель "+two.getName());
+        battleFrame.addBattleLog("\n*** Статистика Боя ***");
+        battleFrame.addBattleLog(one.BattleFinalInfo());
+        battleFrame.addBattleLog(two.BattleFinalInfo());        
+        return two;        
+    }       
+    }
+    
+    //Битва, победитель 1 - true, 2 - false
+    public boolean fight(AUnit one, AUnit two){
  
         while(one.getHp()>0 && two.getHp()>0){ 
             
@@ -29,7 +70,7 @@ public class Game {
         }          
         
         //обнуляем ход
-        turn = 0;
+        turn = 1;
         
         
         //Если у первого есть хп - он победил
@@ -39,9 +80,9 @@ public class Game {
     //Первый опонент атакует
     void round(AUnit one, AUnit two){ 
         
-        System.out.println("*** "+ turn + " ход ***");
-        System.out.println(one.BattleInfo());
-        System.out.println(two.BattleInfo());
+        battleFrame.addBattleLog("*** "+ turn + " ход ***");
+        battleFrame.addBattleLog(one.BattleInfo());
+        battleFrame.addBattleLog(two.BattleInfo());
         
         //Сверяем инициативу для первого удара
         if(one.getInit()>two.getInit()){ 
@@ -63,7 +104,9 @@ public class Game {
         
         //Увеличиваем ход, и добавляем пустую строку
         turn++;
-         System.out.println();
+        
+       //Переход на след. строку
+       battleFrame.addBattleLog("");
     }
     
     //Если урон есть - он отображается (Индикация урона)
@@ -79,30 +122,29 @@ public class Game {
             if(Dmg.isCritical){
                 
                 //Если есть оружие
-                if(Dmg.weaponDmg > 0)                               
-                    System.out.println(one.getName()+" нанес "+Dmg.getAllDmg()+" урона критическим "
-                            + "ударом используя "+one.getWeapon().getName());
+                if(Dmg.weaponDmg > 0) 
+                   battleFrame.addBattleLog(one.getName()+" нанес "+Dmg.getAllDmg()+" урона критическим "
+                            + "ударом используя "+one.getWeapon().getName()); 
                 //Если нет оружия
                 else
-                    System.out.println(one.getName()+" нанес "+Dmg.getAllDmg()+" урона критическим "
+                    battleFrame.addBattleLog(one.getName()+" нанес "+Dmg.getAllDmg()+" урона критическим "
                             + "ударом");
             }    
             //Если не критический
             else{
                 //Если есть оружие
                 if(Dmg.weaponDmg > 0)
-                    System.out.println(one.getName()+" нанес "+Dmg.getAllDmg()+" урона "
+                    battleFrame.addBattleLog(one.getName()+" нанес "+Dmg.getAllDmg()+" урона "
                             + "используя "+one.getWeapon().getName());
                 //Если нет оружия
                 else
-                    System.out.println(one.getName()+" нанес "+Dmg.getAllDmg()+" урона");                    
+                    battleFrame.addBattleLog(one.getName()+" нанес "+Dmg.getAllDmg()+" урона");                  
                 }
         }
             
         //Если промахнулся
         else
-            System.out.println(one.getName()+" промахнулся");
-        
+            battleFrame.addBattleLog(one.getName()+" промахнулся");
     }
  
     //Порядок атак, после сверения инициативы
@@ -117,10 +159,10 @@ public class Game {
                 //Атакует второй
                 AttackLog(two, one);
                 
-                if(!one.isAlive()) System.out.println(one.getName()+" умер"); 
+                if(!one.isAlive()) battleFrame.addBattleLog(one.getName()+" умер"); 
             }
             
-            else System.out.println(two.getName()+" умер");
+            else battleFrame.addBattleLog(two.getName()+" умер");
     }   
 }
 

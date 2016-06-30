@@ -189,8 +189,8 @@ abstract public class AUnit {
     }
     
     //Информация по концу боя про попадания и уклонения
-    public void BattleFinalInfo(){        
-        System.out.println(this.getName() + " | " + this.unitStat.getHitStat());        
+    public String BattleFinalInfo(){        
+        return this.getName() + " | " + this.unitStat.getHitStat();        
     }
     
     public void addWeapon(Weapon weapon){
