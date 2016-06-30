@@ -19,4 +19,5 @@
   <li>Локации, перемещение по локациям</li>
 </ol>
 
-<img url=http://cs630221.vk.me/v630221767/396e8/Xxch1Nla8dY.jpg alt="img">
+<h3>Текущий скриншот</h3>
+<img src="http://cs630221.vk.me/v630221767/396e8/Xxch1Nla8dY.jpg" alt="img"/>
