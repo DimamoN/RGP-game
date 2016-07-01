@@ -18,9 +18,16 @@ public class Armor extends AItem{
 
     public Armor() {
     }
-
+    
+    //Без картинки
     public Armor(String name, int def, int weight) {
         super(name, weight);
+        this.def = def;
+    }
+
+    //Новый, с картинкой
+    public Armor(String name, int def, int weight, String pathToImage) {
+        super(name, weight, pathToImage);
         this.def = def;
     }
 

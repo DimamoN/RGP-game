@@ -34,7 +34,7 @@ public class Game {
         battleFrame.setTitle("RPG GAME");
         
         //Установка иконки приложения - прямой путь к иконке (можно 32х32)
-        battleFrame.setIconImage(new ImageIcon("src\\Game\\icon32N.png").getImage());   
+        battleFrame.setIconImage(new ImageIcon("src\\Images\\icon.png").getImage());   
     }
    
     //Битва с выводом победителей
@@ -53,8 +53,8 @@ public class Game {
     //Установка параметров в поля фрейма
     battleFrame.setHeroesStats(one, two);
     
-    //Установка картинки воина
-    battleFrame.setHero1Image(one.getImage());    
+    //Установка картинки воина!!!
+    battleFrame.setHero1Image(one);    
 
     if (this.fight(one, two)){
         battleFrame.addBattleLog("*** Конец Боя ***\n Победитель "+one.getName());

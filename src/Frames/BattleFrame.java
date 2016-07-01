@@ -55,6 +55,8 @@ public class BattleFrame extends javax.swing.JFrame {
         hero1Weapon = new javax.swing.JTextField();
         hero1Armor = new javax.swing.JTextField();
         hero1Image = new javax.swing.JLabel();
+        hero1ArmorImage = new javax.swing.JLabel();
+        hero1WeaponImage = new javax.swing.JLabel();
         hero2Panel = new javax.swing.JPanel();
         labelDefencing = new javax.swing.JLabel();
         defencerName = new javax.swing.JTextField();
@@ -72,9 +74,6 @@ public class BattleFrame extends javax.swing.JFrame {
         labelHero2Armor = new javax.swing.JLabel();
         labelHero2Weapon = new javax.swing.JLabel();
         hero2Weapon = new javax.swing.JTextField();
-        midPanel = new javax.swing.JPanel();
-        btnStartBattle1 = new javax.swing.JButton();
-        btnNextTurn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -96,7 +95,7 @@ public class BattleFrame extends javax.swing.JFrame {
                 .addGroup(logPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(logPanelLayout.createSequentialGroup()
                         .addComponent(labelBattleLog)
-                        .addContainerGap(624, Short.MAX_VALUE))
+                        .addContainerGap(834, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
         logPanelLayout.setVerticalGroup(
@@ -109,9 +108,13 @@ public class BattleFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        hero1Panel.setBackground(new java.awt.Color(240, 240, 250));
+        hero1Panel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         labelAttacking.setText("Атакует");
 
         attackerName.setEditable(false);
+        attackerName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         attackerName.setText("Имя атакующего");
         attackerName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +129,7 @@ public class BattleFrame extends javax.swing.JFrame {
         labelHero1Agl.setText("Ловкость");
 
         hero1Str.setEditable(false);
+        hero1Str.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         hero1Str.setText("Сила");
         hero1Str.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +138,7 @@ public class BattleFrame extends javax.swing.JFrame {
         });
 
         hero1Agl.setEditable(false);
+        hero1Agl.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         hero1Agl.setText("Ловкость");
         hero1Agl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +148,7 @@ public class BattleFrame extends javax.swing.JFrame {
 
         hero1HP.setEditable(false);
         hero1HP.setForeground(new java.awt.Color(255, 0, 0));
+        hero1HP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         hero1HP.setText("Здоровье");
         hero1HP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,6 +161,7 @@ public class BattleFrame extends javax.swing.JFrame {
         labelHero1Def.setText("Броня");
 
         hero1Dmg.setEditable(false);
+        hero1Dmg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         hero1Dmg.setText("Урон");
         hero1Dmg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,6 +170,7 @@ public class BattleFrame extends javax.swing.JFrame {
         });
 
         hero1Def.setEditable(false);
+        hero1Def.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         hero1Def.setText("Броня");
         hero1Def.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +183,7 @@ public class BattleFrame extends javax.swing.JFrame {
         labelHero1Armor.setText("Защита");
 
         hero1Weapon.setEditable(false);
+        hero1Weapon.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         hero1Weapon.setText("Оружие");
         hero1Weapon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,6 +192,7 @@ public class BattleFrame extends javax.swing.JFrame {
         });
 
         hero1Armor.setEditable(false);
+        hero1Armor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         hero1Armor.setText("Защита");
         hero1Armor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,8 +200,13 @@ public class BattleFrame extends javax.swing.JFrame {
             }
         });
 
-        hero1Image.setText("IMG");
+        hero1Image.setText("hero");
         hero1Image.setMaximumSize(new java.awt.Dimension(64, 64));
+        hero1Image.setMinimumSize(new java.awt.Dimension(64, 64));
+
+        hero1ArmorImage.setText("armor");
+
+        hero1WeaponImage.setText("weapon");
 
         javax.swing.GroupLayout hero1PanelLayout = new javax.swing.GroupLayout(hero1Panel);
         hero1Panel.setLayout(hero1PanelLayout);
@@ -200,73 +215,94 @@ public class BattleFrame extends javax.swing.JFrame {
             .addGroup(hero1PanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelHero1Armor)
-                    .addComponent(labelAttacking, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelHero1Weapon)
-                    .addComponent(hero1Image, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hero1Weapon, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(hero1PanelLayout.createSequentialGroup()
+                        .addComponent(hero1Image, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(hero1Armor)
                             .addGroup(hero1PanelLayout.createSequentialGroup()
-                                .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(hero1Agl, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(hero1PanelLayout.createSequentialGroup()
-                                                .addComponent(labelHero1Str, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(25, 25, 25)
-                                                .addComponent(hero1Str, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(attackerName)))
-                                    .addComponent(labelHero1Agl))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelHero1HP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(hero1PanelLayout.createSequentialGroup()
-                                        .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labelHero1Dmg)
-                                            .addComponent(labelHero1Def))
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(hero1HP, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-                            .addComponent(hero1Dmg, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(hero1Def, javax.swing.GroupLayout.Alignment.LEADING))))
-                .addGap(2, 2, 2))
+                                .addComponent(labelHero1Agl)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(hero1Agl, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(hero1PanelLayout.createSequentialGroup()
+                                .addComponent(labelHero1Str, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(hero1Str, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(attackerName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelAttacking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelHero1HP, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelHero1Def)
+                            .addComponent(labelHero1Dmg))
+                        .addGap(18, 18, 18)
+                        .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(hero1HP)
+                            .addComponent(hero1Dmg, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(hero1Def, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(hero1PanelLayout.createSequentialGroup()
+                        .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(labelHero1Weapon, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hero1Weapon, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(hero1Armor, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(hero1PanelLayout.createSequentialGroup()
+                                .addComponent(labelHero1Armor)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(hero1ArmorImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
+            .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(hero1PanelLayout.createSequentialGroup()
+                    .addGap(141, 141, 141)
+                    .addComponent(hero1WeaponImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(193, Short.MAX_VALUE)))
         );
         hero1PanelLayout.setVerticalGroup(
             hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(hero1PanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(hero1PanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labelAttacking)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(attackerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelHero1HP))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelHero1Str)
+                            .addComponent(hero1Str, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelHero1Dmg))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelHero1Agl)
+                            .addComponent(hero1Agl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelHero1Def)))
+                    .addGroup(hero1PanelLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(hero1Image, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hero1PanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(hero1HP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(hero1Dmg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(hero1Def, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26)
                 .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelAttacking)
-                    .addComponent(attackerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelHero1HP)
-                    .addComponent(hero1HP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelHero1Str)
-                    .addComponent(hero1Str, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelHero1Dmg)
-                    .addComponent(hero1Dmg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hero1Image, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelHero1Agl)
-                    .addComponent(hero1Agl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelHero1Def)
-                    .addComponent(hero1Def, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
-                .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(hero1ArmorImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelHero1Weapon)
-                    .addComponent(hero1Weapon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelHero1Armor))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelHero1Armor)
-                    .addComponent(hero1Armor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(hero1Armor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hero1Weapon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
+            .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hero1PanelLayout.createSequentialGroup()
+                    .addContainerGap(139, Short.MAX_VALUE)
+                    .addComponent(hero1WeaponImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(39, 39, 39)))
         );
 
         labelDefencing.setText("Оборона");
@@ -370,7 +406,7 @@ public class BattleFrame extends javax.swing.JFrame {
                             .addComponent(hero2Def, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(defencerName, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(hero2Str, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         hero2PanelLayout.setVerticalGroup(
             hero2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -413,41 +449,6 @@ public class BattleFrame extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        btnStartBattle1.setText("Начать битву");
-
-        btnNextTurn.setText("Следующий ход");
-
-        javax.swing.GroupLayout midPanelLayout = new javax.swing.GroupLayout(midPanel);
-        midPanel.setLayout(midPanelLayout);
-        midPanelLayout.setHorizontalGroup(
-            midPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 691, Short.MAX_VALUE)
-            .addGroup(midPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(midPanelLayout.createSequentialGroup()
-                    .addGap(20, 20, 20)
-                    .addComponent(btnStartBattle1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(539, Short.MAX_VALUE)))
-            .addGroup(midPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(midPanelLayout.createSequentialGroup()
-                    .addGap(178, 178, 178)
-                    .addComponent(btnNextTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(381, Short.MAX_VALUE)))
-        );
-        midPanelLayout.setVerticalGroup(
-            midPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-            .addGroup(midPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(midPanelLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(btnStartBattle1, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(midPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(midPanelLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(btnNextTurn, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -455,11 +456,10 @@ public class BattleFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(logPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(midPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(hero1Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(20, 20, 20)
                         .addComponent(hero2Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -470,12 +470,10 @@ public class BattleFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(hero2Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(37, 37, 37))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(hero1Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(midPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(hero1Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)))
                 .addComponent(logPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -648,11 +646,13 @@ public class BattleFrame extends javax.swing.JFrame {
         return hero2Weapon;
     }
     
-    //ИКОНКА ГЕРОЯ
-    public void setHero1Image(Icon icon) {
-        this.hero1Image.setIcon(icon);
+    //ИКОНКА ГЕРОЯ и Оружия
+    public void setHero1Image(AUnit one) {
+        this.hero1Image.setIcon(one.getImage());
+        this.hero1WeaponImage.setIcon(one.getWeapon().getImage());  
+        this.hero1ArmorImage.setIcon(one.getArmor().getImage()); 
     }
- 
+    
     //Установить все параметры первого персонажа
     public void setHeroesStats(AUnit one, AUnit two){
         
@@ -680,11 +680,10 @@ public class BattleFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField attackerName;
     private javax.swing.JTextArea battleLogTextArea;
-    private javax.swing.JButton btnNextTurn;
-    private javax.swing.JButton btnStartBattle1;
     private javax.swing.JTextField defencerName;
     private javax.swing.JTextField hero1Agl;
     private javax.swing.JTextField hero1Armor;
+    private javax.swing.JLabel hero1ArmorImage;
     private javax.swing.JTextField hero1Def;
     private javax.swing.JTextField hero1Dmg;
     private javax.swing.JTextField hero1HP;
@@ -692,6 +691,7 @@ public class BattleFrame extends javax.swing.JFrame {
     private javax.swing.JPanel hero1Panel;
     private javax.swing.JTextField hero1Str;
     private javax.swing.JTextField hero1Weapon;
+    private javax.swing.JLabel hero1WeaponImage;
     private javax.swing.JTextField hero2Agl;
     private javax.swing.JTextField hero2Armor;
     private javax.swing.JTextField hero2Def;
@@ -719,6 +719,5 @@ public class BattleFrame extends javax.swing.JFrame {
     private javax.swing.JLabel labelHero2Str1;
     private javax.swing.JLabel labelHero2Weapon;
     private javax.swing.JPanel logPanel;
-    private javax.swing.JPanel midPanel;
     // End of variables declaration//GEN-END:variables
 }

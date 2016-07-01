@@ -26,11 +26,12 @@ public class Main {
         {        
         public void run(){
             //Код            
+            
             //ОРУЖИЕ  NAME/DMG/WEIGHT
-            Weapon dagger = new Weapon("Кинжал", 2, 1);
-            Weapon sword = new Weapon("Меч", 3, 2);
-            Weapon longSword = new Weapon("Длинный меч", 5, 3);
-            Weapon axe = new Weapon("Секира", 6, 5);
+            Weapon dagger = new Weapon("Кинжал", 2, 1, "src\\Images\\Weapons\\dagger.png");
+            Weapon sword = new Weapon("Меч", 3, 2, "src\\Images\\Weapons\\sword.png");
+            Weapon longSword = new Weapon("Длинный меч", 5, 3, "src\\Images\\Weapons\\longSword.png");
+            Weapon axe = new Weapon("Секира", 6, 5, "src\\Images\\Weapons\\axe.png");
 
             //БРОНЯ  NAME/DEF/WEIGHT
             Armor lightArmor = new Armor("Легкая броня", 1, 2);
@@ -38,19 +39,17 @@ public class Main {
 
             //ПЕРСОНАЖИ   HP/STR/AGL
 //            AUnit Light = new SimpleMan("Легкий пехотинец", 40, 2, 6);
-            AUnit Standart = new SimpleMan("Пехотинец", 50, 3, 4);  
+
+            AUnit Standart = new SimpleMan("Пехотинец", 50, 3, 4, "src\\Images\\Units\\soldierMid.png");  
             
-            Standart.setImage(new ImageIcon("src\\Images\\soldierMid.png"));
-            
-            AUnit Heavy = new SimpleMan("Тяжелый пехотинец", 80, 4, 1);
-//            Standart.setImage(new ImageIcon("Images\\soldierHeavy.png"));
+            AUnit Heavy = new SimpleMan("Тяжелый пехотинец", 80, 4, 1, "src\\Images\\Units\\soldierHeavy.png");
                       
             Standart.addArmor(lightArmor);
             Heavy.addArmor(heavyArmor);
 
 //            Light.addWeapon(dagger);
 
-            Standart.addWeapon(sword);
+            Standart.addWeapon(longSword);
             Heavy.addWeapon(longSword);
             
             Game game = new Game();            

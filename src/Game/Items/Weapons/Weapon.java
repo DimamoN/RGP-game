@@ -20,8 +20,8 @@ public class Weapon extends AItem{
         
     }
     
-    public Weapon(String name, int dmg, int weight) {
-        super(name, weight);
+    public Weapon(String name, int dmg, int weight, String pathToImage) {
+        super(name, weight, pathToImage);
         this.dmg = dmg;
     }
 

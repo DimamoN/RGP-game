@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package Game.Items;
-
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**
@@ -15,10 +13,7 @@ import javax.swing.ImageIcon;
 public class AItem {
     
     //Картинка айтема
-    
-//    ImageIcon image; //old
-    
-    Icon image; //new
+    private ImageIcon image;
     
     //Название айтема
     private String name;
@@ -29,9 +24,18 @@ public class AItem {
     public AItem() {
     }
 
+    //УДАЛИТЬ ПОТОМ!!!
     public AItem(String name, int weight) {
         this.name = name;
         this.weight = weight;
+        image = new ImageIcon();
+    }
+    
+    //Крутой конструктор с путем к икноке
+    public AItem(String name, int weight, String pathToImage) {
+        this.name = name;
+        this.weight = weight;
+        image = new ImageIcon(pathToImage);
     }
 
     public String getName() {
@@ -42,24 +46,14 @@ public class AItem {
         return weight;
     }
 
-//    public ImageIcon getImage() {
-//        return image;
-//    }
-//
-//    public void setImage(ImageIcon image) {
-//        this.image = image;
-//    }
-
-    public Icon getImage() {
+    public ImageIcon getImage() {
         return image;
     }
+    
+    public void setImage(ImageIcon image) {
+      this.image = image;
+   }
 
-    public void setImage(Icon image) {
-        this.image = image;
-    }
-    
-    
- 
     @Override
     public String toString() {
         return this.getName()+" Weight: "+this.weight;

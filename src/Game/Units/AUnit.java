@@ -52,11 +52,27 @@ abstract public class AUnit {
         this.weapon = new Weapon();
         this.armor = new Armor("Без защиты", 0, 0);
         
-
-        this.image = new ImageIcon("C:\\Users\\DimamoN\\Dropbox\\kpi\\Java\\RPG game\\src\\Images\\karlik.png");
+        this.image = new ImageIcon("src\\Images\\Units\\null.png");
         
         unitStat = new BattleStat();
     }  
+   
+    
+    //С картинкой
+    public AUnit(String name, int hp, int str, int agl, String pathToImage) {
+        this.name = name;
+        this.hp = hp;
+        this.sHp = hp;
+        this.str = str;        
+        this.agl = agl;
+        this.weapon = new Weapon();
+        this.armor = new Armor("Без защиты", 0, 0);
+        
+        this.image = new ImageIcon(pathToImage);
+        
+        unitStat = new BattleStat();
+    }  
+
     //Имя, ХП, Сила, Ловкость, Оружие, Доспехи
     public AUnit(String name, int hp, int str, int agl, Weapon weapon, Armor armor) {
         this.name = name;
@@ -68,7 +84,7 @@ abstract public class AUnit {
         this.armor = armor;
         
         //!!!!!
-        this.image = new ImageIcon("C:\\Users\\DimamoN\\Dropbox\\kpi\\Java\\RPG game\\src\\Images\\karlik.png");
+        this.image = new ImageIcon("src\\Images\\Units\\null.png");
         
         unitStat = new BattleStat();
     }  

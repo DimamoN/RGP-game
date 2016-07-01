@@ -10,8 +10,8 @@ package Game.Units;
  */
 public class SimpleMan extends AUnit{
     
-    public SimpleMan(String name, int hp, int str, int agl) {
-        super(name, hp, str, agl);
+    public SimpleMan(String name, int hp, int str, int agl, String pathToImage) {
+        super(name, hp, str, agl, pathToImage);
     }
     
 }
