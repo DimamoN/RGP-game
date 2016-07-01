@@ -34,7 +34,7 @@ public class Game {
         battleFrame.setTitle("RPG GAME");
         
         //Установка иконки приложения - прямой путь к иконке (можно 32х32)
-        battleFrame.setIconImage(new ImageIcon("C:\\Users\\DimamoN\\Dropbox\\kpi\\Java\\RPG game\\src\\Game\\icon.jpg").getImage());   
+        battleFrame.setIconImage(new ImageIcon("src\\Game\\icon32N.png").getImage());   
     }
    
     //Битва с выводом победителей
@@ -52,7 +52,10 @@ public class Game {
     
     //Установка параметров в поля фрейма
     battleFrame.setHeroesStats(one, two);
- 
+    
+    //Установка картинки воина
+    battleFrame.setHero1Image(one.getImage());    
+
     if (this.fight(one, two)){
         battleFrame.addBattleLog("*** Конец Боя ***\n Победитель "+one.getName());
         battleFrame.addBattleLog("\n*** Статистика Боя ***");
@@ -74,14 +77,12 @@ public class Game {
  
         while(one.getHp()>0 && two.getHp()>0){ 
             
-            round(one,two);
-            
+            round(one,two);            
 //            Thread.sleep(1500);
         }          
         
         //обнуляем ход
-        turn = 1;
-        
+        turn = 1;        
         
         //Если у первого есть хп - он победил
         return one.isAlive();        

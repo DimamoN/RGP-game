@@ -15,6 +15,7 @@ import Game.Items.Armor.Armor;
 import Game.Items.Weapons.Weapon;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 public class Main {
    
@@ -24,8 +25,7 @@ public class Main {
             EventQueue.invokeLater(new Runnable()
         {        
         public void run(){
-            //Код
-            
+            //Код            
             //ОРУЖИЕ  NAME/DMG/WEIGHT
             Weapon dagger = new Weapon("Кинжал", 2, 1);
             Weapon sword = new Weapon("Меч", 3, 2);
@@ -37,27 +37,23 @@ public class Main {
             Armor heavyArmor = new Armor("Тяжелая броня", 3, 10);
 
             //ПЕРСОНАЖИ   HP/STR/AGL
-
-            AUnit Light = new SimpleMan("Легкий пехотинец", 40, 2, 6);
-            AUnit Standart = new SimpleMan("Пехотинец", 50, 3, 4);    
-            AUnit Heavy = new SimpleMan("Тяжелый пехотинец", 80, 4, 1);
-                      
-//            AUnit Lukash = new SimpleMan("Лукашенко", 40, 5, 6);
-//            AUnit Putin = new SimpleMan("Путин", 40, 9, 2);
-//            
-//            Lukash.addWeapon(dagger);
-//            Putin.addWeapon(dagger);
-//            
-//            Lukash.addArmor(heavyArmor);
+//            AUnit Light = new SimpleMan("Легкий пехотинец", 40, 2, 6);
+            AUnit Standart = new SimpleMan("Пехотинец", 50, 3, 4);  
             
+            Standart.setImage(new ImageIcon("src\\Images\\soldierMid.png"));
+            
+            AUnit Heavy = new SimpleMan("Тяжелый пехотинец", 80, 4, 1);
+//            Standart.setImage(new ImageIcon("Images\\soldierHeavy.png"));
+                      
             Standart.addArmor(lightArmor);
             Heavy.addArmor(heavyArmor);
 
-            Light.addWeapon(dagger);
+//            Light.addWeapon(dagger);
+
             Standart.addWeapon(sword);
             Heavy.addWeapon(longSword);
             
-            Game game = new Game();
+            Game game = new Game();            
             
             game.fightWithLog(Standart, Heavy);
                  

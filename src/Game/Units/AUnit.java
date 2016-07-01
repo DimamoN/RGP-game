@@ -8,14 +8,19 @@ package Game.Units;
 import Game.Damage;
 import Game.Items.Armor.Armor;
 import Game.Items.Weapons.Weapon;
+import java.awt.Image;
 import java.io.Console;
 import java.util.Random;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author DimamoN
  */
 abstract public class AUnit {
+    
+    ImageIcon image; //Картинка юнита
     
     String name; //имя 
     
@@ -25,7 +30,6 @@ abstract public class AUnit {
     int str; //сила    
     int agl; //ловкость (Максимум 10)
     int init; //инициатива
-    
     
     int critChance = 3; //Базовый шанс крита
     
@@ -47,6 +51,10 @@ abstract public class AUnit {
         this.agl = agl;
         this.weapon = new Weapon();
         this.armor = new Armor("Без защиты", 0, 0);
+        
+
+        this.image = new ImageIcon("C:\\Users\\DimamoN\\Dropbox\\kpi\\Java\\RPG game\\src\\Images\\karlik.png");
+        
         unitStat = new BattleStat();
     }  
     //Имя, ХП, Сила, Ловкость, Оружие, Доспехи
@@ -58,6 +66,10 @@ abstract public class AUnit {
         this.agl = agl;
         this.weapon = weapon;
         this.armor = armor;
+        
+        //!!!!!
+        this.image = new ImageIcon("C:\\Users\\DimamoN\\Dropbox\\kpi\\Java\\RPG game\\src\\Images\\karlik.png");
+        
         unitStat = new BattleStat();
     }  
     
@@ -208,6 +220,14 @@ abstract public class AUnit {
     public Armor getArmor(){
         return this.armor;
     }    
+
+    public void setImage(ImageIcon image) {
+        this.image = image;
+    }
+
+    public ImageIcon getImage() {
+        return image;
+    }
     
     //Вся информация о юните
     public String getAllStat(){        
