@@ -7,7 +7,7 @@
       <Color id="Default Cursor"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[750, 600]"/>
+      <Dimension value="[900, 600]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -32,14 +32,14 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="logPanel" alignment="1" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="hero1Panel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="hero2Panel" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="32767" attributes="0"/>
+                      <Component id="hero2Panel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -47,16 +47,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="hero2Panel" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="hero1Panel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="12" max="32767" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="hero2Panel" max="32767" attributes="0"/>
+                  <Component id="hero1Panel" max="32767" attributes="0"/>
               </Group>
+              <EmptySpace type="separate" max="32767" attributes="0"/>
               <Component id="logPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -74,7 +69,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="labelBattleLog" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="834" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
                   </Group>
@@ -149,7 +144,7 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="hero1Str" min="-2" pref="54" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="attackerName" alignment="1" min="-2" pref="128" max="-2" attributes="0"/>
+                              <Component id="hero1name" alignment="1" min="-2" pref="128" max="-2" attributes="0"/>
                               <Component id="labelAttacking" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -170,7 +165,7 @@
                               <Component id="labelHero1Weapon" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="hero1Weapon" min="-2" pref="185" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="14" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="hero1Armor" min="-2" pref="187" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
@@ -187,7 +182,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
                       <Component id="hero1WeaponImage" min="-2" pref="64" max="-2" attributes="0"/>
-                      <EmptySpace pref="193" max="32767" attributes="0"/>
+                      <EmptySpace pref="201" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -201,7 +196,7 @@
                           <Component id="labelAttacking" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="attackerName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="hero1name" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="labelHero1HP" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -241,7 +236,7 @@
                       <Component id="hero1Armor" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="hero1Weapon" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
@@ -259,14 +254,14 @@
             <Property name="text" type="java.lang.String" value="&#x410;&#x442;&#x430;&#x43a;&#x443;&#x435;&#x442;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="attackerName">
+        <Component class="javax.swing.JTextField" name="hero1name">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="&#x418;&#x43c;&#x44f; &#x430;&#x442;&#x430;&#x43a;&#x443;&#x44e;&#x449;&#x435;&#x433;&#x43e;"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="attackerNameActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hero1nameActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labelHero1HP">
@@ -360,6 +355,9 @@
         <Component class="javax.swing.JTextField" name="hero1Weapon">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="10" style="0"/>
+            </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="&#x41e;&#x440;&#x443;&#x436;&#x438;&#x435;"/>
           </Properties>
@@ -370,6 +368,9 @@
         <Component class="javax.swing.JTextField" name="hero1Armor">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="10" style="0"/>
+            </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x449;&#x438;&#x442;&#x430;"/>
           </Properties>
@@ -401,96 +402,136 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="hero2Panel">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="fa" green="f0" red="f0" type="rgb"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="labelHero2Agl" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelDefencing" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelHero2HP" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelHero2Str1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelHero2Armor" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelHero2Weapon" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="hero2Weapon" alignment="0" pref="204" max="32767" attributes="0"/>
-                      <Component id="hero2Armor" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="hero2HP" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
-                              <Component id="hero2Agl" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="hero2Image" min="-2" pref="63" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="labelHero2Agl" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="hero2Agl" min="-2" pref="54" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="labelHero2Str" min="-2" pref="48" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="hero2Str" min="-2" pref="54" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="hero2name" alignment="1" min="-2" pref="128" max="-2" attributes="0"/>
+                              <Component id="labelDefencing" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="labelHero2HP" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
                               <Component id="labelHero2Def" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="labelHero2Dmg" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="hero2Dmg" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="hero2HP" alignment="0" max="32767" attributes="0"/>
+                              <Component id="hero2Dmg" alignment="1" max="32767" attributes="0"/>
                               <Component id="hero2Def" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="defencerName" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
-                      <Component id="hero2Str" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="labelHero2Weapon" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="hero2Weapon" alignment="1" min="-2" pref="185" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="14" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="hero2Armor" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="labelHero2Armor" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="hero2ArmorImage" min="-2" pref="64" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
+                      <Component id="hero2WeaponImage" min="-2" pref="64" max="-2" attributes="0"/>
+                      <EmptySpace pref="201" max="32767" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelDefencing" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="hero2name" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelHero2HP" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelHero2Str" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="hero2Str" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelHero2Dmg" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelHero2Agl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="hero2Agl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelHero2Def" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="hero2Image" min="-2" pref="64" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="hero2HP" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="hero2Dmg" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="hero2Def" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelDefencing" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="defencerName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="hero2ArmorImage" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
+                      <Component id="labelHero2Weapon" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelHero2Armor" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="hero2Str" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelHero2Str1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="hero2Armor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="hero2Weapon" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="hero2Agl" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelHero2Agl" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="hero2HP" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelHero2HP" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="labelHero2Weapon" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="hero2Weapon" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="labelHero2Armor" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="hero2Armor" alignment="3" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="hero2Dmg" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelHero2Dmg" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="hero2Def" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelHero2Def" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
+                  <EmptySpace pref="19" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="139" max="32767" attributes="0"/>
+                      <Component id="hero2WeaponImage" min="-2" pref="64" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -499,16 +540,25 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="labelDefencing">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x41e;&#x431;&#x43e;&#x440;&#x43e;&#x43d;&#x430;"/>
+            <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x449;&#x438;&#x449;&#x430;&#x435;&#x442;&#x441;&#x44f;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="defencerName">
+        <Component class="javax.swing.JTextField" name="hero2name">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="&#x418;&#x43c;&#x44f; &#x43e;&#x431;&#x43e;&#x440;&#x43e;&#x43d;&#x44f;&#x44e;&#x449;&#x435;&#x433;&#x43e;&#x441;&#x44f;"/>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="&#x418;&#x43c;&#x44f; &#x430;&#x442;&#x430;&#x43a;&#x443;&#x44e;&#x449;&#x435;&#x433;&#x43e;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hero2nameActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelHero2HP">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x417;&#x434;&#x43e;&#x440;&#x43e;&#x432;&#x44c;&#x435;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelHero2Str1">
+        <Component class="javax.swing.JLabel" name="labelHero2Str">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x421;&#x438;&#x43b;&#x430;"/>
           </Properties>
@@ -518,51 +568,53 @@
             <Property name="text" type="java.lang.String" value="&#x41b;&#x43e;&#x432;&#x43a;&#x43e;&#x441;&#x442;&#x44c;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelHero2HP">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="&#x417;&#x434;&#x43e;&#x440;&#x43e;&#x432;&#x44c;&#x435;"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="hero2HP">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="&#x417;&#x434;&#x43e;&#x440;&#x43e;&#x432;&#x44c;&#x435;"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hero2HPActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="hero2Agl">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="&#x41b;&#x43e;&#x432;&#x43a;&#x43e;&#x441;&#x442;&#x44c;"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hero2AglActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JTextField" name="hero2Str">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="&#x421;&#x438;&#x43b;&#x430;"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hero2StrActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelHero2Def">
+        <Component class="javax.swing.JTextField" name="hero2Agl">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x411;&#x440;&#x43e;&#x43d;&#x44f;"/>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="&#x41b;&#x43e;&#x432;&#x43a;&#x43e;&#x441;&#x442;&#x44c;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hero2AglActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="hero2HP">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="&#x417;&#x434;&#x43e;&#x440;&#x43e;&#x432;&#x44c;&#x435;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hero2HPActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labelHero2Dmg">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x423;&#x440;&#x43e;&#x43d;"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JLabel" name="labelHero2Def">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x411;&#x440;&#x43e;&#x43d;&#x44f;"/>
+          </Properties>
+        </Component>
         <Component class="javax.swing.JTextField" name="hero2Dmg">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="&#x423;&#x440;&#x43e;&#x43d;"/>
           </Properties>
           <Events>
@@ -572,16 +624,16 @@
         <Component class="javax.swing.JTextField" name="hero2Def">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="&#x411;&#x440;&#x43e;&#x43d;&#x44f;"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hero2DefActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="hero2Armor">
+        <Component class="javax.swing.JLabel" name="labelHero2Weapon">
           <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x449;&#x438;&#x442;&#x430;"/>
+            <Property name="text" type="java.lang.String" value="&#x41e;&#x440;&#x443;&#x436;&#x438;&#x435;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelHero2Armor">
@@ -589,19 +641,52 @@
             <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x449;&#x438;&#x442;&#x430;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelHero2Weapon">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="&#x41e;&#x440;&#x443;&#x436;&#x438;&#x435;"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="hero2Weapon">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="10" style="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="&#x41e;&#x440;&#x443;&#x436;&#x438;&#x435;"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hero2WeaponActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="hero2Armor">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="10" style="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x449;&#x438;&#x442;&#x430;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hero2ArmorActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="hero2Image">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="hero"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[64, 64]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[64, 64]"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="hero2ArmorImage">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="armor"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="hero2WeaponImage">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="weapon"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

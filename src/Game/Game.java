@@ -46,16 +46,9 @@ public class Game {
     battleFrame.addBattleLog(two.getAllStat());
     battleFrame.addBattleLog("******\n");
     
-    //Установка имен в поля фрейма
-    battleFrame.setAttackerName(one.getName());
-    battleFrame.setDeffencerName(two.getName());
+    //Полная настойка фрейма
+    battleFrame.setupHeroesInfo(one, two);
     
-    //Установка параметров в поля фрейма
-    battleFrame.setHeroesStats(one, two);
-    
-    //Установка картинки воина!!!
-    battleFrame.setHero1Image(one);    
-
     if (this.fight(one, two)){
         battleFrame.addBattleLog("*** Конец Боя ***\n Победитель "+one.getName());
         battleFrame.addBattleLog("\n*** Статистика Боя ***");

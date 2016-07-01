@@ -34,27 +34,28 @@ public class Main {
             Weapon axe = new Weapon("Секира", 6, 5, "src\\Images\\Weapons\\axe.png");
 
             //БРОНЯ  NAME/DEF/WEIGHT
-            Armor lightArmor = new Armor("Легкая броня", 1, 2);
+            Armor leatherArmor = new Armor("Кожаная броня", 1, 2, "src\\Images\\Armor\\leather.png");
             Armor heavyArmor = new Armor("Тяжелая броня", 3, 10);
 
             //ПЕРСОНАЖИ   HP/STR/AGL
 //            AUnit Light = new SimpleMan("Легкий пехотинец", 40, 2, 6);
 
-            AUnit Standart = new SimpleMan("Пехотинец", 50, 3, 4, "src\\Images\\Units\\soldierMid.png");  
+            AUnit soldier = new SimpleMan("Пехотинец", 50, 3, 4,  "src\\Images\\Units\\soldierMid.png");             
+            AUnit soldierHeavy = new SimpleMan("Тяжелый пехотинец", 65, 4, 1, "src\\Images\\Units\\soldierHeavy.png");
+            AUnit ork = new SimpleMan("Орк", 60, 4, 1, "src\\Images\\Units\\orkLight.png");
             
-            AUnit Heavy = new SimpleMan("Тяжелый пехотинец", 80, 4, 1, "src\\Images\\Units\\soldierHeavy.png");
-                      
-            Standart.addArmor(lightArmor);
-            Heavy.addArmor(heavyArmor);
-
-//            Light.addWeapon(dagger);
-
-            Standart.addWeapon(longSword);
-            Heavy.addWeapon(longSword);
+            soldier.addWeapon(sword);     
+            soldier.addArmor(leatherArmor);
             
+            soldierHeavy.addWeapon(longSword);
+            soldierHeavy.addArmor(heavyArmor);
+            
+            ork.addWeapon(axe);
+            ork.addArmor(leatherArmor);
+
             Game game = new Game();            
             
-            game.fightWithLog(Standart, Heavy);
+            game.fightWithLog(ork, soldier);
                  
         }
         
