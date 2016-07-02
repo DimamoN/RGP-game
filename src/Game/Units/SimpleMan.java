@@ -13,6 +13,12 @@ import Game.Items.Weapons.Weapon;
  */
 public class SimpleMan extends AUnit{
     
+    
+    //Пустой
+    public SimpleMan(){
+        
+    }
+    
     public SimpleMan(String name, int hp, int str, int agl, String pathToImage, Weapon weapon, Armor armor) {
         super(name, hp, str, agl, pathToImage, weapon, armor);
     }

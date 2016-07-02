@@ -18,7 +18,7 @@ import javax.swing.JFrame;
  *
  * @author DimamoN
  */
-public class Game {
+public class Battle {
    
     private BattleFrame battleFrame;
     
@@ -26,32 +26,10 @@ public class Game {
    int turn = 1;
 
    //Конструктор, на этом фрейме будет отображаться битва
-    public Game() {        
-        battleFrame = new BattleFrame();
-        battleFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        battleFrame.setVisible(true);
-        battleFrame.setLocation(300, 300);  
-        battleFrame.setTitle("RPG GAME");
+    public Battle() {        
         
-        //Установка иконки приложения - прямой путь к иконке (можно 32х32)
-        battleFrame.setIconImage(new ImageIcon("src\\Images\\icon.png").getImage());   
     }
-    
-    
-    //Новый конструктор
-    public Game(AUnit one, AUnit two) {        
-        battleFrame = new BattleFrame();
-        battleFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        battleFrame.setVisible(true);
-        battleFrame.setLocation(300, 300);  
-        battleFrame.setTitle("RPG GAME");
-        
-        this.setupHeroesOnFrame(one, two);
-        
-        //Установка иконки приложения - прямой путь к иконке (можно 32х32)
-        battleFrame.setIconImage(new ImageIcon("src\\Images\\icon.png").getImage());   
-    }
-   
+     
     //Битва с выводом победителей
     public AUnit fightWithLog(AUnit one, AUnit two){
     
@@ -94,7 +72,7 @@ public class Game {
     
     //Установка параметров героев и их айтемов на фрейме
     public void setupHeroesOnFrame(AUnit one, AUnit two){
-        battleFrame.setupHeroesInfo(one, two); 
+//        battleFrame.setupHeroesInfo(one, two); 
     }
     
     //Перезапуск битвы
@@ -164,10 +142,10 @@ public class Game {
         Damage Dmg = one.Attack(two);
         
         //Если попал
-        if(!Dmg.isMiss){
+        if(!Dmg.isMiss()){
             
             //Если критический
-            if(Dmg.isCritical){
+            if(Dmg.isCritical()){
                 
                 //Если есть оружие
                 if(Dmg.weaponDmg > 0) 

@@ -21,10 +21,10 @@ public class Damage {
     int Def;
     
     //Является ли промахом
-    boolean isMiss;
+    boolean miss;
     
     //Является ли критическим
-    boolean isCritical;
+    boolean critical;
 
     public Damage() {
     }
@@ -32,7 +32,7 @@ public class Damage {
     public Damage(int weaponDmg, int strBonus, boolean isCritical) {
         this.weaponDmg = weaponDmg;
         this.strBonus = strBonus;
-        this.isCritical = isCritical;
+        this.critical = isCritical;
     }
 
     public int getWeaponDmg() {
@@ -52,11 +52,11 @@ public class Damage {
     }
     
     public boolean isCritical() {
-        return isCritical;
+        return critical;
     }
      
     public void setCritical(boolean isCritical){
-        this.isCritical = isCritical;
+        this.critical = isCritical;
     }
 
     public void setStrBonus(int strBonus) {
@@ -64,14 +64,14 @@ public class Damage {
     }
 
     public void setIsMiss(boolean isMiss) {
-        this.isMiss = isMiss;
+        this.miss = isMiss;
     }
     
     //Общий урон, с учетом наличия крита и промаха
     public int getAllDmg(){
         //Если не промах
-        if(!isMiss){
-        if(isCritical)
+        if(!miss){
+        if(critical)
             return (weaponDmg+strBonus)*2 - this.Def;
         else
             return weaponDmg+strBonus - this.Def; 
@@ -79,5 +79,12 @@ public class Damage {
         //Если промах
         else return 0;
     }
+
+    public boolean isMiss() {
+        return miss;
+    }
+    
+    
+    
     
 }

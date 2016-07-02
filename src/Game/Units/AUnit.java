@@ -42,6 +42,14 @@ abstract public class AUnit {
     //Статистика битвы для юнита
     BattleStat unitStat;
 
+    //Расположение в битве
+    boolean attacking;
+
+    //Пустой конструктор
+    public AUnit(){
+        
+    }
+    
     //Имя, ХП, Сила, Ловкость
     public AUnit(String name, int hp, int str, int agl) {
         this.name = name;
@@ -247,6 +255,14 @@ abstract public class AUnit {
 
     public ImageIcon getImage() {
         return image;
+    }
+
+    public boolean isAttacking() {
+        return attacking;
+    }
+
+    public void setAttacking(boolean attacking) {
+        this.attacking = attacking;
     }
     
     //Вся информация о юните
