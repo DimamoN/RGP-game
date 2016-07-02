@@ -5,13 +5,16 @@
  */
 package Game.Units;
 
+import Game.Items.Armor.Armor;
+import Game.Items.Weapons.Weapon;
+
 /**
  * Обычный человек
  */
 public class SimpleMan extends AUnit{
     
-    public SimpleMan(String name, int hp, int str, int agl, String pathToImage) {
-        super(name, hp, str, agl, pathToImage);
+    public SimpleMan(String name, int hp, int str, int agl, String pathToImage, Weapon weapon, Armor armor) {
+        super(name, hp, str, agl, pathToImage, weapon, armor);
     }
     
 }

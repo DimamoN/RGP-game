@@ -25,13 +25,28 @@ public class Game {
    //ход в бою
    int turn = 1;
 
-   //На этом фрейме будет отображаться битва
+   //Конструктор, на этом фрейме будет отображаться битва
     public Game() {        
         battleFrame = new BattleFrame();
         battleFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         battleFrame.setVisible(true);
         battleFrame.setLocation(300, 300);  
         battleFrame.setTitle("RPG GAME");
+        
+        //Установка иконки приложения - прямой путь к иконке (можно 32х32)
+        battleFrame.setIconImage(new ImageIcon("src\\Images\\icon.png").getImage());   
+    }
+    
+    
+    //Новый конструктор
+    public Game(AUnit one, AUnit two) {        
+        battleFrame = new BattleFrame();
+        battleFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        battleFrame.setVisible(true);
+        battleFrame.setLocation(300, 300);  
+        battleFrame.setTitle("RPG GAME");
+        
+        this.setupHeroesOnFrame(one, two);
         
         //Установка иконки приложения - прямой путь к иконке (можно 32х32)
         battleFrame.setIconImage(new ImageIcon("src\\Images\\icon.png").getImage());   
@@ -46,10 +61,7 @@ public class Game {
     battleFrame.addBattleLog(two.getAllStat());
     battleFrame.addBattleLog("******\n");
     
-    //Полная настойка фрейма
-    battleFrame.setupHeroesInfo(one, two);
-    
-    if (this.fight(one, two)){
+    if (this.autoFight(one, two)){
         battleFrame.addBattleLog("*** Конец Боя ***\n Победитель "+one.getName());
         battleFrame.addBattleLog("\n*** Статистика Боя ***");
         battleFrame.addBattleLog(one.BattleFinalInfo());
@@ -65,8 +77,40 @@ public class Game {
     }       
     }
     
-    //Битва, победитель 1 - true, 2 - false
-    public boolean fight(AUnit one, AUnit two){
+    //Ручная битва, action: nextTurn, end, restart !!!!
+    public boolean manualFight(AUnit one, AUnit two, String action){
+        
+        this.setupHeroesOnFrame(one, two);
+        
+        switch(action){
+            case "nextTurn": round(one, two); break;
+            case "end": this.autoFight(one, two); break; //Возвращает победителя, придумать куда!
+            case "restart":  this.restartBattle(one, two); break;
+            default: break; //Тут нужно сделать вывод об ошибке! (Сделать на фрейме поле статуса) 
+        }
+        
+        return false;
+    }
+    
+    //Установка параметров героев и их айтемов на фрейме
+    public void setupHeroesOnFrame(AUnit one, AUnit two){
+        battleFrame.setupHeroesInfo(one, two); 
+    }
+    
+    //Перезапуск битвы
+    public void restartBattle(AUnit one, AUnit two){
+        
+        one.resetHealth();
+        two.resetHealth();
+        
+        battleFrame.clearBattleLog();
+        
+        this.setupHeroesOnFrame(one, two);
+        
+    }
+    
+    //Автоматическая битва Битва, победитель 1 - true, 2 - false
+    public boolean autoFight(AUnit one, AUnit two){
  
         while(one.getHp()>0 && two.getHp()>0){ 
             
@@ -81,7 +125,7 @@ public class Game {
         return one.isAlive();        
     }
     
-    //Первый опонент атакует
+    //Один ход битвы, несколько вызовов - несколько ходов
     void round(AUnit one, AUnit two){ 
         
         battleFrame.addBattleLog("*** "+ turn + " ход ***");

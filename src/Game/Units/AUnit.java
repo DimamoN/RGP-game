@@ -74,7 +74,7 @@ abstract public class AUnit {
     }  
 
     //Имя, ХП, Сила, Ловкость, Оружие, Доспехи
-    public AUnit(String name, int hp, int str, int agl, Weapon weapon, Armor armor) {
+    public AUnit(String name, int hp, int str, int agl, String pathToImage, Weapon weapon, Armor armor) {
         this.name = name;
         this.hp = hp;
         this.sHp = hp;
@@ -83,9 +83,8 @@ abstract public class AUnit {
         this.weapon = weapon;
         this.armor = armor;
         
-        //!!!!!
-        this.image = new ImageIcon("src\\Images\\Units\\null.png");
-        
+        this.image = new ImageIcon(pathToImage);
+
         unitStat = new BattleStat();
     }  
     
@@ -219,6 +218,11 @@ abstract public class AUnit {
     //Информация по концу боя про попадания и уклонения
     public String BattleFinalInfo(){        
         return this.getName() + " | " + this.unitStat.getHitStat();        
+    }
+    
+    //Восстановить хп
+    public void resetHealth(){  
+        this.hp = this.sHp;   
     }
     
     public void addWeapon(Weapon weapon){
