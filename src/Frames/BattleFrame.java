@@ -36,6 +36,9 @@ public class BattleFrame extends javax.swing.JFrame {
     //Ход битвы
     int turn = 1;
     
+    //Идет ли битва
+    boolean isBattle = false;
+    
     /**
      * Creates new form BattleFrame
      */
@@ -815,11 +818,9 @@ public class BattleFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRestartFightActionPerformed
 
     
-    //РЕСТАРТ, привязка к кнопке R
+    //РЕСТАРТ, привязка к кнопке R   DONT WORK
     private void btnRestartFightKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnRestartFightKeyPressed
        
-        
-        
         //DONT WORK
         
         this.labelHero1Name.setText(evt.getKeyCode() + "");
@@ -953,7 +954,8 @@ public class BattleFrame extends javax.swing.JFrame {
         //***
         
         //Ход битвы
-        this.labelTurn.setText("Следующий ход №" + turn);
+        
+        if(isBattle) this.labelTurn.setText("Следующий ход №" + turn);
 
     }
    
@@ -1000,6 +1002,8 @@ public class BattleFrame extends javax.swing.JFrame {
     //Битва с выводом победителей
     public AUnit fightWithLog(AUnit one, AUnit two){
     
+    this.isBattle = true;    
+  
     //Начало битвы вывод в фрейм    
     this.addBattleLog("******\nБитва между "+one.getName()+" и "+two.getName());
     this.addBattleLog(one.getAllStat());
@@ -1025,6 +1029,8 @@ public class BattleFrame extends javax.swing.JFrame {
     //Ручная возвращает победителя, если он есть в этом раунде
     public AUnit nextRound(){
         
+       this.isBattle = true;   //????
+        
        if(one.getHp()>0 && two.getHp()>0){ 
             round(one,two);            
         }
@@ -1044,6 +1050,8 @@ public class BattleFrame extends javax.swing.JFrame {
     //Перезапуск битвы
     public void restartBattle(AUnit one, AUnit two){
         
+        this.isBattle = true;
+        
         //обеовить цвета
         this.resetColors();
         
@@ -1061,6 +1069,8 @@ public class BattleFrame extends javax.swing.JFrame {
     //Автоматическая битва Битва, победитель 1 - true, 2 - false
     public boolean autoFight(AUnit one, AUnit two){
  
+        isBattle = true;
+        
         while(one.getHp()>0 && two.getHp()>0){ 
             
             round(one,two);            
@@ -1146,12 +1156,12 @@ public class BattleFrame extends javax.swing.JFrame {
         else{
             this.addBattleLog(one.getName()+" промахнулся"); 
             
+            //ПОДСВЕТКА УКЛОНЕНИЯ!!
             
         }
         
         
     }
-    
     
     //Подсветка в интерфейсе
     public void resetColors(){
@@ -1164,9 +1174,11 @@ public class BattleFrame extends javax.swing.JFrame {
         if(unit.isAttacking()) this.hero1Panel.setBackground(new Color(100, 200, 150));
         else this.hero2Panel.setBackground(new Color(100, 200, 150));
         
+        //!!!!
+        this.isBattle = false;
+        this.labelTurn.setText("Битва окончена");
     }
    
-    
     //Порядок атак, после сверения инициативы
     private void AttackAfterInit(AUnit one, AUnit two){ 
         
@@ -1192,7 +1204,6 @@ public class BattleFrame extends javax.swing.JFrame {
                 this.heroWin(one);
             }
     }  
-    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBox;
