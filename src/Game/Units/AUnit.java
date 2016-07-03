@@ -63,8 +63,7 @@ abstract public class AUnit {
         this.image = new ImageIcon("src\\Images\\Units\\null.png");
         
         unitStat = new BattleStat();
-    }  
-   
+    }
     
     //С картинкой
     public AUnit(String name, int hp, int str, int agl, String pathToImage) {
@@ -263,6 +262,10 @@ abstract public class AUnit {
 
     public void setAttacking(boolean attacking) {
         this.attacking = attacking;
+    }
+
+    public BattleStat getUnitStat() {
+        return unitStat;
     }
     
     //Вся информация о юните

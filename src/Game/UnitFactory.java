@@ -23,7 +23,8 @@ public class UnitFactory {
     AUnit soldierHeavy = new SimpleMan("Тяжелый пехотинец", 65, 4, 2, "src\\Images\\Units\\soldierHeavy.png", weapon.getLongSword(), armor.getLeather());
     AUnit ork = new SimpleMan("Орк", 60, 5, 1, "src\\Images\\Units\\orkLight.png", weapon.getAxe(), armor.getLeather());
     AUnit ogr = new SimpleMan("Огр", 120, 7, 0, "src\\Images\\Units\\ogr.png", weapon.getAxe(), armor.getSteel());
-    AUnit dwarf = new SimpleMan("Дворф", 30, 1, 7, "src\\Images\\Units\\dwarf.png", weapon.getPike(), armor.getNoArmor());  
+    AUnit dwarf = new SimpleMan("Дворф", 30, 2, 7, "src\\Images\\Units\\dwarf.png", weapon.getHammer(), armor.getNoArmor());  
+    
     
     public UnitFactory() {
         

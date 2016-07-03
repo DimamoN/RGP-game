@@ -139,11 +139,28 @@ public class BattleFrame extends javax.swing.JFrame {
         labelHero1Name = new javax.swing.JLabel();
         labelHero2Name = new javax.swing.JLabel();
         labelBattleBetween1 = new javax.swing.JLabel();
+        hero1StatPanel = new javax.swing.JPanel();
+        labelHero1Status = new javax.swing.JLabel();
+        labelHero1Hit = new javax.swing.JLabel();
+        labelHero1Miss = new javax.swing.JLabel();
+        labelHero1HitPerc = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        hero1Miss = new javax.swing.JLabel();
+        hero1HitPerc = new javax.swing.JLabel();
+        hero1Hit = new javax.swing.JLabel();
+        hero1StatPanel1 = new javax.swing.JPanel();
+        labelHero2Status = new javax.swing.JLabel();
+        labelHero2Hit = new javax.swing.JLabel();
+        labelHero2Miss = new javax.swing.JLabel();
+        labelHero2HitPerc = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        hero2Miss = new javax.swing.JLabel();
+        hero2HitPerc = new javax.swing.JLabel();
+        hero2Hit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(870, 570));
-        setPreferredSize(new java.awt.Dimension(870, 570));
 
         labelBattleLog.setText("Лог Битвы:");
 
@@ -158,7 +175,7 @@ public class BattleFrame extends javax.swing.JFrame {
         logPanel.setLayout(logPanelLayout);
         logPanelLayout.setHorizontalGroup(
             logPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(logPanelLayout.createSequentialGroup()
                 .addComponent(labelBattleLog, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -635,7 +652,7 @@ public class BattleFrame extends javax.swing.JFrame {
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnAutoFight)
+                .addComponent(btnAutoFight, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNextTurn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -685,6 +702,147 @@ public class BattleFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        hero1StatPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        labelHero1Status.setText("Статус:");
+        labelHero1Status.setEnabled(false);
+
+        labelHero1Hit.setText("Попаданий:");
+
+        labelHero1Miss.setText("Промахов:");
+
+        labelHero1HitPerc.setText("Процент:");
+
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setText("Статус");
+        jTextField1.setEnabled(false);
+
+        hero1Miss.setText("0");
+
+        hero1HitPerc.setText("0");
+
+        hero1Hit.setText("0");
+
+        javax.swing.GroupLayout hero1StatPanelLayout = new javax.swing.GroupLayout(hero1StatPanel);
+        hero1StatPanel.setLayout(hero1StatPanelLayout);
+        hero1StatPanelLayout.setHorizontalGroup(
+            hero1StatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(hero1StatPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(hero1StatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(hero1StatPanelLayout.createSequentialGroup()
+                        .addComponent(labelHero1Status)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(hero1StatPanelLayout.createSequentialGroup()
+                        .addGroup(hero1StatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hero1StatPanelLayout.createSequentialGroup()
+                                .addGroup(hero1StatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelHero1Miss)
+                                    .addComponent(labelHero1HitPerc))
+                                .addGap(18, 18, 18))
+                            .addGroup(hero1StatPanelLayout.createSequentialGroup()
+                                .addComponent(labelHero1Hit)
+                                .addGap(11, 11, 11)))
+                        .addGroup(hero1StatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(hero1Hit, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                            .addGroup(hero1StatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(hero1Miss, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                                .addComponent(hero1HitPerc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        hero1StatPanelLayout.setVerticalGroup(
+            hero1StatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(hero1StatPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(hero1StatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelHero1Status, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(hero1StatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelHero1Hit)
+                    .addComponent(hero1Hit))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(hero1StatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelHero1Miss)
+                    .addComponent(hero1Miss))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(hero1StatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelHero1HitPerc)
+                    .addComponent(hero1HitPerc))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        hero1StatPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        labelHero2Status.setText("Статус:");
+        labelHero2Status.setEnabled(false);
+
+        labelHero2Hit.setText("Попаданий:");
+
+        labelHero2Miss.setText("Промахов:");
+
+        labelHero2HitPerc.setText("Процент:");
+
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField2.setText("Статус");
+        jTextField2.setEnabled(false);
+
+        hero2Miss.setText("0");
+
+        hero2HitPerc.setText("0");
+
+        hero2Hit.setText("0");
+
+        javax.swing.GroupLayout hero1StatPanel1Layout = new javax.swing.GroupLayout(hero1StatPanel1);
+        hero1StatPanel1.setLayout(hero1StatPanel1Layout);
+        hero1StatPanel1Layout.setHorizontalGroup(
+            hero1StatPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(hero1StatPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(hero1StatPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(hero1StatPanel1Layout.createSequentialGroup()
+                        .addComponent(labelHero2Status)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(hero1StatPanel1Layout.createSequentialGroup()
+                        .addGroup(hero1StatPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hero1StatPanel1Layout.createSequentialGroup()
+                                .addGroup(hero1StatPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelHero2Miss)
+                                    .addComponent(labelHero2HitPerc))
+                                .addGap(18, 18, 18))
+                            .addGroup(hero1StatPanel1Layout.createSequentialGroup()
+                                .addComponent(labelHero2Hit)
+                                .addGap(11, 11, 11)))
+                        .addGroup(hero1StatPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(hero2Hit, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                            .addComponent(hero2Miss, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                            .addComponent(hero2HitPerc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(206, Short.MAX_VALUE))
+        );
+        hero1StatPanel1Layout.setVerticalGroup(
+            hero1StatPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(hero1StatPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(hero1StatPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelHero2Status, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(hero1StatPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelHero2Hit)
+                    .addComponent(hero2Hit))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(hero1StatPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelHero2Miss)
+                    .addComponent(hero2Miss))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(hero1StatPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelHero2HitPerc)
+                    .addComponent(hero2HitPerc))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -698,9 +856,13 @@ public class BattleFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(logPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(hero1Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(hero2Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(hero1StatPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(hero1Panel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hero2Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(hero1StatPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -712,6 +874,10 @@ public class BattleFrame extends javax.swing.JFrame {
                     .addComponent(hero1Panel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(hero2Panel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(hero1StatPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hero1StatPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(controlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(logPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -935,6 +1101,30 @@ public class BattleFrame extends javax.swing.JFrame {
         return hero2Weapon;
     }
     
+    //Настройка фреймов для начала боя
+    public void battleStartSetup(){
+        
+        //Начало битвыы
+        this.isBattle = true;
+        
+        //Включить конпки
+        this.btnNextTurn.setEnabled(true);
+        this.btnAutoFight.setEnabled(true);
+        
+    }
+    
+    //Настройка фреймов для конца боя
+    public void battleEndSetup(){
+        
+        //Конец битвы
+        this.isBattle = false;
+        
+        //Включить конпки
+        this.btnNextTurn.setEnabled(false);
+        this.btnAutoFight.setEnabled(false);
+  
+    }
+    
     //Полная настройка героев!
     public void setupHeroesOnFrame(AUnit one, AUnit two){
         //Имена
@@ -995,7 +1185,18 @@ public class BattleFrame extends javax.swing.JFrame {
        
        this.getHero2Weapon().setText(two.getWeapon().toString());
        this.getHero2Armor().setText(two.getArmor().toString());
-          
+       
+       //Статистика попаданий
+       this.hero1Hit.setText(one.getUnitStat().getHit() + "");
+       this.hero1Miss.setText(one.getUnitStat().getMiss() + "");
+       this.hero1HitPerc.setText(one.getUnitStat().getHitPerc());
+       
+       this.hero2Hit.setText(two.getUnitStat().getHit() + "");
+       this.hero2Miss.setText(two.getUnitStat().getMiss() + "");
+       this.hero2HitPerc.setText(two.getUnitStat().getHitPerc());
+       
+       
+       
     }
     
     //BATTLE LOGIC
@@ -1050,7 +1251,8 @@ public class BattleFrame extends javax.swing.JFrame {
     //Перезапуск битвы
     public void restartBattle(AUnit one, AUnit two){
         
-        this.isBattle = true;
+        //Настройка кнопок и текста
+        this.battleStartSetup();
         
         //обеовить цвета
         this.resetColors();
@@ -1059,6 +1261,10 @@ public class BattleFrame extends javax.swing.JFrame {
         two.resetHealth();
         
         this.clearBattleLog();
+        
+        //очистить статистику
+        this.one.getUnitStat().resetStats();
+        this.two.getUnitStat().resetStats();
         
         this.turn = 1;
         
@@ -1174,9 +1380,13 @@ public class BattleFrame extends javax.swing.JFrame {
         if(unit.isAttacking()) this.hero1Panel.setBackground(new Color(100, 200, 150));
         else this.hero2Panel.setBackground(new Color(100, 200, 150));
         
-        //!!!!
+        //!!!!!!!!!!!!!!1 ОБЬЕДИНИТЬ IS BATTLE И СДЕЛАТЬ МЕТОД КОНЦА БИТВЫ
         this.isBattle = false;
+        this.btnNextTurn.setEnabled(false);
+        this.btnAutoFight.setEnabled(false);
+        
         this.labelTurn.setText("Битва окончена");
+        
     }
    
     //Порядок атак, после сверения инициативы
@@ -1219,8 +1429,13 @@ public class BattleFrame extends javax.swing.JFrame {
     private javax.swing.JTextField hero1Def;
     private javax.swing.JTextField hero1Dmg;
     private javax.swing.JTextField hero1HP;
+    private javax.swing.JLabel hero1Hit;
+    private javax.swing.JLabel hero1HitPerc;
     private javax.swing.JLabel hero1Image;
+    private javax.swing.JLabel hero1Miss;
     private javax.swing.JPanel hero1Panel;
+    private javax.swing.JPanel hero1StatPanel;
+    private javax.swing.JPanel hero1StatPanel1;
     private javax.swing.JTextField hero1Str;
     private javax.swing.JTextField hero1Weapon;
     private javax.swing.JLabel hero1WeaponImage;
@@ -1231,7 +1446,10 @@ public class BattleFrame extends javax.swing.JFrame {
     private javax.swing.JTextField hero2Def;
     private javax.swing.JTextField hero2Dmg;
     private javax.swing.JTextField hero2HP;
+    private javax.swing.JLabel hero2Hit;
+    private javax.swing.JLabel hero2HitPerc;
     private javax.swing.JLabel hero2Image;
+    private javax.swing.JLabel hero2Miss;
     private javax.swing.JPanel hero2Panel;
     private javax.swing.JTextField hero2Str;
     private javax.swing.JTextField hero2Weapon;
@@ -1239,6 +1457,8 @@ public class BattleFrame extends javax.swing.JFrame {
     private javax.swing.JTextField hero2name;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel labelAttacking;
     private javax.swing.JLabel labelBattleBetween;
     private javax.swing.JLabel labelBattleBetween1;
@@ -1249,7 +1469,11 @@ public class BattleFrame extends javax.swing.JFrame {
     private javax.swing.JLabel labelHero1Def;
     private javax.swing.JLabel labelHero1Dmg;
     private javax.swing.JLabel labelHero1HP;
+    private javax.swing.JLabel labelHero1Hit;
+    private javax.swing.JLabel labelHero1HitPerc;
+    private javax.swing.JLabel labelHero1Miss;
     private javax.swing.JLabel labelHero1Name;
+    private javax.swing.JLabel labelHero1Status;
     private javax.swing.JLabel labelHero1Str;
     private javax.swing.JLabel labelHero1Weapon;
     private javax.swing.JLabel labelHero2Agl;
@@ -1257,7 +1481,11 @@ public class BattleFrame extends javax.swing.JFrame {
     private javax.swing.JLabel labelHero2Def;
     private javax.swing.JLabel labelHero2Dmg;
     private javax.swing.JLabel labelHero2HP;
+    private javax.swing.JLabel labelHero2Hit;
+    private javax.swing.JLabel labelHero2HitPerc;
+    private javax.swing.JLabel labelHero2Miss;
     private javax.swing.JLabel labelHero2Name;
+    private javax.swing.JLabel labelHero2Status;
     private javax.swing.JLabel labelHero2Str;
     private javax.swing.JLabel labelHero2Weapon;
     private javax.swing.JLabel labelTurn;

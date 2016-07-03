@@ -30,9 +30,11 @@ public class BattleStat {
         this.miss++;
     }
    
-    //Вернуть Статистику Попаданий
-    public String getHitStat(){        
-       
+    public String getHitPerc(){
+        
+        
+        if(hit==0 && miss==0) return "-";
+        
         double sum = hit + miss;
         
         double hitStat = hit / sum;
@@ -41,6 +43,19 @@ public class BattleStat {
         
         String formattedHitStat = new DecimalFormat("#0.00").format(hitStat);
         
-        return "Попаданий: "+this.hit+" Промахов: "+this.miss+" Процент попаданий: "+formattedHitStat+" %";        
+        return formattedHitStat + " %";  
+    }
+    
+    //Вернуть Статистику Попаданий
+    public String getHitStat(){        
+        return "Попаданий: "+this.hit+" Промахов: "+this.miss+" Процент попаданий: "+this.getHitPerc();        
     }    
+    
+    public void resetStats(){
+        this.miss = 0;
+        this.hit = 0;
+    }
+    
+    
+    
 }
