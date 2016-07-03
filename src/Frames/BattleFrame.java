@@ -14,7 +14,6 @@ import java.util.Random;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -65,9 +64,11 @@ public class BattleFrame extends javax.swing.JFrame {
         this.setupHeroesOnFrame(one, two);
         
         //Настройка окна
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setLocation(300, 300);
+        
+        //Установить фокус на ФОРМУ!
+        this.btnAutoFight.transferFocusUpCycle();
     }
 
     private BattleFrame() {
@@ -158,9 +159,13 @@ public class BattleFrame extends javax.swing.JFrame {
         hero2HitPerc = new javax.swing.JLabel();
         hero2Hit = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(870, 570));
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         labelBattleLog.setText("Лог Битвы:");
 
@@ -592,7 +597,7 @@ public class BattleFrame extends javax.swing.JFrame {
                     .addGap(39, 39, 39)))
         );
 
-        btnAutoFight.setText("Автобой");
+        btnAutoFight.setText("Автобой (A)");
         btnAutoFight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAutoFightActionPerformed(evt);
@@ -606,7 +611,7 @@ public class BattleFrame extends javax.swing.JFrame {
             }
         });
 
-        btnRestartFight.setText("*Рестарт*");
+        btnRestartFight.setText("*Рестарт* (R)");
         btnRestartFight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRestartFightActionPerformed(evt);
@@ -746,9 +751,8 @@ public class BattleFrame extends javax.swing.JFrame {
                                 .addGap(11, 11, 11)))
                         .addGroup(hero1StatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(hero1Hit, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                            .addGroup(hero1StatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(hero1Miss, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                                .addComponent(hero1HitPerc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(hero1Miss, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                            .addComponent(hero1HitPerc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         hero1StatPanelLayout.setVerticalGroup(
@@ -877,10 +881,15 @@ public class BattleFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(hero1StatPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(hero1StatPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(controlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(controlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(logPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         pack();
@@ -950,7 +959,7 @@ public class BattleFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_hero2ArmorActionPerformed
 
-    //Изменить оружие
+    //Изменить оружие DONT WORKING
     private void btnChangeWeaponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeWeaponActionPerformed
 
         switch(this.ComboBox.getSelectedIndex()){
@@ -970,8 +979,8 @@ public class BattleFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboBoxActionPerformed
 
+    //Следующий ход в битве
     private void btnNextTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextTurnActionPerformed
-        //Следующий ход в битве
        this.nextRound();
     }//GEN-LAST:event_btnNextTurnActionPerformed
 
@@ -983,19 +992,37 @@ public class BattleFrame extends javax.swing.JFrame {
         this.restartBattle(one, two);
     }//GEN-LAST:event_btnRestartFightActionPerformed
 
-    
     //РЕСТАРТ, привязка к кнопке R   DONT WORK
     private void btnRestartFightKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnRestartFightKeyPressed
        
-        //DONT WORK
         
-        this.labelHero1Name.setText(evt.getKeyCode() + "");
+        this.labelHero1Name.setText(evt.getKeyCode()+"");
         
-        if(evt.getKeyChar() == 'r'){
+        
+        //Если пробел - ничего не делать
+        if (evt.getKeyCode() == 32 ) {};
+                
+        if(evt.getKeyCode() == 82){
             this.restartBattle(one, two);
-    }
+            
+            //Фокус на форму
+            this.btnAutoFight.transferFocusUpCycle();
+        }
+        
         
     }//GEN-LAST:event_btnRestartFightKeyPressed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+       
+//        this.labelHero1Name.setText(evt.getKeyCode()+"");
+        
+        switch(evt.getKeyCode()){
+            case 65: this.autoFight(one, two); break;
+            case 82: this.restartBattle(one, two); break;
+            case 32: this.nextRound(); break;
+        }
+      
+    }//GEN-LAST:event_formKeyPressed
 
     /**
      * @param args the command line arguments
@@ -1227,7 +1254,7 @@ public class BattleFrame extends javax.swing.JFrame {
     }       
     }
     
-    //Ручная возвращает победителя, если он есть в этом раунде
+    //Ручная возвращает победителя, если он есть в этом раунде  ****ГОВНОКОД****
     public AUnit nextRound(){
         
        this.isBattle = true;   //????
@@ -1245,9 +1272,7 @@ public class BattleFrame extends javax.swing.JFrame {
        return new SimpleMan();
    
     }
-    
-    //Установка параметров героев и их айтемов на фрейме
-
+   
     //Перезапуск битвы
     public void restartBattle(AUnit one, AUnit two){
         
@@ -1365,8 +1390,7 @@ public class BattleFrame extends javax.swing.JFrame {
             //ПОДСВЕТКА УКЛОНЕНИЯ!!
             
         }
-        
-        
+          
     }
     
     //Подсветка в интерфейсе

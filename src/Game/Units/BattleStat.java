@@ -32,7 +32,6 @@ public class BattleStat {
    
     public String getHitPerc(){
         
-        
         if(hit==0 && miss==0) return "-";
         
         double sum = hit + miss;

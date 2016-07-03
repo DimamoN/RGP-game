@@ -2,7 +2,6 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
       <Color id="Default Cursor"/>
     </Property>
@@ -14,6 +13,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="formKeyPressed"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -68,10 +70,17 @@
                   <Component id="hero1StatPanel" min="-2" pref="104" max="-2" attributes="0"/>
                   <Component id="hero1StatPanel1" min="-2" pref="104" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="controlPanel" min="-2" max="-2" attributes="0"/>
-                  <Component id="logPanel" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="controlPanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="logPanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
       </Group>
@@ -752,7 +761,7 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btnAutoFight">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x410;&#x432;&#x442;&#x43e;&#x431;&#x43e;&#x439;"/>
+            <Property name="text" type="java.lang.String" value="&#x410;&#x432;&#x442;&#x43e;&#x431;&#x43e;&#x439; (A)"/>
           </Properties>
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
@@ -771,7 +780,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnRestartFight">
           <Properties>
-            <Property name="text" type="java.lang.String" value="*&#x420;&#x435;&#x441;&#x442;&#x430;&#x440;&#x442;*"/>
+            <Property name="text" type="java.lang.String" value="*&#x420;&#x435;&#x441;&#x442;&#x430;&#x440;&#x442;* (R)"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRestartFightActionPerformed"/>
@@ -903,10 +912,8 @@
                           </Group>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="hero1Hit" pref="34" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="hero1Miss" pref="34" max="32767" attributes="0"/>
-                                  <Component id="hero1HitPerc" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="hero1Miss" alignment="0" pref="34" max="32767" attributes="0"/>
+                              <Component id="hero1HitPerc" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>

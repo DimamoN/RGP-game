@@ -6,6 +6,7 @@
 package Game;
 
 import Frames.BattleFrame;
+import Frames.GameMap;
 import Game.Units.AUnit;
 import Game.Units.SimpleMan;
 import java.awt.EventQueue;
@@ -27,8 +28,12 @@ public class Main {
         public void run(){
 
             UnitFactory unit = new UnitFactory();
+            
+            
+            GameMap map = new GameMap();
+            
   
-            BattleFrame battleFrame = new BattleFrame(unit.getSoldier(), unit.getDwarf());
+//            BattleFrame battleFrame = new BattleFrame(unit.getSoldierHeavy(), unit.getOrk());
         }
         
     });

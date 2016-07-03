@@ -252,6 +252,22 @@ abstract public class AUnit {
         this.image = image;
     }
 
+    public void setAgl(int agl) {
+        this.agl = agl;
+    }
+
+    public void setStr(int str) {
+        this.str = str;
+    }
+
+    public void setArmor(Armor armor) {
+        this.armor = armor;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
     public ImageIcon getImage() {
         return image;
     }
@@ -266,6 +282,10 @@ abstract public class AUnit {
 
     public BattleStat getUnitStat() {
         return unitStat;
+    }
+
+    public int getsHp() {
+        return sHp;
     }
     
     //Вся информация о юните
