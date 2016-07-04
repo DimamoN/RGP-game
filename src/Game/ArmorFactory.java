@@ -17,11 +17,11 @@ public class ArmorFactory {
     ArrayList<Armor> armors = new ArrayList();
     
     {
-    Armor noArmor = new Armor("Без брони", 0, 0, "src\\Images\\Armor\\noArmor.png");
-    Armor leather = new Armor("Кожаная броня", 1, 2, "src\\Images\\Armor\\leather.png");
-    Armor steelLight = new Armor("Стальная легкая", 2, 6, "src\\Images\\Armor\\steelLight.png");
-    Armor steel = new Armor("Стальная броня", 3, 10, "src\\Images\\Armor\\steel.png");
-    Armor steelStrong = new Armor("Стальная крепкая", 4, 15, "src\\Images\\Armor\\steelStrong.png");
+    Armor noArmor = new Armor("Без брони", 0, 0, "/img/armor/noArmor.png");
+    Armor leather = new Armor("Кожаная броня", 1, 2, "/img/armor/leather.png");
+    Armor steelLight = new Armor("Стальная легкая", 2, 6, "/img/armor/steelLight.png");
+    Armor steel = new Armor("Стальная броня", 3, 10, "/img/armor/steel.png");
+    Armor steelStrong = new Armor("Стальная крепкая", 4, 15, "/img/armor/steelStrong.png");
     
     armors.add(noArmor);
     armors.add(leather);

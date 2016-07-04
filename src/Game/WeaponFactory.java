@@ -17,14 +17,14 @@ public class WeaponFactory {
     ArrayList<Weapon> weapons = new ArrayList();
     
     {
-    Weapon dagger = new Weapon("Кинжал", 2, 1, "src\\Images\\Weapons\\dagger.png");
-    Weapon hammer = new Weapon("Молоток", 2, 1, "src\\Images\\Weapons\\hammer.png" );
-    Weapon sword = new Weapon("Меч", 3, 2, "src\\Images\\Weapons\\sword.png");
-    Weapon pike = new Weapon("Копье", 4, 5, "src\\Images\\Weapons\\pike.png");
-    Weapon longSword = new Weapon("Длинный меч", 5, 3, "src\\Images\\Weapons\\longSword.png");
-    Weapon axe = new Weapon("Секира", 5, 5, "src\\Images\\Weapons\\axe.png");
-    Weapon orkAxe = new Weapon("Орочья секира", 6, 10, "src\\Images\\Weapons\\axeBig.png");
-    Weapon orkAxeBig = new Weapon("Орочья двойная секира", 7, 14, "src\\Images\\Weapons\\axeBigDouble.png" );
+    Weapon dagger = new Weapon("Кинжал", 2, 1, "/img/weapons/dagger.png");
+    Weapon hammer = new Weapon("Молоток", 2, 1, "/img/weapons/hammer.png" );
+    Weapon sword = new Weapon("Меч", 3, 2, "/img/weapons/sword.png");
+    Weapon pike = new Weapon("Копье", 4, 5, "/img/weapons/pike.png");
+    Weapon longSword = new Weapon("Длинный меч", 5, 3, "/img/weapons/longSword.png");
+    Weapon axe = new Weapon("Секира", 5, 5, "/img/weapons/axe.png");
+    Weapon orkAxe = new Weapon("Орочья секира", 6, 10, "/img/weapons/axeBig.png");
+    Weapon orkAxeBig = new Weapon("Орочья двойная секира", 7, 14, "/img/weapons/axeBigDouble.png" );
     
     weapons.add(dagger);
     weapons.add(hammer);

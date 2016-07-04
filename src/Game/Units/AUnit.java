@@ -60,7 +60,7 @@ abstract public class AUnit {
         this.weapon = new Weapon();
         this.armor = new Armor("Без защиты", 0, 0);
         
-        this.image = new ImageIcon("src\\Images\\Units\\null.png");
+        this.image = new ImageIcon(this.getClass().getResource("/img/units/null.png"));
         
         unitStat = new BattleStat();
     }
@@ -75,7 +75,7 @@ abstract public class AUnit {
         this.weapon = new Weapon();
         this.armor = new Armor("Без защиты", 0, 0);
         
-        this.image = new ImageIcon(pathToImage);
+        this.image = new ImageIcon(this.getClass().getResource(pathToImage));
         
         unitStat = new BattleStat();
     }  
@@ -90,7 +90,7 @@ abstract public class AUnit {
         this.weapon = weapon;
         this.armor = armor;
         
-        this.image = new ImageIcon(pathToImage);
+        this.image = new ImageIcon(this.getClass().getResource(pathToImage));
 
         unitStat = new BattleStat();
     }  

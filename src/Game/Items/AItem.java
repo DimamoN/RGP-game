@@ -35,7 +35,7 @@ public class AItem {
     public AItem(String name, int weight, String pathToImage) {
         this.name = name;
         this.weight = weight;
-        image = new ImageIcon(pathToImage);
+        image = new ImageIcon(this.getClass().getResource(pathToImage));
     }
 
     public String getName() {

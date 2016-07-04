@@ -12,7 +12,15 @@ import Game.UnitFactory;
 import Game.Units.AUnit;
 import Game.Units.SimpleMan;
 import Game.WeaponFactory;
+import java.awt.Image;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**
@@ -47,7 +55,6 @@ public class GameMap extends javax.swing.JFrame {
         
         StartBattleTabSetup();
         EditTabSetup();
-        
     }
 
     /**
@@ -83,6 +90,7 @@ public class GameMap extends javax.swing.JFrame {
         heroEditImage = new javax.swing.JLabel();
         heroEditArmorImage = new javax.swing.JLabel();
         heroEditWeaponImage = new javax.swing.JLabel();
+        labelInfoEdit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,6 +127,11 @@ public class GameMap extends javax.swing.JFrame {
 
         labelVertus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelVertus.setText("Против");
+        labelVertus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelVertusMouseClicked(evt);
+            }
+        });
 
         hero2Image.setText("Hero2Image");
 
@@ -129,22 +142,21 @@ public class GameMap extends javax.swing.JFrame {
         createBattlePanelLayout.setHorizontalGroup(
             createBattlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createBattlePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(createBattlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(createBattlePanelLayout.createSequentialGroup()
-                        .addComponent(comboBoxHero1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(hero1Image, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelVertus, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(hero2Image, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
-                        .addComponent(comboBoxHero2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createBattlePanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnStartBattle, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnStartBattle, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(createBattlePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(comboBoxHero1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(hero1Image, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelVertus, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(hero2Image, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboBoxHero2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
         createBattlePanelLayout.setVerticalGroup(
             createBattlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +168,7 @@ public class GameMap extends javax.swing.JFrame {
                     .addComponent(hero2Image, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboBoxHero2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelVertus))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
                 .addComponent(btnStartBattle, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -216,6 +228,8 @@ public class GameMap extends javax.swing.JFrame {
 
         heroEditWeaponImage.setText("Image");
 
+        labelInfoEdit.setText("Сохранение работает до выключения менеджера");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -240,17 +254,22 @@ public class GameMap extends javax.swing.JFrame {
                         .addComponent(heroEditImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelWeapon)
-                            .addComponent(labelArmor))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(comboBoxArmor, 0, 126, Short.MAX_VALUE)
-                            .addComponent(comboBoxWeapon, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(heroEditArmorImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(heroEditWeaponImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 68, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelWeapon)
+                                    .addComponent(labelArmor))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(comboBoxArmor, 0, 126, Short.MAX_VALUE)
+                                    .addComponent(comboBoxWeapon, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(heroEditArmorImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(heroEditWeaponImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 47, Short.MAX_VALUE)
+                                .addComponent(labelInfoEdit))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(SaveEditedUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -279,21 +298,23 @@ public class GameMap extends javax.swing.JFrame {
                             .addComponent(labelStr)
                             .addComponent(comboBoxSTR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelInfoEdit)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
+                                .addGap(43, 43, 43)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(labelWeapon)
                                     .addComponent(comboBoxWeapon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(36, 36, 36))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(heroEditWeaponImage, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelArmor)
                             .addComponent(comboBoxArmor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(heroEditArmorImage, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(SaveEditedUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -304,7 +325,9 @@ public class GameMap extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,8 +381,8 @@ public class GameMap extends javax.swing.JFrame {
     }//GEN-LAST:event_comboBoxArmorActionPerformed
 
     private void SaveEditedUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveEditedUnitActionPerformed
-        // Сохранить юнита
         
+        // Сохранить юнита   
         AUnit unit = getEditUnit();
         
         //Установить значения из полей
@@ -371,9 +394,16 @@ public class GameMap extends javax.swing.JFrame {
         unit.setArmor(getArmorEdit());
         
         //Сохранить юнит (ДВАРФ) ?????? (Сохраняет всех)
-        this.units.getUnits().set(4, unit);
+//        this.units.getUnits().set(4, unit);
+        
+        this.units.getUnitMap().replace(unit.getName(), unit);
+        
         
     }//GEN-LAST:event_SaveEditedUnitActionPerformed
+
+    private void labelVertusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelVertusMouseClicked
+         
+    }//GEN-LAST:event_labelVertusMouseClicked
 
     //Установка иконок для героев первой вкладки
     public void StartBattleTabSetup(){
@@ -542,6 +572,7 @@ public class GameMap extends javax.swing.JFrame {
     private javax.swing.JLabel labelAgl;
     private javax.swing.JLabel labelArmor;
     private javax.swing.JLabel labelHitpoints;
+    private javax.swing.JLabel labelInfoEdit;
     private javax.swing.JLabel labelStr;
     private javax.swing.JLabel labelVertus;
     private javax.swing.JLabel labelWeapon;
