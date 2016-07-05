@@ -7,6 +7,9 @@ package Game.Units.Status;
 
 import Game.Units.AUnit;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.function.BiFunction;
 
 /**
  *
@@ -30,6 +33,10 @@ public class UnitStatus {
     //Действия всех эффектов, уменьшить продолжительность
     public void Turn(AUnit unit){
         
+        //для удаления
+        boolean delete = false;
+        AUnitEffect deleteEffect = new BleedingEffect("NO", 0, 0);
+        
         for(AUnitEffect effect: currentStatus.values()){
            
             //Действие эффекта
@@ -38,12 +45,21 @@ public class UnitStatus {
             //уменьшить время эффекта
             effect.decrementDuration();
             
-            //Удалить эффект, если его длительность прошла
-            if(effect.getDuration() == 0) this.deleteEffect(effect);     
+            //Если время вышло - удалить эффект (после итараций)
+            if(effect.getDuration() == 0) {
+                delete = true;
+                deleteEffect = effect;
+            }    
         }
+        
+        //Удалить эффект, если его длительность прошла
+        if(delete) this.deleteEffect(deleteEffect);  
         
     }
     
+    public void clearStatus(){
+        this.currentStatus.clear();
+    }
     
     //Возвращает массив описаний эффектов
     public String[] getAllEffectsToString(){
@@ -51,10 +67,12 @@ public class UnitStatus {
     String[] effectNames = new String[currentStatus.size()];
     
     int i = 0;
+    
         for(AUnitEffect effect: currentStatus.values()){
            
            effectNames[i]  = effect.getName()+", сила "+effect.getPower()+", осталось "+effect.getDuration()+" ходов";
-           
+              
+           i++;
         }
         
         return effectNames; 

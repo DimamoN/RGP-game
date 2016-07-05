@@ -7,6 +7,7 @@ package Game;
 
 import Game.Units.AUnit;
 import Game.Units.SimpleMan;
+import Game.Units.Status.RegenerationEffect;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -29,17 +30,20 @@ public class UnitFactory {
     
     ArrayList<AUnit> units = new ArrayList();
     
-    
     //TEST
     HashMap<String, AUnit> unitMap = new HashMap<>();
     
     
     {
-        //TEST 
          AUnit soldier = new SimpleMan("Пехотинец", 50, 3, 3,  "/img/units/soldierMid.png", weapon.getSword(), armor.getSteelLight());             
          AUnit soldierHeavy = new SimpleMan("Тяжелый пехотинец", 65, 4, 2, "/img/units/soldierHeavy.png", weapon.getLongSword(), armor.getSteel());
         
          AUnit ork = new SimpleMan("Орк", 60, 5, 1, "/img/units/orkLight.png", weapon.getAxe(), armor.getLeather());
+         
+         //TEST
+         ork.getStatus().addEffect(new RegenerationEffect("М. Регенерация", 10, 2));
+         
+         
          AUnit ogr = new SimpleMan("Огр", 120, 7, 0, "/img/units/ogr.png", weapon.getOrkAxeBig(), armor.getSteel());
          
          AUnit dwarf = new SimpleMan("Дворф", 30, 1, 7, "/img/units/dwarf.png", weapon.getHammer(), armor.getNoArmor()); 

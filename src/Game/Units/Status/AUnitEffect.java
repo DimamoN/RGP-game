@@ -18,6 +18,7 @@ public abstract class AUnitEffect {
     
     //Продолжительность
     int duration;
+    int startDuration;
     
     //Сила эффекта
     int power;
@@ -25,6 +26,7 @@ public abstract class AUnitEffect {
     public AUnitEffect(String name, int duration, int power) {
         this.name = name;
         this.duration = duration;
+        this.startDuration = duration;
         this.power = power;
     }
     
@@ -45,8 +47,11 @@ public abstract class AUnitEffect {
    
     
     public void decrementDuration(){
-        this.duration --;
+        if(this.duration > 0) this.duration --;
     }
     
-   
+    public void resetEffect(){   
+        duration = startDuration;
+    }
+    
 }

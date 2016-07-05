@@ -6,6 +6,8 @@
 package Game;
 
 import Game.Items.Weapons.Weapon;
+import Game.Units.Status.AUnitEffect;
+import Game.Units.Status.BleedingEffect;
 import java.util.ArrayList;
 
 /**
@@ -17,25 +19,27 @@ public class WeaponFactory {
     ArrayList<Weapon> weapons = new ArrayList();
     
     {
-    Weapon dagger = new Weapon("Кинжал", 2, 1, "/img/weapons/dagger.png");
-    Weapon hammer = new Weapon("Молоток", 2, 1, "/img/weapons/hammer.png" );
-    Weapon sword = new Weapon("Меч", 3, 2, "/img/weapons/sword.png");
-    Weapon pike = new Weapon("Копье", 4, 5, "/img/weapons/pike.png");
-    Weapon longSword = new Weapon("Длинный меч", 5, 3, "/img/weapons/longSword.png");
-    Weapon axe = new Weapon("Секира", 5, 5, "/img/weapons/axe.png");
-    Weapon orkAxe = new Weapon("Орочья секира", 6, 10, "/img/weapons/axeBig.png");
-    Weapon orkAxeBig = new Weapon("Орочья двойная секира", 7, 14, "/img/weapons/axeBigDouble.png" );
+        AUnitEffect bleeding = new BleedingEffect("Кровотечение", 2, 5);
+            
+        Weapon dagger = new Weapon("Кинжал", 2, 1, new BleedingEffect("Кровотечение", 2, 5), "/img/weapons/dagger.png");
+        Weapon hammer = new Weapon("Молоток", 2, 1, new BleedingEffect("Кровотечение", 2, 5), "/img/weapons/hammer.png" );
+        Weapon sword = new Weapon("Меч", 3, 2, new BleedingEffect("Кровотечение", 2, 5), "/img/weapons/sword.png");
+        Weapon pike = new Weapon("Копье", 4, 5, new BleedingEffect("Кровотечение", 2, 5), "/img/weapons/pike.png");
+        Weapon longSword = new Weapon("Длинный меч", 5, 3, new BleedingEffect("Кровотечение", 2, 5), "/img/weapons/longSword.png");
+        Weapon axe = new Weapon("Секира", 5, 5, new BleedingEffect("Кровотечение", 2, 5), "/img/weapons/axe.png");
+        Weapon orkAxe = new Weapon("Орочья секира", 6, 10, new BleedingEffect("Кровотечение", 2, 5), "/img/weapons/axeBig.png");
+        Weapon orkAxeBig = new Weapon("Орочья двойная секира", 7, 14, new BleedingEffect("Кровотечение", 2, 5), "/img/weapons/axeBigDouble.png" );
     
-    weapons.add(dagger);
-    weapons.add(hammer);
-    weapons.add(sword);
-    
-    weapons.add(pike);
-    weapons.add(longSword);
-    
-    weapons.add(axe);
-    weapons.add(orkAxe);
-    weapons.add(orkAxeBig);
+        weapons.add(dagger);
+        weapons.add(hammer);
+        weapons.add(sword);
+
+        weapons.add(pike);
+        weapons.add(longSword);
+
+        weapons.add(axe);
+        weapons.add(orkAxe);
+        weapons.add(orkAxeBig);
     }
 
     public WeaponFactory() {

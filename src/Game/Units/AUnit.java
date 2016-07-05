@@ -8,6 +8,7 @@ package Game.Units;
 import Game.Damage;
 import Game.Items.Armor.Armor;
 import Game.Items.Weapons.Weapon;
+import Game.Units.Status.BleedingEffect;
 import Game.Units.Status.UnitStatus;
 import java.awt.Image;
 import java.io.Console;
@@ -176,6 +177,11 @@ abstract public class AUnit {
            //Добавить попадание в статистику
            this.unitStat.addHit();
        }
+       
+       //если крит -> добавить эффект оружия
+       if(Dmg.isCritical())
+           another.getStatus().addEffect(this.getWeapon().getResetEffect());
+       
        
        return Dmg;
     }

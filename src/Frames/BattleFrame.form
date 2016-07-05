@@ -34,21 +34,21 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel1" max="32767" attributes="0"/>
+                  <Component id="TopPanel" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="controlPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="logPanel" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="hero1StatPanel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="hero1Panel" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="hero1Panel" max="32767" attributes="0"/>
+                          <Component id="hero1StatPanel" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="hero2Panel" min="-2" max="-2" attributes="0"/>
                           <Component id="hero1StatPanel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="hero2Panel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -59,16 +59,16 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <Component id="TopPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="hero1Panel" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="hero2Panel" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="hero1StatPanel" min="-2" pref="104" max="-2" attributes="0"/>
-                  <Component id="hero1StatPanel1" min="-2" pref="104" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="hero1StatPanel" min="-2" max="-2" attributes="0"/>
+                  <Component id="hero1StatPanel1" max="32767" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -92,10 +92,10 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="labelBattleLog" min="-2" pref="67" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Component id="labelBattleLog" min="-2" pref="88" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="labelTurn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -198,7 +198,7 @@
                               <Component id="labelHero1Weapon" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="hero1Weapon" min="-2" pref="185" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="48" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="hero1Armor" min="-2" pref="187" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
@@ -215,7 +215,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
                       <Component id="hero1WeaponImage" min="-2" pref="64" max="-2" attributes="0"/>
-                      <EmptySpace pref="193" max="32767" attributes="0"/>
+                      <EmptySpace pref="239" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -290,6 +290,9 @@
         <Component class="javax.swing.JTextField" name="hero1name">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Noto Sans" size="11" style="0"/>
+            </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="&#x418;&#x43c;&#x44f; &#x430;&#x442;&#x430;&#x43a;&#x443;&#x44e;&#x449;&#x435;&#x433;&#x43e;"/>
           </Properties>
@@ -299,6 +302,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelHero1HP">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Noto Sans" size="11" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x417;&#x434;&#x43e;&#x440;&#x43e;&#x432;&#x44c;&#x435;"/>
           </Properties>
         </Component>
@@ -347,11 +353,17 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelHero1Dmg">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Noto Sans" size="11" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x423;&#x440;&#x43e;&#x43d;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelHero1Def">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Noto Sans" size="11" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x411;&#x440;&#x43e;&#x43d;&#x44f;"/>
           </Properties>
         </Component>
@@ -487,7 +499,7 @@
                               <Component id="labelHero2Weapon" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="hero2Weapon" alignment="1" min="-2" pref="185" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="55" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="hero2Armor" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
@@ -504,7 +516,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
                       <Component id="hero2WeaponImage" min="-2" pref="64" max="-2" attributes="0"/>
-                      <EmptySpace pref="193" max="32767" attributes="0"/>
+                      <EmptySpace pref="246" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -579,6 +591,9 @@
         <Component class="javax.swing.JTextField" name="hero2name">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Noto Sans" size="11" style="0"/>
+            </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="&#x418;&#x43c;&#x44f; &#x430;&#x442;&#x430;&#x43a;&#x443;&#x44e;&#x449;&#x435;&#x433;&#x43e;"/>
           </Properties>
@@ -588,6 +603,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelHero2HP">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Noto Sans" size="11" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x417;&#x434;&#x43e;&#x440;&#x43e;&#x432;&#x44c;&#x435;"/>
           </Properties>
         </Component>
@@ -636,11 +654,17 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelHero2Dmg">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Noto Sans" size="11" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x423;&#x440;&#x43e;&#x43d;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelHero2Def">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Noto Sans" size="11" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x411;&#x440;&#x43e;&#x43d;&#x44f;"/>
           </Properties>
         </Component>
@@ -818,7 +842,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="TopPanel">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -891,11 +915,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="labelHero1Status" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField1" min="-2" pref="138" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="labelHero1Status" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
@@ -912,12 +932,19 @@
                           </Group>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="hero1Hit" pref="34" max="32767" attributes="0"/>
-                              <Component id="hero1Miss" alignment="0" pref="34" max="32767" attributes="0"/>
+                              <Component id="hero1Miss" alignment="0" max="32767" attributes="0"/>
                               <Component id="hero1HitPerc" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="156" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="276" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -925,10 +952,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelHero1Status" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="labelHero1Status" min="-2" pref="14" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="labelHero1Hit" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -944,7 +968,14 @@
                       <Component id="labelHero1HitPerc" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="hero1HitPerc" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="19" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="90" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -953,7 +984,6 @@
         <Component class="javax.swing.JLabel" name="labelHero1Status">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x421;&#x442;&#x430;&#x442;&#x443;&#x441;:"/>
-            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelHero1Hit">
@@ -971,13 +1001,6 @@
             <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x43e;&#x446;&#x435;&#x43d;&#x442;:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
-          <Properties>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="&#x421;&#x442;&#x430;&#x442;&#x443;&#x441;"/>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="hero1Miss">
           <Properties>
             <Property name="text" type="java.lang.String" value="0"/>
@@ -985,6 +1008,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="hero1HitPerc">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Noto Sans" size="11" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="0"/>
           </Properties>
         </Component>
@@ -993,6 +1019,25 @@
             <Property name="text" type="java.lang.String" value="0"/>
           </Properties>
         </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="hero1Status">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Noto Sans" size="11" style="0"/>
+                </Property>
+                <Property name="rows" type="int" value="5"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="hero1StatPanel1">
@@ -1010,11 +1055,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="labelHero2Status" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField2" min="-2" pref="138" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="labelHero2Status" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
@@ -1031,37 +1072,41 @@
                           </Group>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="hero2Hit" alignment="1" pref="34" max="32767" attributes="0"/>
-                              <Component id="hero2Miss" alignment="0" pref="34" max="32767" attributes="0"/>
+                              <Component id="hero2Miss" alignment="0" max="32767" attributes="0"/>
                               <Component id="hero2HitPerc" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="206" max="32767" attributes="0"/>
+                  <EmptySpace pref="36" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" min="-2" pref="275" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelHero2Status" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelHero2Hit" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="hero2Hit" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelHero2Miss" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="hero2Miss" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelHero2HitPerc" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="hero2HitPerc" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="labelHero2Status" min="-2" pref="14" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelHero2Hit" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="hero2Hit" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelHero2Miss" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="hero2Miss" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelHero2HitPerc" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="hero2HitPerc" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="jScrollPane2" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -1072,7 +1117,6 @@
         <Component class="javax.swing.JLabel" name="labelHero2Status">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x421;&#x442;&#x430;&#x442;&#x443;&#x441;:"/>
-            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelHero2Hit">
@@ -1090,13 +1134,6 @@
             <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x43e;&#x446;&#x435;&#x43d;&#x442;:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
-          <Properties>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="&#x421;&#x442;&#x430;&#x442;&#x443;&#x441;"/>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="hero2Miss">
           <Properties>
             <Property name="text" type="java.lang.String" value="0"/>
@@ -1104,6 +1141,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="hero2HitPerc">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Noto Sans" size="11" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="0"/>
           </Properties>
         </Component>
@@ -1112,6 +1152,25 @@
             <Property name="text" type="java.lang.String" value="0"/>
           </Properties>
         </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="hero2Status">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Noto Sans" size="11" style="0"/>
+                </Property>
+                <Property name="rows" type="int" value="5"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>

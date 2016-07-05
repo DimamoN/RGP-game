@@ -11,9 +11,9 @@ import Game.Units.AUnit;
  *
  * @author dimamon
  */
-public class PoisonEffect extends AUnitEffect{
+public class BleedingEffect extends AUnitEffect{
 
-    public PoisonEffect(String name, int duration, int power) {
+    public BleedingEffect(String name, int duration, int power) {
         super(name, duration, power);
     }
 
