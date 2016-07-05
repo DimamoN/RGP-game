@@ -11,10 +11,7 @@ import Game.Units.AUnit;
 import Game.Units.SimpleMan;
 import java.awt.Color;
 import java.util.Random;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
@@ -53,8 +50,8 @@ public class BattleFrame extends javax.swing.JFrame {
         one.setAttacking(true);
         two.setAttacking(false);
         
-        //Установка иконки приложения - прямой путь к иконке (можно 32х32)
-        this.setIconImage(new ImageIcon("src\\Images\\icon.png").getImage());
+        //Установка иконки приложения - прямой путь к иконке
+        this.setIconImage(new ImageIcon(this.getClass().getResource("/img/icon.png")).getImage());
         this.setTitle("RPG GAME");
         
         //Создание пустой битвы
@@ -992,13 +989,12 @@ public class BattleFrame extends javax.swing.JFrame {
         this.restartBattle(one, two);
     }//GEN-LAST:event_btnRestartFightActionPerformed
 
-    //РЕСТАРТ, привязка к кнопке R   DONT WORK
+    //РЕСТАРТ, привязка к кнопке R
     private void btnRestartFightKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnRestartFightKeyPressed
        
         
-        this.labelHero1Name.setText(evt.getKeyCode()+"");
-        
-        
+        //this.labelHero1Name.setText(evt.getKeyCode()+"");
+       
         //Если пробел - ничего не делать
         if (evt.getKeyCode() == 32 ) {};
                 
@@ -1012,14 +1008,15 @@ public class BattleFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnRestartFightKeyPressed
 
+    //Управление кнопками
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
        
 //        this.labelHero1Name.setText(evt.getKeyCode()+"");
         
         switch(evt.getKeyCode()){
-            case 65: this.autoFight(one, two); break;
-            case 82: this.restartBattle(one, two); break;
-            case 32: this.nextRound(); break;
+            case 65: this.autoFight(one, two); break; //A
+            case 82: this.restartBattle(one, two); break; //R
+            case 32: this.nextRound(); break; //Space
         }
       
     }//GEN-LAST:event_formKeyPressed
@@ -1226,7 +1223,8 @@ public class BattleFrame extends javax.swing.JFrame {
        
     }
     
-    //BATTLE LOGIC
+    //BATTLE LOGIC !!!! ГЛАВНАЯ ЛОГИКА БИТВЫ
+    
     //Битва с выводом победителей
     public AUnit fightWithLog(AUnit one, AUnit two){
     
@@ -1315,24 +1313,54 @@ public class BattleFrame extends javax.swing.JFrame {
         return one.isAlive();        
     }
     
-    //Один ход битвы, несколько вызовов - несколько ходов
+    
+    private void EffectPhase(AUnit unit){
+        
+        //если это one (левый)
+        if(unit.isAttacking()){
+            this.addBattleLog(unit.getName()+" ");
+            
+            for(String effectLog : unit.getStatus().getAllEffectsToString())
+                this.addBattleLog(effectLog);
+            
+        }
+        
+        //если это two (правый)
+        else{
+            this.addBattleLog(unit.getName()+" ");
+            
+            for(String effectLog : unit.getStatus().getAllEffectsToString())
+                this.addBattleLog(effectLog);
+        }
+              
+    }
+       
+    //Один ход битвы, несколько вызовов - несколько ходов! Сверение инициативы!
     void round(AUnit one, AUnit two){ 
         
         this.addBattleLog("*** "+ turn + " ход ***");
         this.addBattleLog(one.BattleInfo());
         this.addBattleLog(two.BattleInfo());
         
-        //Сверяем инициативу для первого удара
+        //Может сделать что эффекты рандомно? а может чтобы кто первый атакует - на того и накладывается эффектв
+        this.addBattleLog(" ** Фаза эффектов **");       
+        one.getStatus().Turn(one);
+        two.getStatus().Turn(two);
+               
+        //Фаза боя
+        this.addBattleLog(" ** Фаза Боя **");
+        
+        //Сверяем инициативу для первого удара (Атакует первый)
         if(one.getInit()>two.getInit()){ 
-            
             AttackAfterInit(one, two);               
         }        
         
+        //Атакует второй
         else if (two.getInit()>one.getInit()){
-            
             AttackAfterInit(two, one);
         }
         
+        //Если инициативы равны - атакует случайный
         else if (one.getInit()==two.getInit()){
             
             Random rnd = new Random();
@@ -1350,10 +1378,10 @@ public class BattleFrame extends javax.swing.JFrame {
        this.addBattleLog("");
     }
     
-    //Если урон есть - он отображается (Индикация урона)
+    //Индикация урона в боевой лог
     private void AttackLog(AUnit one, AUnit two){  
         
-        //Сама атака и возвращение урона 
+        //САМА АТАКА И ВОЗВРАЩЕНИЕ УРОНА
         Damage Dmg = one.Attack(two);
         
         //Если попал

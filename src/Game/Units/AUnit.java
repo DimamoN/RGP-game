@@ -8,6 +8,7 @@ package Game.Units;
 import Game.Damage;
 import Game.Items.Armor.Armor;
 import Game.Items.Weapons.Weapon;
+import Game.Units.Status.UnitStatus;
 import java.awt.Image;
 import java.io.Console;
 import java.util.Random;
@@ -39,6 +40,9 @@ abstract public class AUnit {
     //Защита
     Armor armor;
     
+    //Статус юнита
+    UnitStatus status;
+    
     //Статистика битвы для юнита
     BattleStat unitStat;
 
@@ -61,7 +65,8 @@ abstract public class AUnit {
         this.armor = new Armor("Без защиты", 0, 0);
         
         this.image = new ImageIcon(this.getClass().getResource("/img/units/null.png"));
-        
+    
+        status = new UnitStatus();
         unitStat = new BattleStat();
     }
     
@@ -77,6 +82,7 @@ abstract public class AUnit {
         
         this.image = new ImageIcon(this.getClass().getResource(pathToImage));
         
+        status = new UnitStatus();
         unitStat = new BattleStat();
     }  
 
@@ -92,6 +98,7 @@ abstract public class AUnit {
         
         this.image = new ImageIcon(this.getClass().getResource(pathToImage));
 
+        status = new UnitStatus();
         unitStat = new BattleStat();
     }  
     
@@ -161,6 +168,7 @@ abstract public class AUnit {
            //Устанавливаем промах
            Dmg.setIsMiss(true);
        }
+       
        //Если противник не уклонился
        else{
            //Отнять хп противнику
@@ -286,6 +294,10 @@ abstract public class AUnit {
 
     public int getsHp() {
         return sHp;
+    }
+
+    public UnitStatus getStatus() {
+        return status;
     }
     
     //Вся информация о юните
