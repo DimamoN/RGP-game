@@ -53,5 +53,21 @@ public abstract class AUnitEffect {
     public void resetEffect(){   
         duration = startDuration;
     }
+
+    //ЕСЛИ ИМЯ ТО ЖЕ, А ЭФФЕКТ СИЛЬНЕЕ - НУЖНО ПЕРЕЗАПИСАТЬ
+    //ЕСЛИ ИМЯ ТО ЖЕ, А ЭФФЕКТ СЛАБЕЕ - НE НУЖНО
+    
+    @Override
+    public boolean equals(Object obj) {
+       
+        if(this == obj) return true;
+        if(obj == null) return false;
+        if(!obj.getClass().isInstance(this)) return false;
+        
+        AUnitEffect effect = (AUnitEffect) obj;
+        
+        if(this.name == effect.name && this.power <= effect.power) return true;
+        else return false;  
+    }
     
 }

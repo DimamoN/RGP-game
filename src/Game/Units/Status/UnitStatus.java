@@ -22,8 +22,39 @@ public class UnitStatus {
     //Имя эффекта, сам эффект
     HashMap<String, AUnitEffect> currentStatus = new HashMap<>();
     
-    public void addEffect(AUnitEffect effect){    
-        this.currentStatus.put(effect.getName(), effect);    
+    public void addEffect(AUnitEffect newEffect){    
+        
+        boolean check = false;
+        
+        //Если пустой - просто добавить эффект
+        if(this.currentStatus.isEmpty()) currentStatus.put(newEffect.getName(), newEffect);
+        
+        //Если не пустой
+        else{
+            
+            //Проверить есть ли уже этот эффект
+            if(this.currentStatus.get(newEffect.getName()) != null)
+                this.currentStatus.replace(newEffect.getName(), newEffect);
+            
+            else this.currentStatus.put(newEffect.getName(), newEffect);
+            
+        }
+        
+//        //Проверка на повторение - если да - то обновить
+//        for(AUnitEffect effect: this.currentStatus.values()){
+//            
+//            //Для каждого эффекта     
+//            if(newEffect.equals(effect)){
+//                currentStatus.remove(effect.getName()); // Удалить
+//                
+//                currentStatus.put(newEffect.getName(), newEffect); //Добавить новый
+//            }
+//            
+//            else currentStatus.put(newEffect.getName(), newEffect); //Добавить новый        
+//        }
+        
+//        currentStatus.put(newEffect.getName(), newEffect);
+        
     }    
     
     public void deleteEffect(AUnitEffect effect){
@@ -76,6 +107,11 @@ public class UnitStatus {
         }
         
         return effectNames; 
+    }
+
+    //Возвращает ХешМап текущих эффектов
+    public HashMap<String, AUnitEffect> getCurrentStatus() {
+        return currentStatus;
     }
 
 }

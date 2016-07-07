@@ -42,7 +42,7 @@ public class GameMap extends javax.swing.JFrame {
         this.setVisible(true);
         
         this.setTitle("RPG GAME | MANAGER");
-        this.setIconImage(new ImageIcon("src\\Images\\icon.png").getImage());
+        this.setIconImage(new ImageIcon(this.getClass().getResource("/img/icon.png")).getImage());
          
         
         //Установка значений в комбоБоксы из Фабрик

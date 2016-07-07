@@ -18,7 +18,7 @@ import javax.swing.JFrame;
  *
  * @author DimamoN
  */
-public class Battle {
+public class OLDBattle {
    
     private BattleFrame battleFrame;
     
@@ -26,7 +26,7 @@ public class Battle {
    int turn = 1;
 
    //Конструктор, на этом фрейме будет отображаться битва
-    public Battle() {        
+    public OLDBattle() {        
         
     }
      

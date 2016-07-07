@@ -9,14 +9,14 @@ package Game;
  *
  * @author dimamon
  */
-public class TurnInfo {
+public class OLDTurnInfo {
     
     Damage damage;
     
     //Один статус
     String status;
     
-    public TurnInfo(Damage damage, String status) {
+    public OLDTurnInfo(Damage damage, String status) {
         this.damage = damage;
         this.status = status;
     }
