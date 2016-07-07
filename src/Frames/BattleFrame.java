@@ -35,6 +35,9 @@ public class BattleFrame extends javax.swing.JFrame {
     //Идет ли битва
     boolean isBattle = false;
     
+    //Менять места в битве
+    boolean changePlaces = false;
+    
     /**
      * Creates new form BattleFrame
      */
@@ -97,7 +100,7 @@ public class BattleFrame extends javax.swing.JFrame {
         battleLogTextArea = new javax.swing.JTextArea();
         labelTurn = new javax.swing.JLabel();
         hero1Panel = new javax.swing.JPanel();
-        labelAttacking = new javax.swing.JLabel();
+        labelHero1AttackOrDef = new javax.swing.JLabel();
         hero1name = new javax.swing.JTextField();
         labelHero1HP = new javax.swing.JLabel();
         labelHero1Str = new javax.swing.JLabel();
@@ -117,7 +120,7 @@ public class BattleFrame extends javax.swing.JFrame {
         hero1ArmorImage = new javax.swing.JLabel();
         hero1WeaponImage = new javax.swing.JLabel();
         hero2Panel = new javax.swing.JPanel();
-        labelDefencing = new javax.swing.JLabel();
+        labelHero2AttackOrDef = new javax.swing.JLabel();
         hero2name = new javax.swing.JTextField();
         labelHero2HP = new javax.swing.JLabel();
         labelHero2Str = new javax.swing.JLabel();
@@ -213,7 +216,7 @@ public class BattleFrame extends javax.swing.JFrame {
         hero1Panel.setBackground(new java.awt.Color(240, 240, 250));
         hero1Panel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        labelAttacking.setText("Атакует");
+        labelHero1AttackOrDef.setText("Атакует");
 
         hero1name.setEditable(false);
         hero1name.setFont(new java.awt.Font("Noto Sans", 0, 11)); // NOI18N
@@ -336,7 +339,7 @@ public class BattleFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(hero1Str, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(hero1name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelAttacking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(labelHero1AttackOrDef, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelHero1HP, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -371,7 +374,7 @@ public class BattleFrame extends javax.swing.JFrame {
                 .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(hero1PanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(labelAttacking)
+                        .addComponent(labelHero1AttackOrDef)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(hero1name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -416,7 +419,7 @@ public class BattleFrame extends javax.swing.JFrame {
         hero2Panel.setBackground(new java.awt.Color(240, 240, 250));
         hero2Panel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        labelDefencing.setText("Защищается");
+        labelHero2AttackOrDef.setText("Защищается");
 
         hero2name.setEditable(false);
         hero2name.setFont(new java.awt.Font("Noto Sans", 0, 11)); // NOI18N
@@ -539,7 +542,7 @@ public class BattleFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(hero2Str, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(hero2name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelDefencing, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(labelHero2AttackOrDef, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(hero2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelHero2HP, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -574,7 +577,7 @@ public class BattleFrame extends javax.swing.JFrame {
                 .addGroup(hero2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(hero2PanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(labelDefencing)
+                        .addComponent(labelHero2AttackOrDef)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(hero2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(hero2name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1181,21 +1184,40 @@ public class BattleFrame extends javax.swing.JFrame {
     
     //Полная настройка героев!
     public void setupHeroesOnFrame(AUnit one, AUnit two){
-        //Имена
-        this.hero1name.setText(one.getName());
-        this.hero2name.setText(two.getName());
         
-        //На лейблы сверху
-        this.labelHero1Name.setText(one.getName());
-        this.labelHero2Name.setText(two.getName());
+        //Если первый стоит слева, то
+        if(one.isAttacking()){
+            
+            //Имена
+            this.hero1name.setText(one.getName());
+            this.hero2name.setText(two.getName());
+            
+            //На лейблы сверху
+            this.labelHero1Name.setText(one.getName());
+            this.labelHero2Name.setText(two.getName());
         
-        //Статы
-        this.setHeroesStats(one, two);
+            //Статы
+            this.setHeroesStats(one, two);
         
-        //Картинки
-        this.setHeroesImages(one, two);
+            //Картинки
+            this.setHeroesImages(one, two);
+            
+        }
         
-        //***
+        else {
+            this.hero1name.setText(two.getName());
+            this.hero2name.setText(one.getName());
+            
+            //На лейблы сверху
+            this.labelHero1Name.setText(two.getName());
+            this.labelHero2Name.setText(one.getName());
+            
+            //Статы
+            this.setHeroesStats(two, one);
+        
+            //Картинки
+            this.setHeroesImages(two, one);
+        }
         
         //Ход битвы
         
@@ -1249,7 +1271,15 @@ public class BattleFrame extends javax.swing.JFrame {
        this.hero2Miss.setText(two.getUnitStat().getMiss() + "");
        this.hero2HitPerc.setText(two.getUnitStat().getHitPerc());
        
-      
+       //Смена надписей про то, кто атакует
+        if(!changePlaces) {
+            this.labelHero1AttackOrDef.setText("Атакует");
+            this.labelHero2AttackOrDef.setText("Обороняется");
+        }
+        else{
+            this.labelHero2AttackOrDef.setText("Атакует");
+            this.labelHero1AttackOrDef.setText("Обороняется");   
+        }
        
     }
     
@@ -1288,7 +1318,16 @@ public class BattleFrame extends javax.swing.JFrame {
        this.isBattle = true;   //????
         
        if(one.getHp()>0 && two.getHp()>0){ 
-            turn(one,two);            
+           
+            if (!changePlaces) {
+                turn(one,two);
+                changePlaces = true;
+            }  
+            
+            else {
+                turn(two,one);
+                changePlaces = false;
+            }           
         }
        
        else {
@@ -1320,6 +1359,7 @@ public class BattleFrame extends javax.swing.JFrame {
         this.two.getUnitStat().resetStats();
         
         this.turn = 1;
+        this.changePlaces = false;
         
         this.setupHeroesOnFrame(one, two);
         
@@ -1339,7 +1379,14 @@ public class BattleFrame extends javax.swing.JFrame {
         
         while(one.getHp()>0 && two.getHp()>0){ 
             
-            turn(one,two);            
+            if (!changePlaces) {
+                turn(one,two);
+                changePlaces = true;
+            }  
+            else {
+                turn(two,one);
+                changePlaces = false;
+            }
 //            Thread.sleep(1500);
         }          
         
@@ -1416,7 +1463,6 @@ public class BattleFrame extends javax.swing.JFrame {
         defenceUnit.getStatus().Turn(defenceUnit);
               
         //Конец фазы эффектов
-        
         
         //Фаза боя
         this.addBattleLog(" ** Фаза Боя **");
@@ -1573,13 +1619,12 @@ public class BattleFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JLabel labelAttacking;
     private javax.swing.JLabel labelBattleBetween;
     private javax.swing.JLabel labelBattleBetween1;
     private javax.swing.JLabel labelBattleLog;
-    private javax.swing.JLabel labelDefencing;
     private javax.swing.JLabel labelHero1Agl;
     private javax.swing.JLabel labelHero1Armor;
+    private javax.swing.JLabel labelHero1AttackOrDef;
     private javax.swing.JLabel labelHero1Def;
     private javax.swing.JLabel labelHero1Dmg;
     private javax.swing.JLabel labelHero1Effects;
@@ -1593,6 +1638,7 @@ public class BattleFrame extends javax.swing.JFrame {
     private javax.swing.JLabel labelHero1Weapon;
     private javax.swing.JLabel labelHero2Agl;
     private javax.swing.JLabel labelHero2Armor;
+    private javax.swing.JLabel labelHero2AttackOrDef;
     private javax.swing.JLabel labelHero2Def;
     private javax.swing.JLabel labelHero2Dmg;
     private javax.swing.JLabel labelHero2Effects;

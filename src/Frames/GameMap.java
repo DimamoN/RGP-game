@@ -12,15 +12,7 @@ import Game.UnitFactory;
 import Game.Units.AUnit;
 import Game.Units.SimpleMan;
 import Game.WeaponFactory;
-import java.awt.Image;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**
@@ -48,6 +40,7 @@ public class GameMap extends javax.swing.JFrame {
         //Установка значений в комбоБоксы из Фабрик
         this.comboBoxHero1.setModel(new DefaultComboBoxModel<>(units.getNames()));
         this.comboBoxHero2.setModel(new DefaultComboBoxModel<>(units.getNames()));
+        
         this.comboBoxEditHero.setModel(new DefaultComboBoxModel<>(units.getNames()));
         
         this.comboBoxWeapon.setModel(new DefaultComboBoxModel<>(weapons.getNames()));
@@ -386,7 +379,7 @@ public class GameMap extends javax.swing.JFrame {
         AUnit unit = getEditUnit();
         
         //Установить значения из полей
-        unit.setHp(Integer.parseInt(this.hitPoints.getText()));
+        unit.setsHp(Integer.parseInt(this.hitPoints.getText()));
         unit.setStr(Integer.parseInt(this.comboBoxSTR.getSelectedItem()+""));
         unit.setAgl(Integer.parseInt(this.comboBoxAGL.getSelectedItem()+""));
            
@@ -419,6 +412,7 @@ public class GameMap extends javax.swing.JFrame {
         
         //Установка значений в комбоБоксы в зависимости от выбраного юнита
         this.hitPoints.setText(unit.getsHp()+"");
+        
         this.comboBoxAGL.setSelectedIndex(unit.getAgl());
         this.comboBoxSTR.setSelectedIndex(unit.getStr());
         
@@ -480,6 +474,7 @@ public class GameMap extends javax.swing.JFrame {
         
         return new SimpleMan();    
     }
+    
     //Возвращает оружие выбранное на комбобоксе (и устанавливает картинку)
     private Weapon getWeaponEdit(){
         

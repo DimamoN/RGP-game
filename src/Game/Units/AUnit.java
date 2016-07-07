@@ -127,8 +127,15 @@ abstract public class AUnit {
         return str;
     }
 
+    //Установить текущее хп
     public void setHp(int hp) {
         this.hp = hp;
+    }
+
+    //Установить стартовое хп
+    public void setsHp(int sHp) {
+        this.hp = sHp;
+        this.sHp = sHp;
     }
     
     //Установка урона, который нанесет данный юнит (Weapon,Crit,Str)
@@ -304,6 +311,13 @@ abstract public class AUnit {
 
     public UnitStatus getStatus() {
         return status;
+    }
+    
+    public AUnit clone(){
+        AUnit clone = new AUnit(this.getName(), this.getsHp(), this.getStr(), this.getAgl(),
+                this.getName(), this.getWeapon(), this.getArmor()) {};
+        
+        return clone;
     }
     
     //Вся информация о юните

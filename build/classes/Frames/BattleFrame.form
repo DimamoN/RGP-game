@@ -177,7 +177,7 @@
                                   <Component id="hero1Str" min="-2" pref="54" max="-2" attributes="0"/>
                               </Group>
                               <Component id="hero1name" alignment="1" min="-2" pref="128" max="-2" attributes="0"/>
-                              <Component id="labelAttacking" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labelHero1AttackOrDef" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -225,7 +225,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelAttacking" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelHero1AttackOrDef" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="hero1name" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -281,7 +281,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="labelAttacking">
+        <Component class="javax.swing.JLabel" name="labelHero1AttackOrDef">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x410;&#x442;&#x430;&#x43a;&#x443;&#x435;&#x442;"/>
           </Properties>
@@ -478,7 +478,7 @@
                                   <Component id="hero2Str" min="-2" pref="54" max="-2" attributes="0"/>
                               </Group>
                               <Component id="hero2name" alignment="1" min="-2" pref="128" max="-2" attributes="0"/>
-                              <Component id="labelDefencing" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labelHero2AttackOrDef" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -526,7 +526,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelDefencing" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelHero2AttackOrDef" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="hero2name" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -582,7 +582,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="labelDefencing">
+        <Component class="javax.swing.JLabel" name="labelHero2AttackOrDef">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x449;&#x438;&#x449;&#x430;&#x435;&#x442;&#x441;&#x44f;"/>
           </Properties>

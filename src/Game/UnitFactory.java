@@ -70,23 +70,23 @@ public class UnitFactory {
     }
     
     public AUnit getSoldier() {
-        return units.get(0);
+        return units.get(0).clone();
     }
 
     public AUnit getSoldierHeavy() {
-        return units.get(1);
+        return units.get(1).clone();
     }
     
     public AUnit getOrk() {
-        return units.get(2);
+        return units.get(2).clone();
     }
     
     public AUnit getOgr() {
-        return units.get(3);
+        return units.get(3).clone();
     }
     
     public AUnit getDwarf() {
-        return units.get(4);
+        return units.get(4).clone();
     }
       
     public String[] getNames(){
