@@ -97,7 +97,24 @@ abstract public class AUnit {
         this.weapon = weapon;
         this.armor = armor;
         
+        //Не работает в методе clone()
         this.image = new ImageIcon(this.getClass().getResource(pathToImage));
+
+        status = new UnitStatus();
+        unitStat = new BattleStat();
+    }  
+    
+    //Конструктор для Clone();
+    public AUnit(String name, int hp, int str, int agl, ImageIcon img, Weapon weapon, Armor armor) {
+        this.name = name;
+        this.hp = hp;
+        this.sHp = hp;
+        this.str = str;        
+        this.agl = agl;
+        this.weapon = weapon;
+        this.armor = armor;
+        
+        this.image = img;
 
         status = new UnitStatus();
         unitStat = new BattleStat();
@@ -314,10 +331,16 @@ abstract public class AUnit {
     }
     
     public AUnit clone(){
-        AUnit clone = new AUnit(this.getName(), this.getsHp(), this.getStr(), this.getAgl(),
-                this.getName(), this.getWeapon(), this.getArmor()) {};
+        AUnit clone = new AUnit(this.getName(),this.getsHp(), this.getStr(), this.getAgl(),
+                this.getImage(), this.getWeapon().clone(), this.getArmor().clone()){};
+        
+        clone.setStatus(this.getStatus());
         
         return clone;
+    }
+
+    public void setStatus(UnitStatus status) {
+        this.status = status;
     }
     
     //Вся информация о юните

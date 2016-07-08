@@ -11,11 +11,9 @@ import Game.Units.SimpleMan;
 import Game.Units.Status.AUnitEffect;
 import java.awt.Color;
 import java.util.HashMap;
-import java.util.Random;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
-import javax.swing.ListModel;
 
 /**
  *
@@ -66,19 +64,7 @@ public class BattleFrame extends javax.swing.JFrame {
         
         //Установить фокус на ФОРМУ!
         this.btnAutoFight.transferFocusUpCycle();
-        
-        
-        //ТЕСТ
-//        
-//        DefaultListModel<String> model = new DefaultListModel<>();
-//        
-//        model.addElement("TEST");
-//        model.addElement("TES1T");
-//        
-//        this.hero1EffectList.setModel(model);
-//        this.hero2EffectList.setModel(model);
-        
-        
+         
     }
 
     private BattleFrame() {
@@ -354,7 +340,7 @@ public class BattleFrame extends javax.swing.JFrame {
                         .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(labelHero1Weapon, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(hero1Weapon, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                         .addGroup(hero1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(hero1Armor, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(hero1PanelLayout.createSequentialGroup()
@@ -557,7 +543,7 @@ public class BattleFrame extends javax.swing.JFrame {
                         .addGroup(hero2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(labelHero2Weapon, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(hero2Weapon, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                         .addGroup(hero2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(hero2Armor, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(hero2PanelLayout.createSequentialGroup()
@@ -569,7 +555,7 @@ public class BattleFrame extends javax.swing.JFrame {
                 .addGroup(hero2PanelLayout.createSequentialGroup()
                     .addGap(141, 141, 141)
                     .addComponent(hero2WeaponImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(246, Short.MAX_VALUE)))
+                    .addContainerGap(261, Short.MAX_VALUE)))
         );
         hero2PanelLayout.setVerticalGroup(
             hero2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -773,7 +759,7 @@ public class BattleFrame extends javax.swing.JFrame {
                             .addComponent(hero1Hit, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                             .addComponent(hero1Miss, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(hero1HitPerc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(hero1StatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelHero1Effects))
@@ -847,7 +833,7 @@ public class BattleFrame extends javax.swing.JFrame {
                             .addComponent(hero2Hit, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                             .addComponent(hero2Miss, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(hero2HitPerc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(hero1StatPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelHero2Effects))
@@ -896,8 +882,8 @@ public class BattleFrame extends javax.swing.JFrame {
                             .addComponent(hero1StatPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(hero1StatPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(hero2Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(hero1StatPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(hero2Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -1401,21 +1387,25 @@ public class BattleFrame extends javax.swing.JFrame {
     private void EffectPhase(AUnit unit){
         
         //если это one (левый)
-        if(unit.isAttacking()){
-            this.addBattleLog(unit.getName()+" ");
+//        if(unit.isAttacking()){
             
+            //Если у юнита нет эффектов - ничего не выводить
+            if(unit.getStatus().getCurrentStatus().isEmpty());
+               
+            else{
             for(String effectLog : unit.getStatus().getAllEffectsToString())
-                this.addBattleLog(effectLog);
+                this.addBattleLog(unit.getName() + " : " + effectLog);
+            }
             
-        }
+//        }
         
-        //если это two (правый)
-        else{
-            this.addBattleLog(unit.getName()+" ");
-            
-            for(String effectLog : unit.getStatus().getAllEffectsToString())
-                this.addBattleLog(effectLog);
-        }
+//        //если это two (правый)
+//        else{
+//            this.addBattleLog(unit.getName()+" ");
+//            
+//            for(String effectLog : unit.getStatus().getAllEffectsToString())
+//                this.addBattleLog(effectLog);
+//        }
               
     }
     
@@ -1440,7 +1430,6 @@ public class BattleFrame extends javax.swing.JFrame {
         else
             this.hero2EffectList.setModel(model);
     }
-    
     
     //New Sustem, Инициатива теперь не нужна?
     void turn(AUnit attackUnit, AUnit defenceUnit){

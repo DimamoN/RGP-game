@@ -36,7 +36,7 @@ public class UnitFactory {
     
     {
          AUnit soldier = new SimpleMan("Пехотинец", 50, 3, 3,  "/img/units/soldierMid.png", weapon.getSword(), armor.getSteelLight());             
-         AUnit soldierHeavy = new SimpleMan("Тяжелый пехотинец", 65, 4, 2, "/img/units/soldierHeavy.png", weapon.getLongSword(), armor.getSteel());
+         AUnit soldierHeavy = new SimpleMan("Тяж. пехотинец", 65, 4, 2, "/img/units/soldierHeavy.png", weapon.getLongSword(), armor.getSteel());
         
          AUnit ork = new SimpleMan("Орк", 60, 5, 1, "/img/units/orkLight.png", weapon.getAxe(), armor.getLeather());
          

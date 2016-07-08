@@ -6,6 +6,7 @@
 package Game.Items.Armor;
 
 import Game.Items.AItem;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -30,14 +31,28 @@ public class Armor extends AItem{
         super(name, weight, pathToImage);
         this.def = def;
     }
+    
+    //для clone()
+    public Armor(String name, int def, int weight, ImageIcon image) {
+        super(name, weight, image);
+        this.def = def;
+    }
 
     public int getDef() {
         return def;
     }
 
+    public Armor clone(){
+        
+        Armor clone = new Armor(this.getName(), this.getDef(),
+                this.getWeight(), this.getImage());
+
+        return clone;
+    }
+    
     @Override
     public String toString() {
-        return this.getName()+", Защита: "+this.def+", Вес: "+this.weight;
+        return this.getName()+", Защита: "+this.def;
     }
      
 }

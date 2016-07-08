@@ -30,7 +30,6 @@ public class ArmorFactory {
     armors.add(steelStrong);
     }
 
-
     public ArmorFactory() {
     }
 

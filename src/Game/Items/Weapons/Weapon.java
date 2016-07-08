@@ -7,6 +7,7 @@ package Game.Items.Weapons;
 
 import Game.Items.AItem;
 import Game.Units.Status.AUnitEffect;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -29,6 +30,13 @@ public class Weapon extends AItem{
         this.dmg = dmg;
         this.effect = effect;
     }
+    
+    //Для clone()
+    public Weapon(String name, int dmg, int weight, AUnitEffect effect, ImageIcon image) {
+        super(name, weight, image);
+        this.dmg = dmg;
+        this.effect = effect;
+    }
 
     public int getDmg() {
         return dmg;
@@ -36,7 +44,7 @@ public class Weapon extends AItem{
     
     @Override
     public String toString() {
-        return this.getName()+", Урон: "+this.dmg + ", Вес: " + this.weight;
+        return this.getName()+", Урон: "+this.dmg;
     }
 
     public AUnitEffect getEffect() {
@@ -49,7 +57,12 @@ public class Weapon extends AItem{
         return effect;      
     }
     
-    
-       
-    
+    @Override
+    public Weapon clone(){
+        
+        Weapon clone = new Weapon(this.getName(), this.getDmg(),
+                this.getWeight(), this.getEffect(), this.getImage());
+        
+        return clone;
+    }
 }

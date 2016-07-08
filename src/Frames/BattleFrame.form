@@ -47,8 +47,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="hero1StatPanel1" min="-2" max="-2" attributes="0"/>
-                          <Component id="hero2Panel" min="-2" max="-2" attributes="0"/>
+                          <Component id="hero1StatPanel1" max="32767" attributes="0"/>
+                          <Component id="hero2Panel" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -197,7 +197,7 @@
                               <Component id="labelHero1Weapon" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="hero1Weapon" min="-2" pref="185" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="48" max="32767" attributes="0"/>
+                          <EmptySpace pref="60" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="hero1Armor" min="-2" pref="187" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
@@ -498,7 +498,7 @@
                               <Component id="labelHero2Weapon" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="hero2Weapon" alignment="1" min="-2" pref="185" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="55" max="32767" attributes="0"/>
+                          <EmptySpace pref="70" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="hero2Armor" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
@@ -515,7 +515,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
                       <Component id="hero2WeaponImage" min="-2" pref="64" max="-2" attributes="0"/>
-                      <EmptySpace pref="246" max="32767" attributes="0"/>
+                      <EmptySpace pref="261" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -936,7 +936,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="48" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane5" min="-2" pref="256" max="-2" attributes="0"/>
                       <Component id="labelHero1Effects" min="-2" max="-2" attributes="0"/>
@@ -1081,7 +1081,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="55" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane4" min="-2" pref="256" max="-2" attributes="0"/>
                       <Component id="labelHero2Effects" min="-2" max="-2" attributes="0"/>

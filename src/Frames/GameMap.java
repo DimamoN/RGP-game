@@ -21,7 +21,9 @@ import javax.swing.ImageIcon;
  */
 public class GameMap extends javax.swing.JFrame {
 
-    UnitFactory units = new UnitFactory();  
+    UnitFactory units = new UnitFactory();  //Юниты слева
+//    UnitFactory units = new UnitFactory(); //Юниты справа
+    
     WeaponFactory weapons = new WeaponFactory();
     ArmorFactory armors = new ArmorFactory();
     
@@ -31,12 +33,13 @@ public class GameMap extends javax.swing.JFrame {
     public GameMap() {
         initComponents();
         
+        this.setLocation(300, 300);
+        
         this.setVisible(true);
         
         this.setTitle("RPG GAME | MANAGER");
         this.setIconImage(new ImageIcon(this.getClass().getResource("/img/icon.png")).getImage());
          
-        
         //Установка значений в комбоБоксы из Фабрик
         this.comboBoxHero1.setModel(new DefaultComboBoxModel<>(units.getNames()));
         this.comboBoxHero2.setModel(new DefaultComboBoxModel<>(units.getNames()));
@@ -433,7 +436,7 @@ public class GameMap extends javax.swing.JFrame {
                 
                 this.hero1Image.setIcon(unit.getImage()); //Так себе
                 
-                return unit;
+                return unit.clone();
             }
                 
         }

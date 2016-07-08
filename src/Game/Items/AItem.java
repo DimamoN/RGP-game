@@ -37,7 +37,14 @@ public class AItem {
         this.weight = weight;
         image = new ImageIcon(this.getClass().getResource(pathToImage));
     }
-
+    
+    //Конструктор, принимающий иконку (для clone())
+    public AItem(String name, int weight, ImageIcon image) {
+        this.name = name;
+        this.weight = weight;
+        this.image = image;
+    }
+    
     public String getName() {
         return name;
     }
@@ -53,7 +60,7 @@ public class AItem {
     public void setImage(ImageIcon image) {
       this.image = image;
    }
-
+    
     @Override
     public String toString() {
         return this.getName()+" Weight: "+this.weight;

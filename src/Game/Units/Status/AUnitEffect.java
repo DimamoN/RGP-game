@@ -25,7 +25,7 @@ public abstract class AUnitEffect {
 
     public AUnitEffect(String name, int duration, int power) {
         this.name = name;
-        this.duration = duration;
+        this.duration = duration + 1;
         this.startDuration = duration;
         this.power = power;
     }
