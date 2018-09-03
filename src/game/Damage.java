@@ -21,6 +21,7 @@ public class Damage {
     //Является ли критическим
     private boolean critical;
 
+    
     public Damage() {
     }
 

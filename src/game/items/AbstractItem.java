@@ -12,29 +12,20 @@ import javax.swing.ImageIcon;
  */
 public class AbstractItem {
 
-    //Картинка айтема
+    public static String DEFAULT_IMAGE_PATH = "img/book.jpg";
+
     private ImageIcon image;
-
-    //Название айтема
     private String name;
+    private int weight;
 
-    //Вес айтема
-    protected int weight;
-
-    public AbstractItem() {}
-
-    //УДАЛИТЬ ПОТОМ!!!
-    public AbstractItem(String name, int weight) {
-        this.name = name;
-        this.weight = weight;
-        image = new ImageIcon();
-    }
+    protected AbstractItem() {}
 
     //Крутой конструктор с путем к икноке
     public AbstractItem(String name, int weight, String pathToImage) {
         this.name = name;
         this.weight = weight;
-        image = new ImageIcon(this.getClass().getResource(pathToImage));
+        String imgPath = pathToImage.isEmpty() ? DEFAULT_IMAGE_PATH : pathToImage;
+        image = new ImageIcon(this.getClass().getResource(imgPath));
     }
 
     //Конструктор, принимающий иконку (для clone())
@@ -42,6 +33,10 @@ public class AbstractItem {
         this.name = name;
         this.weight = weight;
         this.image = image;
+    }
+
+    public ImageIcon getImage() {
+        return image;
     }
 
     public String getName() {
@@ -52,17 +47,12 @@ public class AbstractItem {
         return weight;
     }
 
-    public ImageIcon getImage() {
-        return image;
-    }
-
-    public void setImage(ImageIcon image) {
-        this.image = image;
-    }
-
     @Override
     public String toString() {
-        return this.getName() + " Weight: " + this.weight;
+        return "AbstractItem{" +
+                "image=" + image +
+                ", name='" + name + '\'' +
+                ", weight=" + weight +
+                '}';
     }
-
 }

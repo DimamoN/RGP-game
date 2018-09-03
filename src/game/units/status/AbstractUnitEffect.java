@@ -13,11 +13,11 @@ import game.units.AbstractUnit;
 public abstract class AbstractUnitEffect {
 
     //Название эффекта
-    String name;
+    private String name;
 
     //Продолжительность
-    int duration;
-    int startDuration;
+    private int duration;
+    private int startDuration;
 
     //Сила эффекта
     int power;
@@ -65,8 +65,8 @@ public abstract class AbstractUnitEffect {
 
         AbstractUnitEffect effect = (AbstractUnitEffect) obj;
 
-        if (this.name == effect.name && this.power <= effect.power) return true;
-        else return false;
+        return this.name.equals(effect.name)
+                && this.power <= effect.power;
     }
 
 }

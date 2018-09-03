@@ -21,7 +21,7 @@ public class Armor extends AbstractItem {
 
     //Без картинки
     public Armor(String name, int defence, int weight) {
-        super(name, weight);
+        super(name, weight, "");
         this.defence = defence;
     }
 

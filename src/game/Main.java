@@ -6,6 +6,7 @@
 package game;
 
 import frames.GameMap;
+import game.factories.UnitFactory;
 
 import java.awt.EventQueue;
 

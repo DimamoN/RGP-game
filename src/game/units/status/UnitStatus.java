@@ -17,23 +17,22 @@ public class UnitStatus {
     //Эффекты могут складываться, нужно это решить!
 
     //Имя эффекта, сам эффект
-    HashMap<String, AbstractUnitEffect> currentStatus = new HashMap<>();
+    private HashMap<String, AbstractUnitEffect> currentStatus = new HashMap<>();
 
     public void addEffect(AbstractUnitEffect newEffect) {
 
         boolean check = false;
 
         //Если пустой - просто добавить эффект
-        if (this.currentStatus.isEmpty()) currentStatus.put(newEffect.getName(), newEffect);
-
-            //Если не пустой
-        else {
-
+        if (this.currentStatus.isEmpty()) {
+            currentStatus.put(newEffect.getName(), newEffect);
+        } else {
             //Проверить есть ли уже этот эффект
-            if (this.currentStatus.get(newEffect.getName()) != null)
+            if (this.currentStatus.get(newEffect.getName()) != null){
                 this.currentStatus.replace(newEffect.getName(), newEffect);
-
-            else this.currentStatus.put(newEffect.getName(), newEffect);
+            } else {
+                this.currentStatus.put(newEffect.getName(), newEffect);
+            }
 
         }
 
@@ -63,25 +62,26 @@ public class UnitStatus {
 
         //для удаления
         boolean delete = false;
-        AbstractUnitEffect deleteEffect = new BleedingEffect("NO", 0, 0);
+        AbstractUnitEffect effectToDelete = new BleedingEffect("NO", 0, 0);
 
         for (AbstractUnitEffect effect : currentStatus.values()) {
 
             //Действие эффекта
             effect.EffectAction(unit);
-
             //уменьшить время эффекта
             effect.decrementDuration();
 
             //Если время вышло - удалить эффект (после итараций)
             if (effect.getDuration() == 0) {
                 delete = true;
-                deleteEffect = effect;
+                effectToDelete = effect;
             }
         }
 
         //Удалить эффект, если его длительность прошла
-        if (delete) this.deleteEffect(deleteEffect);
+        if (delete) {
+            deleteEffect(effectToDelete);
+        }
 
     }
 
@@ -91,18 +91,12 @@ public class UnitStatus {
 
     //Возвращает массив описаний эффектов
     public String[] getAllEffectsToString() {
-
         String[] effectNames = new String[currentStatus.size()];
-
         int i = 0;
-
         for (AbstractUnitEffect effect : currentStatus.values()) {
-
             effectNames[i] = effect.getName() + ", сила " + effect.getPower() + ", осталось " + effect.getDuration() + " ходов";
-
             i++;
         }
-
         return effectNames;
     }
 

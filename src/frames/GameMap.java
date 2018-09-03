@@ -5,13 +5,13 @@
  */
 package frames;
 
-import game.ArmorFactory;
+import game.factories.ArmorFactory;
 import game.items.armor.Armor;
 import game.items.weapons.Weapon;
-import game.UnitFactory;
+import game.factories.UnitFactory;
 import game.units.AbstractUnit;
 import game.units.SimpleMan;
-import game.WeaponFactory;
+import game.factories.WeaponFactory;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
