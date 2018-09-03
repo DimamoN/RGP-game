@@ -3,52 +3,52 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Frames;
+package frames;
 
-import Game.ArmorFactory;
-import Game.Items.Armor.Armor;
-import Game.Items.Weapons.Weapon;
-import Game.UnitFactory;
-import Game.Units.AUnit;
-import Game.Units.SimpleMan;
-import Game.WeaponFactory;
+import game.ArmorFactory;
+import game.items.armor.Armor;
+import game.items.weapons.Weapon;
+import game.UnitFactory;
+import game.units.AbstractUnit;
+import game.units.SimpleMan;
+import game.WeaponFactory;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 
 /**
- *
  * @author DimamoN
  */
 public class GameMap extends javax.swing.JFrame {
 
     UnitFactory units = new UnitFactory();  //Юниты слева
 //    UnitFactory units = new UnitFactory(); //Юниты справа
-    
+
     WeaponFactory weapons = new WeaponFactory();
     ArmorFactory armors = new ArmorFactory();
-    
+
     /**
      * Creates new form GameMap
      */
     public GameMap() {
         initComponents();
-        
+
         this.setLocation(300, 300);
-        
+
         this.setVisible(true);
-        
+
         this.setTitle("RPG GAME | MANAGER");
         this.setIconImage(new ImageIcon(this.getClass().getResource("/img/icon.png")).getImage());
-         
+
         //Установка значений в комбоБоксы из Фабрик
         this.comboBoxHero1.setModel(new DefaultComboBoxModel<>(units.getNames()));
         this.comboBoxHero2.setModel(new DefaultComboBoxModel<>(units.getNames()));
-        
+
         this.comboBoxEditHero.setModel(new DefaultComboBoxModel<>(units.getNames()));
-        
+
         this.comboBoxWeapon.setModel(new DefaultComboBoxModel<>(weapons.getNames()));
         this.comboBoxArmor.setModel(new DefaultComboBoxModel<>(armors.getNames()));
-        
+
         StartBattleTabSetup();
         EditTabSetup();
     }
@@ -136,37 +136,37 @@ public class GameMap extends javax.swing.JFrame {
         javax.swing.GroupLayout createBattlePanelLayout = new javax.swing.GroupLayout(createBattlePanel);
         createBattlePanel.setLayout(createBattlePanelLayout);
         createBattlePanelLayout.setHorizontalGroup(
-            createBattlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(createBattlePanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnStartBattle, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(createBattlePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(comboBoxHero1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(hero1Image, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelVertus, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(hero2Image, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboBoxHero2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                createBattlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(createBattlePanelLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnStartBattle, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                        .addGroup(createBattlePanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(comboBoxHero1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(hero1Image, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelVertus, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(hero2Image, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(comboBoxHero2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14))
         );
         createBattlePanelLayout.setVerticalGroup(
-            createBattlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(createBattlePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(createBattlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(hero1Image, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxHero1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hero2Image, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxHero2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelVertus))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
-                .addComponent(btnStartBattle, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                createBattlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(createBattlePanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(createBattlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(hero1Image, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(comboBoxHero1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(hero2Image, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(comboBoxHero2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labelVertus))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                                .addComponent(btnStartBattle, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Создать битву", createBattlePanel);
@@ -202,7 +202,7 @@ public class GameMap extends javax.swing.JFrame {
 
         labelArmor.setText("Броня:");
 
-        comboBoxSTR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        comboBoxSTR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 
         comboBoxWeapon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,7 +210,7 @@ public class GameMap extends javax.swing.JFrame {
             }
         });
 
-        comboBoxAGL.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        comboBoxAGL.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 
         comboBoxArmor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,90 +229,90 @@ public class GameMap extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(comboBoxEditHero, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelHitpoints)
-                                    .addComponent(labelStr)
-                                    .addComponent(labelAgl))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(hitPoints)
-                                    .addComponent(comboBoxAGL, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(comboBoxSTR, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(heroEditImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelWeapon)
-                                    .addComponent(labelArmor))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(comboBoxArmor, 0, 126, Short.MAX_VALUE)
-                                    .addComponent(comboBoxWeapon, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(heroEditArmorImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(heroEditWeaponImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 47, Short.MAX_VALUE)
-                                .addComponent(labelInfoEdit))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(SaveEditedUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(comboBoxEditHero, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(labelHitpoints)
+                                                                        .addComponent(labelStr)
+                                                                        .addComponent(labelAgl))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(hitPoints)
+                                                                        .addComponent(comboBoxAGL, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(comboBoxSTR, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(heroEditImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(labelWeapon)
+                                                                        .addComponent(labelArmor))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(comboBoxArmor, 0, 126, Short.MAX_VALUE)
+                                                                        .addComponent(comboBoxWeapon, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(heroEditArmorImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(heroEditWeaponImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGap(0, 0, Short.MAX_VALUE))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                                .addGap(0, 47, Short.MAX_VALUE)
+                                                                .addComponent(labelInfoEdit))))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(SaveEditedUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(comboBoxEditHero, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(23, 23, 23)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(labelHitpoints)
-                                    .addComponent(hitPoints, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(labelAgl)
-                                    .addComponent(comboBoxAGL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(heroEditImage, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelStr)
-                            .addComponent(comboBoxSTR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(labelInfoEdit)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(labelWeapon)
-                                    .addComponent(comboBoxWeapon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(36, 36, 36))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(heroEditWeaponImage, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelArmor)
-                            .addComponent(comboBoxArmor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(heroEditArmorImage, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(SaveEditedUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                .addComponent(comboBoxEditHero, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(23, 23, 23)
+                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                        .addComponent(labelHitpoints)
+                                                                        .addComponent(hitPoints, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGap(18, 18, 18)
+                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                        .addComponent(labelAgl)
+                                                                        .addComponent(comboBoxAGL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addComponent(heroEditImage, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(20, 20, 20)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(labelStr)
+                                                        .addComponent(comboBoxSTR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(labelInfoEdit)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                .addGap(43, 43, 43)
+                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                        .addComponent(labelWeapon)
+                                                                        .addComponent(comboBoxWeapon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGap(36, 36, 36))
+                                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(heroEditWeaponImage, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(18, 18, 18)))
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(labelArmor)
+                                                        .addComponent(comboBoxArmor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(heroEditArmorImage, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                                .addComponent(SaveEditedUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Редактор персонажей", jPanel1);
@@ -320,27 +320,27 @@ public class GameMap extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1)
-                .addGap(0, 0, 0))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTabbedPane1)
+                                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jTabbedPane1)
+                                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboBoxHero2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxHero2ActionPerformed
-            getSecondUnit();
+        getSecondUnit();
     }//GEN-LAST:event_comboBoxHero2ActionPerformed
 
     private void comboBoxHero2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboBoxHero2MouseClicked
-        
+
     }//GEN-LAST:event_comboBoxHero2MouseClicked
 
     private void comboBoxHero1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboBoxHero1MouseClicked
@@ -353,9 +353,9 @@ public class GameMap extends javax.swing.JFrame {
 
     //Запуск битвы, с выбранными юнитами
     private void btnStartBattleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartBattleActionPerformed
-       
+
         BattleFrame BattleFrame = new BattleFrame(getFirstUnit(), getSecondUnit());
-        
+
     }//GEN-LAST:event_btnStartBattleActionPerformed
 
     private void comboBoxEditHeroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboBoxEditHeroMouseClicked
@@ -363,7 +363,7 @@ public class GameMap extends javax.swing.JFrame {
     }//GEN-LAST:event_comboBoxEditHeroMouseClicked
 
     private void comboBoxEditHeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxEditHeroActionPerformed
-       EditTabSetup();
+        EditTabSetup();
     }//GEN-LAST:event_comboBoxEditHeroActionPerformed
 
     //Выбор оружия
@@ -377,142 +377,145 @@ public class GameMap extends javax.swing.JFrame {
     }//GEN-LAST:event_comboBoxArmorActionPerformed
 
     private void SaveEditedUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveEditedUnitActionPerformed
-        
+
         // Сохранить юнита   
-        AUnit unit = getEditUnit();
-        
+        AbstractUnit unit = getEditUnit();
+
         //Установить значения из полей
         unit.setsHp(Integer.parseInt(this.hitPoints.getText()));
-        unit.setStr(Integer.parseInt(this.comboBoxSTR.getSelectedItem()+""));
-        unit.setAgl(Integer.parseInt(this.comboBoxAGL.getSelectedItem()+""));
-           
+        unit.setStr(Integer.parseInt(this.comboBoxSTR.getSelectedItem() + ""));
+        unit.setAgl(Integer.parseInt(this.comboBoxAGL.getSelectedItem() + ""));
+
         unit.setWeapon(getWeaponEdit());
         unit.setArmor(getArmorEdit());
-        
+
         //Сохранить юнит (ДВАРФ) ?????? (Сохраняет всех)
 //        this.units.getUnits().set(4, unit);
-        
+
         this.units.getUnitMap().replace(unit.getName(), unit);
-        
-        
+
+
     }//GEN-LAST:event_SaveEditedUnitActionPerformed
 
     private void labelVertusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelVertusMouseClicked
-         
+
     }//GEN-LAST:event_labelVertusMouseClicked
 
     //Установка иконок для героев первой вкладки
-    public void StartBattleTabSetup(){
+    public void StartBattleTabSetup() {
         getFirstUnit();
         getSecondUnit();
     }
-    
+
     //Установка иконок для героя вкладки редактирования
-    public void EditTabSetup(){
-        
+    public void EditTabSetup() {
+
         //Берет выбраного в комбобоксе юнита
-        AUnit unit = this.getEditUnit();
-        
+        AbstractUnit unit = this.getEditUnit();
+
         //Установка значений в комбоБоксы в зависимости от выбраного юнита
-        this.hitPoints.setText(unit.getsHp()+"");
-        
+        this.hitPoints.setText(unit.getsHp() + "");
+
         this.comboBoxAGL.setSelectedIndex(unit.getAgl());
         this.comboBoxSTR.setSelectedIndex(unit.getStr());
-        
+
         this.comboBoxWeapon.setSelectedItem(unit.getWeapon().getName());
         this.comboBoxArmor.setSelectedItem(unit.getArmor().getName());
-        
+
         getWeaponEdit();
         getArmorEdit();
     }
-    
+
     //Возвращает юнита выбранного на комбобоксе (и устанавливает картинку)
-    private AUnit getFirstUnit(){
-        
+    private AbstractUnit getFirstUnit() {
+
         String selectedItem = this.comboBoxHero1.getSelectedItem() + "";
-        
-        for(AUnit unit: units.getUnits()){
-            if(selectedItem.equals(unit.getName())){
-                
+
+        for (AbstractUnit unit : units.getUnits()) {
+            if (selectedItem.equals(unit.getName())) {
+
                 this.hero1Image.setIcon(unit.getImage()); //Так себе
-                
+
                 return unit.clone();
             }
-                
+
         }
-        
+
         return new SimpleMan();
     }
+
     //Возвращает юнита выбранного на комбобоксе (и устанавливает картинку)
-    private AUnit getSecondUnit(){
-        
+    private AbstractUnit getSecondUnit() {
+
         String selectedItem = this.comboBoxHero2.getSelectedItem() + "";
-        
-        for(AUnit unit: units.getUnits()){
-            if(selectedItem.equals(unit.getName())){
-                
+
+        for (AbstractUnit unit : units.getUnits()) {
+            if (selectedItem.equals(unit.getName())) {
+
                 this.hero2Image.setIcon(unit.getImage()); //Так себе
-                
+
                 return unit;
             }
-                
+
         }
-        
+
         return new SimpleMan();
     }
+
     //Возвращает юнита выбранного на комбобоксе (и устанавливает картинку)
-    private AUnit getEditUnit(){
-        
+    private AbstractUnit getEditUnit() {
+
         String selectedItem = this.comboBoxEditHero.getSelectedItem() + "";
-        
-        for(AUnit unit: units.getUnits()){
-            if(selectedItem.equals(unit.getName())){
-                
+
+        for (AbstractUnit unit : units.getUnits()) {
+            if (selectedItem.equals(unit.getName())) {
+
                 this.heroEditImage.setIcon(unit.getImage()); //Так себе
-                
+
                 return unit;
             }
-                
+
         }
-        
-        return new SimpleMan();    
+
+        return new SimpleMan();
     }
-    
+
     //Возвращает оружие выбранное на комбобоксе (и устанавливает картинку)
-    private Weapon getWeaponEdit(){
-        
+    private Weapon getWeaponEdit() {
+
         String selectedItem = this.comboBoxWeapon.getSelectedItem() + "";
-        
-        for(Weapon weapon: weapons.getWeapons()){
-            if(selectedItem.equals(weapon.getName())){
-                
+
+        for (Weapon weapon : weapons.getWeapons()) {
+            if (selectedItem.equals(weapon.getName())) {
+
                 this.heroEditWeaponImage.setIcon(weapon.getImage()); //Так себе
-                
+
                 return weapon;
             }
-                
+
         }
-        
+
         return new Weapon();
     }
+
     //Возвращает юнита выбранного на комбобоксе (и устанавливает картинку)
-    private Armor getArmorEdit(){
-        
+    private Armor getArmorEdit() {
+
         String selectedItem = this.comboBoxArmor.getSelectedItem() + "";
-        
-        for(Armor armor: armors.getArmors()){
-            if(selectedItem.equals(armor.getName())){
-                
+
+        for (Armor armor : armors.getArmors()) {
+            if (selectedItem.equals(armor.getName())) {
+
                 this.heroEditArmorImage.setIcon(armor.getImage()); //Так себе
-                
+
                 return armor;
             }
-                
+
         }
-        
+
         return new Armor();
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -520,7 +523,7 @@ public class GameMap extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Game.Units.Status;
+package game.units.Status;
 
-import Game.Units.AUnit;
+import game.units.AbstractUnit;
 
 /**
- *
  * @author dimamon
  */
-public class BleedingEffect extends AUnitEffect{
+public class BleedingEffect extends AUnitEffect {
 
     public BleedingEffect(String name, int duration, int power) {
         super(name, duration, power);
@@ -19,8 +18,8 @@ public class BleedingEffect extends AUnitEffect{
 
     //Эффект яда (сила - power)
     @Override
-    public void EffectAction(AUnit unit) {
+    public void EffectAction(AbstractUnit unit) {
         unit.setHp(unit.getHp() - power);
     }
-       
+
 }
