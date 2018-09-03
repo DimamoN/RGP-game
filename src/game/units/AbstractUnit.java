@@ -8,7 +8,7 @@ package game.units;
 import game.Damage;
 import game.items.armor.Armor;
 import game.items.weapons.Weapon;
-import game.units.Status.UnitStatus;
+import game.units.status.UnitStatus;
 
 import java.util.Random;
 import javax.swing.ImageIcon;
@@ -116,7 +116,7 @@ abstract public class AbstractUnit {
     }
 
     public int getDef() {
-        return this.armor.getDef();
+        return this.armor.getDefence();
     }
 
     public int getAgl() {
@@ -149,7 +149,7 @@ abstract public class AbstractUnit {
         Damage damage = new Damage();
 
         //Установить dmg, равный атаке оружия
-        damage.setWeaponDmg(weapon.getDmg());
+        damage.setWeaponDmg(weapon.getDamage());
 
         //Добавить бонус силы
         damage.setStrBonus(this.str);
@@ -169,7 +169,7 @@ abstract public class AbstractUnit {
         Damage Dmg = this.getDmg();
 
         //Добавляем броню противника
-        Dmg.setDef(another.getDef());
+        Dmg.setDefence(another.getDef());
 
         //Если противник успешно уклонился
         if (another.EvadeDice()) {
@@ -345,7 +345,7 @@ abstract public class AbstractUnit {
 
     //Вся информация о юните
     public String getAllStat() {
-        return getName() + " | Урон " + (this.str + this.getWeapon().getDmg()) + " | Защита: "
+        return getName() + " | Урон " + (this.str + this.getWeapon().getDamage()) + " | Защита: "
                 + this.getDef() + " | " + (this.getWeapon().getName()) + " | " + this.getArmor().getName();
     }
 

@@ -10,50 +10,47 @@ import java.text.DecimalFormat;
 public class BattleStat {
 
     //Число попаданий
-    int hit = 0;
+    private int hitCount = 0;
     //Число уклонений
-    int miss = 0;
+    private int missCount = 0;
 
-    public int getMiss() {
-        return miss;
+    public int getMissCount() {
+        return missCount;
     }
 
-    public int getHit() {
-        return hit;
+    public int getHitCount() {
+        return hitCount;
     }
 
     public void addHit() {
-        this.hit++;
+        this.hitCount++;
     }
 
     public void addMiss() {
-        this.miss++;
+        this.missCount++;
     }
 
     public String getHitPerc() {
 
-        if (hit == 0 && miss == 0) return "-";
+        if (hitCount == 0 && missCount == 0) {
+            return "-";
+        }
 
-        double sum = hit + miss;
-
-        double hitStat = hit / sum;
-
+        double sum = hitCount + missCount;
+        double hitStat = hitCount / sum;
         hitStat = hitStat * 100;
-
         String formattedHitStat = new DecimalFormat("#0.00").format(hitStat);
-
         return formattedHitStat + " %";
     }
 
     //Вернуть Статистику Попаданий
     public String getHitStat() {
-        return "Попаданий: " + this.hit + " Промахов: " + this.miss + " Процент попаданий: " + this.getHitPerc();
+        return "Попаданий: " + this.hitCount + " Промахов: " + this.missCount + " Процент попаданий: " + this.getHitPerc();
     }
 
     public void resetStats() {
-        this.miss = 0;
-        this.hit = 0;
+        this.missCount = 0;
+        this.hitCount = 0;
     }
-
 
 }

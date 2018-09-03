@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package game.units.Status;
+package game.units.status;
 
 import game.units.AbstractUnit;
 
 /**
  * @author dimamon
  */
-public abstract class AUnitEffect {
+public abstract class AbstractUnitEffect {
 
     //Название эффекта
     String name;
@@ -22,7 +22,7 @@ public abstract class AUnitEffect {
     //Сила эффекта
     int power;
 
-    public AUnitEffect(String name, int duration, int power) {
+    public AbstractUnitEffect(String name, int duration, int power) {
         this.name = name;
         this.duration = duration + 1;
         this.startDuration = duration;
@@ -63,7 +63,7 @@ public abstract class AUnitEffect {
         if (obj == null) return false;
         if (!obj.getClass().isInstance(this)) return false;
 
-        AUnitEffect effect = (AUnitEffect) obj;
+        AbstractUnitEffect effect = (AbstractUnitEffect) obj;
 
         if (this.name == effect.name && this.power <= effect.power) return true;
         else return false;

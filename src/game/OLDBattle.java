@@ -16,13 +16,11 @@ import java.util.Random;
 public class OLDBattle {
 
     private BattleFrame battleFrame;
-
     //ход в бою
-    int turn = 1;
+    private int turn = 1;
 
     //Конструктор, на этом фрейме будет отображаться битва
     public OLDBattle() {
-
     }
 
     //Битва с выводом победителей
@@ -78,14 +76,10 @@ public class OLDBattle {
 
     //Перезапуск битвы
     public void restartBattle(AbstractUnit one, AbstractUnit two) {
-
         one.resetHealth();
         two.resetHealth();
-
         battleFrame.clearBattleLog();
-
         this.setupHeroesOnFrame(one, two);
-
     }
 
     //Автоматическая битва Битва, победитель 1 - true, 2 - false
@@ -99,7 +93,6 @@ public class OLDBattle {
 
         //обнуляем ход
         turn = 1;
-
         //Если у первого есть хп - он победил
         return one.isAlive();
     }
@@ -140,12 +133,10 @@ public class OLDBattle {
 
         //Если попал
         if (!Dmg.isMiss()) {
-
             //Если критический
             if (Dmg.isCritical()) {
-
                 //Если есть оружие
-                if (Dmg.weaponDmg > 0)
+                if (Dmg.getWeaponDmg() > 0)
                     battleFrame.addBattleLog(one.getName() + " нанес " + Dmg.getAllDmg() + " урона критическим "
                             + "ударом используя " + one.getWeapon().getName());
                     //Если нет оружия
@@ -156,7 +147,7 @@ public class OLDBattle {
             //Если не критический
             else {
                 //Если есть оружие
-                if (Dmg.weaponDmg > 0)
+                if (Dmg.getWeaponDmg() > 0)
                     battleFrame.addBattleLog(one.getName() + " нанес " + Dmg.getAllDmg() + " урона "
                             + "используя " + one.getWeapon().getName());
                     //Если нет оружия
@@ -166,8 +157,9 @@ public class OLDBattle {
         }
 
         //Если промахнулся
-        else
+        else {
             battleFrame.addBattleLog(one.getName() + " промахнулся");
+        }
     }
 
     //Порядок атак, после сверения инициативы
@@ -175,15 +167,14 @@ public class OLDBattle {
 
         //1 потом 2
         AttackLog(one, two);
-
         //Если второй после удара жив, то он атакует в ответ
         if (two.isAlive()) {
-
             //Атакует второй
             AttackLog(two, one);
-
             if (!one.isAlive()) battleFrame.addBattleLog(one.getName() + " умер");
-        } else battleFrame.addBattleLog(two.getName() + " умер");
+        } else {
+            battleFrame.addBattleLog(two.getName() + " умер");
+        }
     }
 }
 

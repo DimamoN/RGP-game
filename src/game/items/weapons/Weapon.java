@@ -6,7 +6,7 @@
 package game.items.weapons;
 
 import game.items.AbstractItem;
-import game.units.Status.AUnitEffect;
+import game.units.status.AbstractUnitEffect;
 
 import javax.swing.ImageIcon;
 
@@ -16,50 +16,50 @@ import javax.swing.ImageIcon;
 public class Weapon extends AbstractItem {
 
     //Урон оружия
-    int dmg;
+    private int damage;
 
     //Эффект который наносит оружие при крите
-    AUnitEffect effect;
+    private AbstractUnitEffect effect;
 
     public Weapon() {
 
     }
 
-    public Weapon(String name, int dmg, int weight, AUnitEffect effect, String pathToImage) {
+    public Weapon(String name, int damage, int weight, AbstractUnitEffect effect, String pathToImage) {
         super(name, weight, pathToImage);
-        this.dmg = dmg;
+        this.damage = damage;
         this.effect = effect;
     }
 
     //Для clone()
-    public Weapon(String name, int dmg, int weight, AUnitEffect effect, ImageIcon image) {
+    public Weapon(String name, int damage, int weight, AbstractUnitEffect effect, ImageIcon image) {
         super(name, weight, image);
-        this.dmg = dmg;
+        this.damage = damage;
         this.effect = effect;
     }
 
-    public int getDmg() {
-        return dmg;
+    public int getDamage() {
+        return damage;
     }
 
     @Override
     public String toString() {
-        return this.getName() + ", Урон: " + this.dmg;
+        return this.getName() + ", Урон: " + this.damage;
     }
 
-    public AUnitEffect getEffect() {
+    public AbstractUnitEffect getEffect() {
         return effect;
     }
 
     //Вернуть обновленный эффент - вызывается в Атаке Юнита
-    public AUnitEffect getResetEffect() {
+    public AbstractUnitEffect getResetEffect() {
         effect.resetEffect();
         return effect;
     }
 
     @Override
     public Weapon clone() {
-        return new Weapon(this.getName(), this.getDmg(),
+        return new Weapon(this.getName(), this.getDamage(),
                 this.getWeight(), this.getEffect(), this.getImage());
     }
 }

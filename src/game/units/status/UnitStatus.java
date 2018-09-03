@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package game.units.Status;
+package game.units.status;
 
 import game.units.AbstractUnit;
 
@@ -17,9 +17,9 @@ public class UnitStatus {
     //Эффекты могут складываться, нужно это решить!
 
     //Имя эффекта, сам эффект
-    HashMap<String, AUnitEffect> currentStatus = new HashMap<>();
+    HashMap<String, AbstractUnitEffect> currentStatus = new HashMap<>();
 
-    public void addEffect(AUnitEffect newEffect) {
+    public void addEffect(AbstractUnitEffect newEffect) {
 
         boolean check = false;
 
@@ -38,7 +38,7 @@ public class UnitStatus {
         }
 
 //        //Проверка на повторение - если да - то обновить
-//        for(AUnitEffect effect: this.currentStatus.values()){
+//        for(AbstractUnitEffect effect: this.currentStatus.values()){
 //            
 //            //Для каждого эффекта     
 //            if(newEffect.equals(effect)){
@@ -54,7 +54,7 @@ public class UnitStatus {
 
     }
 
-    public void deleteEffect(AUnitEffect effect) {
+    public void deleteEffect(AbstractUnitEffect effect) {
         this.currentStatus.remove(effect.getName());
     }
 
@@ -63,9 +63,9 @@ public class UnitStatus {
 
         //для удаления
         boolean delete = false;
-        AUnitEffect deleteEffect = new BleedingEffect("NO", 0, 0);
+        AbstractUnitEffect deleteEffect = new BleedingEffect("NO", 0, 0);
 
-        for (AUnitEffect effect : currentStatus.values()) {
+        for (AbstractUnitEffect effect : currentStatus.values()) {
 
             //Действие эффекта
             effect.EffectAction(unit);
@@ -96,7 +96,7 @@ public class UnitStatus {
 
         int i = 0;
 
-        for (AUnitEffect effect : currentStatus.values()) {
+        for (AbstractUnitEffect effect : currentStatus.values()) {
 
             effectNames[i] = effect.getName() + ", сила " + effect.getPower() + ", осталось " + effect.getDuration() + " ходов";
 
@@ -107,7 +107,7 @@ public class UnitStatus {
     }
 
     //Возвращает ХешМап текущих эффектов
-    public HashMap<String, AUnitEffect> getCurrentStatus() {
+    public HashMap<String, AbstractUnitEffect> getCurrentStatus() {
         return currentStatus;
     }
 

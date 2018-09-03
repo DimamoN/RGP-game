@@ -8,7 +8,7 @@ package frames;
 import game.Damage;
 import game.units.AbstractUnit;
 import game.units.SimpleMan;
-import game.units.Status.AUnitEffect;
+import game.units.status.AbstractUnitEffect;
 
 import java.awt.Color;
 import java.util.HashMap;
@@ -1248,14 +1248,14 @@ public class BattleFrame extends javax.swing.JFrame {
         this.getHero1Agl().setText(one.getAgl() + "");
         this.getHero1Str().setText(one.getStr() + "");
         this.getHero1HP().setText(one.getHp() + "");
-        this.getHero1Def().setText(one.getArmor().getDef() + "");
-        this.getHero1Dmg().setText(one.getStr() + one.getWeapon().getDmg() + "");
+        this.getHero1Def().setText(one.getArmor().getDefence() + "");
+        this.getHero1Dmg().setText(one.getStr() + one.getWeapon().getDamage() + "");
 
         this.getHero2Agl().setText(two.getAgl() + "");
         this.getHero2Str().setText(two.getStr() + "");
         this.getHero2HP().setText(two.getHp() + "");
-        this.getHero2Def().setText(two.getArmor().getDef() + "");
-        this.getHero2Dmg().setText(two.getStr() + two.getWeapon().getDmg() + "");
+        this.getHero2Def().setText(two.getArmor().getDefence() + "");
+        this.getHero2Dmg().setText(two.getStr() + two.getWeapon().getDamage() + "");
 
         //Оружие и броня
         this.getHero1Weapon().setText(one.getWeapon().toString());
@@ -1265,12 +1265,12 @@ public class BattleFrame extends javax.swing.JFrame {
         this.getHero2Armor().setText(two.getArmor().toString());
 
         //Статистика попаданий
-        this.hero1Hit.setText(one.getUnitStat().getHit() + "");
-        this.hero1Miss.setText(one.getUnitStat().getMiss() + "");
+        this.hero1Hit.setText(one.getUnitStat().getHitCount() + "");
+        this.hero1Miss.setText(one.getUnitStat().getMissCount() + "");
         this.hero1HitPerc.setText(one.getUnitStat().getHitPerc());
 
-        this.hero2Hit.setText(two.getUnitStat().getHit() + "");
-        this.hero2Miss.setText(two.getUnitStat().getMiss() + "");
+        this.hero2Hit.setText(two.getUnitStat().getHitCount() + "");
+        this.hero2Miss.setText(two.getUnitStat().getMissCount() + "");
         this.hero2HitPerc.setText(two.getUnitStat().getHitPerc());
 
         //Смена надписей про то, кто атакует
@@ -1422,13 +1422,13 @@ public class BattleFrame extends javax.swing.JFrame {
     private void setupEffects(AbstractUnit unit) {
 
         //Взять статус юнита
-        HashMap<String, AUnitEffect> status = unit.getStatus().getCurrentStatus();
+        HashMap<String, AbstractUnitEffect> status = unit.getStatus().getCurrentStatus();
 
         //Новая модель
         DefaultListModel<String> model = new DefaultListModel<>();
 
         //Обновить модель
-        for (AUnitEffect effect : status.values())
+        for (AbstractUnitEffect effect : status.values())
             model.addElement(effect.getName());
 
         //Если юнит слева

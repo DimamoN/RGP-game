@@ -7,23 +7,25 @@ package game;
 
 import game.units.AbstractUnit;
 import game.units.SimpleMan;
-import game.units.Status.RegenerationEffect;
+import game.units.status.RegenerationEffect;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author DimamoN
  */
 public class UnitFactory {
 
-    WeaponFactory weapon = new WeaponFactory();
-    ArmorFactory armor = new ArmorFactory();
+    private WeaponFactory weapon = new WeaponFactory();
+    private ArmorFactory armor = new ArmorFactory();
 
-    ArrayList<AbstractUnit> units = new ArrayList();
+    private List<AbstractUnit> units = new ArrayList<>();
 
     //TEST
-    HashMap<String, AbstractUnit> unitMap = new HashMap<>();
+    private HashMap<String, AbstractUnit> unitMap = new HashMap<>();
 
 
     {
@@ -82,17 +84,13 @@ public class UnitFactory {
     }
 
     public String[] getNames() {
-
-        //Массив имен
-        String[] names = new String[units.size()];
-
-        for (int i = 0; i < units.size(); i++)
-            names[i] = units.get(i).getName();
-
-        return names;
+        return units.stream()
+                .map(AbstractUnit::getName)
+                .collect(Collectors.toList())
+                .toArray(new String[units.size()]);
     }
 
-    public ArrayList<AbstractUnit> getUnits() {
+    public List<AbstractUnit> getUnits() {
         return units;
     }
 

@@ -6,15 +6,18 @@
 package game;
 
 import game.items.armor.Armor;
+import game.units.AbstractUnit;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author DimamoN
  */
 public class ArmorFactory {
 
-    ArrayList<Armor> armors = new ArrayList();
+    private List<Armor> armors = new ArrayList<>();
 
     {
         Armor noArmor = new Armor("Без брони", 0, 0, "/img/armor/noArmor.png");
@@ -53,20 +56,15 @@ public class ArmorFactory {
         return armors.get(4);
     }
 
-    public ArrayList<Armor> getArmors() {
+    public List<Armor> getArmors() {
         return armors;
     }
 
     public String[] getNames() {
-
-        //Массив имен
-        String[] names = new String[armors.size()];
-
-        for (int i = 0; i < armors.size(); i++)
-            names[i] = armors.get(i).getName();
-
-        return names;
+        return armors.stream()
+                .map(Armor::getName)
+                .collect(Collectors.toList())
+                .toArray(new String[armors.size()]);
     }
-
 
 }

@@ -11,16 +11,12 @@ import java.awt.EventQueue;
 
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-
-                UnitFactory unit = new UnitFactory();
-                GameMap map = new GameMap();
+        EventQueue.invokeLater(() -> {
+            UnitFactory unit = new UnitFactory();
+            GameMap map = new GameMap();
 //            BattleFrame battleFrame = new BattleFrame(unit.getSoldierHeavy(), unit.getOrk());
-            }
-
         });
 
     }

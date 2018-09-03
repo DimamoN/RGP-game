@@ -15,9 +15,7 @@ public class SimpleMan extends AbstractUnit {
 
 
     //Пустой
-    public SimpleMan() {
-
-    }
+    public SimpleMan() {}
 
     public SimpleMan(String name, int hp, int str, int agl, String pathToImage, Weapon weapon, Armor armor) {
         super(name, hp, str, agl, pathToImage, weapon, armor);

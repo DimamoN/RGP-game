@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package game.units.Status;
+package game.units.status;
 
 import game.units.AbstractUnit;
 
 /**
  * @author dimamon
  */
-public class BleedingEffect extends AUnitEffect {
+public class BleedingEffect extends AbstractUnitEffect {
 
     public BleedingEffect(String name, int duration, int power) {
         super(name, duration, power);

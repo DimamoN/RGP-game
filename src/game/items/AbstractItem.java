@@ -21,8 +21,7 @@ public class AbstractItem {
     //Вес айтема
     protected int weight;
 
-    public AbstractItem() {
-    }
+    public AbstractItem() {}
 
     //УДАЛИТЬ ПОТОМ!!!
     public AbstractItem(String name, int weight) {

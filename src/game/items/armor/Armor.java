@@ -15,41 +15,40 @@ import javax.swing.ImageIcon;
 public class Armor extends AbstractItem {
 
     //Защита, которую дает броня (1-5)
-    int def;
+    private int defence;
 
-    public Armor() {
-    }
+    public Armor() {}
 
     //Без картинки
-    public Armor(String name, int def, int weight) {
+    public Armor(String name, int defence, int weight) {
         super(name, weight);
-        this.def = def;
+        this.defence = defence;
     }
 
     //Новый, с картинкой
-    public Armor(String name, int def, int weight, String pathToImage) {
+    public Armor(String name, int defence, int weight, String pathToImage) {
         super(name, weight, pathToImage);
-        this.def = def;
+        this.defence = defence;
     }
 
     //для clone()
-    public Armor(String name, int def, int weight, ImageIcon image) {
+    public Armor(String name, int defence, int weight, ImageIcon image) {
         super(name, weight, image);
-        this.def = def;
+        this.defence = defence;
     }
 
-    public int getDef() {
-        return def;
+    public int getDefence() {
+        return defence;
     }
 
     public Armor clone() {
-        return new Armor(this.getName(), this.getDef(),
+        return new Armor(this.getName(), this.getDefence(),
                 this.getWeight(), this.getImage());
     }
 
     @Override
     public String toString() {
-        return this.getName() + ", Защита: " + this.def;
+        return this.getName() + ", Защита: " + this.defence;
     }
 
 }

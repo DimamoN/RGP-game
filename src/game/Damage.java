@@ -11,19 +11,15 @@ package game;
 public class Damage {
 
     //Величина урона
-    int weaponDmg;
-
+    private int weaponDmg;
     //Бонус от силы
-    int strBonus;
-
+    private int strBonus;
     //Защита цели
-    int Def;
-
+    private int defence;
     //Является ли промахом
-    boolean miss;
-
+    private boolean miss;
     //Является ли критическим
-    boolean critical;
+    private boolean critical;
 
     public Damage() {
     }
@@ -42,12 +38,12 @@ public class Damage {
         this.weaponDmg = dmg;
     }
 
-    public void setDef(int Def) {
-        this.Def = Def;
+    public void setDefence(int Def) {
+        this.defence = Def;
     }
 
-    public int getDef() {
-        return Def;
+    public int getDefence() {
+        return defence;
     }
 
     public boolean isCritical() {
@@ -71,9 +67,9 @@ public class Damage {
         //Если не промах
         if (!miss) {
             if (critical)
-                return (weaponDmg + strBonus) * 2 - this.Def;
+                return (weaponDmg + strBonus) * 2 - this.defence;
             else
-                return weaponDmg + strBonus - this.Def;
+                return weaponDmg + strBonus - this.defence;
         }
         //Если промах
         else return 0;

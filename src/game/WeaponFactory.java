@@ -6,21 +6,21 @@
 package game;
 
 import game.items.weapons.Weapon;
-import game.units.Status.AUnitEffect;
-import game.units.Status.BleedingEffect;
+import game.units.AbstractUnit;
+import game.units.status.BleedingEffect;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author DimamoN
  */
 public class WeaponFactory {
 
-    ArrayList<Weapon> weapons = new ArrayList();
+    private List<Weapon> weapons = new ArrayList<>();
 
     {
-        AUnitEffect bleeding = new BleedingEffect("Кровотечение", 2, 5);
-
         Weapon dagger = new Weapon("Кинжал", 2, 1, new BleedingEffect("Кровотечение", 2, 5), "/img/weapons/dagger.png");
         Weapon hammer = new Weapon("Молоток", 2, 1, new BleedingEffect("Кровотечение", 2, 5), "/img/weapons/hammer.png");
         Weapon sword = new Weapon("Меч", 3, 2, new BleedingEffect("Кровотечение", 2, 5), "/img/weapons/sword.png");
@@ -77,19 +77,15 @@ public class WeaponFactory {
         return weapons.get(7);
     }
 
-    public ArrayList<Weapon> getWeapons() {
+    public List<Weapon> getWeapons() {
         return weapons;
     }
 
     public String[] getNames() {
-
-        //Массив имен
-        String[] names = new String[weapons.size()];
-
-        for (int i = 0; i < weapons.size(); i++)
-            names[i] = weapons.get(i).getName();
-
-        return names;
+        return weapons.stream()
+                .map(Weapon::getName)
+                .collect(Collectors.toList())
+                .toArray(new String[weapons.size()]);
     }
 
 
