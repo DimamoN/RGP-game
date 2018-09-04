@@ -98,7 +98,7 @@ public class OLDBattle {
     }
 
     //Один ход битвы, несколько вызовов - несколько ходов
-    void round(AbstractUnit one, AbstractUnit two) {
+    private void round(AbstractUnit one, AbstractUnit two) {
 
         battleFrame.addBattleLog("*** " + turn + " ход ***");
         battleFrame.addBattleLog(one.BattleInfo());

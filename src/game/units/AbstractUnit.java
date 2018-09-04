@@ -18,24 +18,25 @@ import javax.swing.ImageIcon;
  */
 abstract public class AbstractUnit {
 
-    ImageIcon image; //Картинка юнита
-    String name; //имя
-    int sHp; //стартовые хитпоинты
-    int hp; //текущие хитпоинты
-    int str; //сила    
-    int agl; //ловкость (Максимум 10)
-    int init; //инициатива
-    int critChance = 3; //Базовый шанс крита
-    //Оружие
-    Weapon weapon;
-    //Защита
-    Armor armor;
+    private ImageIcon image; //Картинка юнита
+    private String name; //имя
+
+    private int sHp; //стартовые хитпоинты
+    private int hp; //текущие хитпоинты
+    private int str; //сила
+    private int agl; //ловкость (Максимум 10)
+    private int init; //инициатива
+    private int critChance = 3; //Базовый шанс крита
+
+    private Weapon weapon;
+    private Armor armor;
+
     //Статус юнита
-    UnitStatus status;
+    private UnitStatus status;
     //Статистика битвы для юнита
-    BattleStat unitStat;
+    private BattleStat unitStat;
     //Расположение в битве
-    boolean attacking;
+    private boolean attacking;
 
     //Пустой конструктор
     public AbstractUnit() {
@@ -144,7 +145,6 @@ abstract public class AbstractUnit {
 
     //Установка урона, который нанесет данный юнит (Weapon,Crit,Str)
     public Damage getDmg() {
-        Random rnd = new Random();
 
         Damage damage = new Damage();
 
@@ -155,7 +155,7 @@ abstract public class AbstractUnit {
         damage.setStrBonus(this.str);
 
         //Рассчет шанса крита ( 3 процента + ловкость * 2 )
-        if ((rnd.nextInt(100) + 1) < this.critChance + this.agl * 2) {
+        if ((new Random().nextInt(100) + 1) < this.critChance + this.agl * 2) {
             damage.setCritical(true);
         }
 
@@ -166,10 +166,10 @@ abstract public class AbstractUnit {
     public Damage Attack(AbstractUnit another) {
 
         //Нанесенный урон
-        Damage Dmg = this.getDmg();
+        Damage dmg = this.getDmg();
 
         //Добавляем броню противника
-        Dmg.setDefence(another.getDef());
+        dmg.setDefence(another.getDef());
 
         //Если противник успешно уклонился
         if (another.EvadeDice()) {
@@ -178,23 +178,22 @@ abstract public class AbstractUnit {
             this.unitStat.addMiss();
 
             //Устанавливаем промах
-            Dmg.setIsMiss(true);
+            dmg.setIsMiss(true);
         }
 
         //Если противник не уклонился
         else {
             //Отнять хп противнику
-            another.setHp(another.getHp() - Dmg.getAllDmg());
+            another.setHp(another.getHp() - dmg.getAllDmg());
             //Добавить попадание в статистику
             this.unitStat.addHit();
         }
 
         //если крит -> добавить эффект оружия
-        if (Dmg.isCritical())
+        if (dmg.isCritical())
             another.getStatus().addEffect(this.getWeapon().getResetEffect());
 
-
-        return Dmg;
+        return dmg;
     }
 
     public boolean isAlive() {
@@ -233,25 +232,17 @@ abstract public class AbstractUnit {
 
     //Указываем шанс на true
     private boolean getChance(int percent) {
-        Random rnd = new Random();
-
-        int hundred = rnd.nextInt(100) + 1;
-
-        if (hundred < percent) return true;
-        else return false;
+        int hundred = new Random().nextInt(100) + 1;
+        return hundred < percent;
     }
 
     //Рандом от 1 до number, Успех если rnd == number    DONT USE!!!
     private boolean Dice(int number) {
         Random rnd = new Random();
-
         if (number == 1) {
-            if ((rnd.nextInt(10) + 1) < 10) return true;
-            else return false;
+            return (rnd.nextInt(10) + 1) < 10;
         }
-
-        if ((rnd.nextInt(number) + 1) == number) return true;
-        else return false;
+        return (rnd.nextInt(number) + 1) == number;
     }
 
     //Инфомация для боя
